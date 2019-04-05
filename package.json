@@ -1,0 +1,31 @@
+{
+  "name": "shalom-ids-parser",
+  "version": "0.1.0",
+  "description": "Turns different IDS logs in human-readable diagrams. You can also make a PDF file with these drawings!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ids",
+    "parse",
+    "parser",
+    "pdf",
+    "json"
+  ],
+  "author": "Ilia Soloveychik",
+  "license": "GPL-1.0-or-later",
+  "repository": "https://github.com/thesiv95/shalom-ids-parser",
+  "devDependencies": {
+    "angular": "^1.7.7",
+    "d3": "^5.9.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.16",
+    "nodemon": "^1.18.10",
+    "pdfkit": "^0.9.0",
+    "xml2js": "^0.4.19"
+  },
+  "dependencies": {
+    "pug": "^2.0.3"
+  }
+}

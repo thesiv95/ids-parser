@@ -1,0 +1,17 @@
+include includes/header.pug
+		
+		.menu
+			div(class="menu__item" onclick="go_to('/parsing');")
+				.menu__item_logo
+					i(class="fas fa-sync-alt")
+				.menu__item_name Обработка
+			div(class="menu__item" onclick="go_to('/settings');")
+				.menu__item_logo
+					i(class="fas fa-cogs")
+				.menu__item_name Настройки
+			div(class="menu__item" onclick="go_to('/help');")
+				.menu__item_logo
+					i(class="fas fa-question-circle")
+				.menu__item_name Справка
+		
+		include includes/footer.pug

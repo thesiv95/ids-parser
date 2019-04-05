@@ -1,0 +1,23 @@
+chown siv -R /var/www/html
+
+Чтобы исчезла ошибка доступа к папке сервера
+To fix error access to server's folder
+
+
+server{
+    listen               80;
+    server_name          domain_name;
+ 
+    location / {
+        proxy_read_timeout 120s;
+        proxy_pass http://127.0.0.1:3000;
+        proxy_set_header Host $host;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+
+
+
+

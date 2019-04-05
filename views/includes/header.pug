@@ -1,0 +1,33 @@
+doctype html
+html(lang=html_lang dir=html_dir)
+head
+	meta(charset="UTF-8")
+	meta(name="viewport" content="width=device-width, initial-scale=1.0")
+	meta(http-equiv="X-UA-Compatible" content="ie=edge")
+	title=page_title
+	link(href="/fonts/fontawesome-free-5.6.3-web/css/all.min.css" type="text/css" rel="stylesheet" charset="utf-8")
+	link(href="/css/style.css" type="text/css" rel="stylesheet" charset="utf-8")
+	link(href="/css/ui-elements.css" type="text/css" rel="stylesheet" charset="utf-8")
+	link(href="/css/checkbox.css" type="text/css" rel="stylesheet" charset="utf-8")
+	link(href="/css/mediaqueries.css" type="text/css" rel="stylesheet" charset="utf-8")
+	link(href="/css/compat.css" type="text/css" rel="stylesheet" charset="utf-8")
+	script(src="/js/prefixfree.min.js")
+	script(src="js/moment-with-locales.js")
+
+body
+	.container
+		.title
+			.title__header=page_title
+				
+
+		div(class="msg msg-warning msg_old-browser")
+			i(class="fas fa-sad-tear") 
+			|Этот браузер поддерживает не все технологии, которые использует программа. Программа может работать, но с перебоями. Настоятельно рекомендуется использовать браузер, указанный в инструкции, во избежание возникновения проблем. Инструкция находится в разделе &quot;Справка&quot;.
+
+		div(class="msg msg-warning msg_old-browser")
+			i(class="fas fa-sad-tear") 
+			|Размер ширины окна слишком мал, чтобы отобразить результат обработки данных. Если вы используете мобильное устройство, измените ориентацию экрана на альбомную.
+
+		div(class="msg msg-success msg__save-success")
+			i(class="fas fa-smile-beam") 
+			|Изменения успешно сохранены!

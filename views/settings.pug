@@ -1,0 +1,19 @@
+include includes/header.pug
+		
+		.settings
+			.settings-inner Язык (Language):&nbsp;
+				select(name="set_lang" id="set_lang")
+					each langname, langcode in {'ru':'Russian (Русский)', 'en': 'English', 'he': 'Hebrew (עברית)', 'ua': 'Ukranian (Українська)', 'by': 'Belarusian (Беларуская)'}
+						option(value= langcode)=langname
+
+			.settings-inner Тема оформления:&nbsp;		
+				select(name="set_style" id="set_style")
+					each val, index in {1:'White',2:'Black'}
+						option(value= index)=val
+
+			.settings-inner
+				input(type="button" class="btn btn-std" value="Применить" onclick="apply()")
+				| &nbsp;
+				input(type="button" class="btn btn-std" value="На главную страницу" onclick="go_to('/')")
+
+		include includes/footer.pug
