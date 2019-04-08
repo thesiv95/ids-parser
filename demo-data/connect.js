@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true});
-
+mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
 console.log("connection ok");
 
-// module.exports = mongoose;
+
+
+
+// when all is done
+mongoose.disconnect();
