@@ -11,5 +11,8 @@
   "devDependencies": {
     "mongoose": "^5.4.19",
     "xml2js": "^0.4.19"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
