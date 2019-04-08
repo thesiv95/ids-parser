@@ -262,7 +262,8 @@ record.save(function(err){
     if (err !== null) {
 		console.log('Ошибка записи');
 		console.log(err);
-	}
+    }
+    mongoose.disconnect();
 });
 
 // Удаление массива для очищения ОЗУ

@@ -115,8 +115,8 @@ var SuricataRecord = mongoose.model('SuricataRecord', suricataSchema);
 // Отформатированная запись в БД, которая будет добавлена
 
 var record = new SuricataRecord({
-    date_reg: singleRecordObject.dates,
-    time_reg: singleRecordObject.times,
+    date_reg: singleRecordObject.times,
+    time_reg: singleRecordObject.dates,
     ip_src: singleRecordObject.ipsSrc,
     port_src: parseInt(singleRecordObject.portsSrc),
     ip_dest: singleRecordObject.ipsDest,
@@ -133,6 +133,7 @@ record.save(function(err){
 		console.log('Ошибка записи');
 		console.log(err);
 	}
+	mongoose.disconnect();
 });
 
 delete l;

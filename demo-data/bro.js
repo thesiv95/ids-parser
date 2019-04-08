@@ -205,6 +205,7 @@ record.save(function(err){
 		console.log('Ошибка записи');
 		console.log(err);
 	}
+	mongoose.disconnect();
     
 });
 
