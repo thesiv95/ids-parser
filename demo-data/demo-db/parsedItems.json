@@ -1,0 +1,3 @@
+{"_id":{"$oid":"5c80b64992f62d121611023b"},"date_reg":"01.01.2019","time_reg":"12:00:00","ip_src":"192.168.192.168","port_src":12345.0,"ip_dest":"192.168.100.100","port_dest":99.0,"protocol":"tcp","conn_quantity":9999.0,"status":"bad"}
+{"_id":{"$oid":"5c80b74b92f62d121611023c"},"date_reg":"02.02.2019","time_reg":"21:30:00","ip_src":"192.168.1.18","port_src":27017.0,"ip_dest":"192.168.100.100","port_dest":99.0,"protocol":"tls","conn_quantity":39.0,"status":"good"}
+{"_id":{"$oid":"5c80b74b92f62d121611023d"},"date_reg":"11.03.2019","time_reg":"10:30:55","ip_src":"192.168.1.7","port_src":270.0,"ip_dest":"3.168.77.13","port_dest":993.0,"protocol":"tls","conn_quantity":111.0,"status":"unknown"}
