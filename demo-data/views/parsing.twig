@@ -1,0 +1,163 @@
+{% include '_includes/header.twig' %}
+
+        <div class="filepicker">
+           <input class="filepicker-inner" type="file" name="filepicker" id="filepicker" onchange="toggleStartButton();">
+        </div>
+
+        <div class="state">
+            <input class="btn btn-std" type="button" onclick="go_to('/');" value="{{ btn_to_main_page }}">
+            <input class="btn btn-std" type="button" id="outputStart" value="{{ btn_start_parsing }}" onclick="showOutput();toggleExportButton();" disabled>
+            <input class="btn btn-std" type="button" id="outputExport" value="{{ btn_export_parsing }}" onclick="go_to('/pdf');" title="{{ parsing_report_download }}" disabled>
+        </div>
+        <div class="output" style="display: none;">
+            <div class="output-title">{{ parsing_ids_detected }}: {{ ids_name }}</p></div>
+            <div class="output-diagram">
+                <div class="output-diagram-inner" id="output-diagram"></div>
+                <div class="output-diagram-inner output-diagram-inner__text">
+
+                        <ul class="output-diagram-list">
+                            
+                            {% for dataItem in data %}
+
+                            <li class="output-diagram-list_item item-{{ dataItem.status }}">{{ dataItem.ip_src }}:{{ dataItem.port_src }} -&gt; {{ dataItem.ip_dest }}:{{ dataItem.port_dest }} [{{ dataItem.protocol }}] {{ parsing_timestamp }} {{ dataItem.date_reg }} {{ dataItem.time_reg }} - {{ dataItem.conn_quantity }}
+                            <br />{{ parsing_signature }}: {{ dataItem.signatures }}</li>
+
+                            {% endfor %}
+
+                        </ul>
+                        <p id="trafficTotalOutput"></p>
+                    </div>
+            <div class="output-legend" id="outputLegend">
+                <script>
+                     // Подсчет кол-ва разных типов трафика
+                    var doc = document;
+
+                    var itemsGood = doc.getElementsByClassName('item-good').length,
+                        itemsBad = doc.getElementsByClassName('item-bad').length,
+                        itemsUnknown = doc.getElementsByClassName('item-unknown').length;
+
+                    var totalTraffic = itemsGood + itemsBad + itemsUnknown;
+
+                    var itemsGoodPercent = parseInt(itemsGood / totalTraffic * 100),
+                        itemsBadPercent = parseInt(itemsBad / totalTraffic * 100),
+                        itemsUnknownPercent = parseInt(itemsUnknown / totalTraffic * 100);
+
+                    if(isNaN(itemsGoodPercent)) itemsGoodPercent = 0;
+                    if(isNaN(itemsBadPercent)) itemsBadPercent = 0;
+                    if(isNaN(itemsUnknownPercent)) itemsUnknownPercent = 0;
+
+                    var outputLegend = doc.getElementById('outputLegend'),
+                        trafficTotalOutput = doc.getElementById('trafficTotalOutput');
+
+                    outputLegend.innerHTML = "<span class=\"item-good\">{{ parsing_legal }} (" + itemsGood + " / " + itemsGoodPercent + "%)</span> | <span class=\"item-bad\">{{ parsing_illegal }} (" + itemsBad + " / " + itemsBadPercent + "%)</span> | <span class=\"item-unknown\">{{ parsing_unknown }} (" + itemsUnknown + " / " + itemsUnknownPercent + "%)</span>";
+
+                    trafficTotalOutput.innerHTML = "{{ parsing_conn_total }} - " + totalTraffic;
+                
+
+                    // Parsing date
+                    moment.locale('{{ html_lang }}');
+                    var currentTimestamp = moment().format('dddd, MMMM Do YYYY, h:mm:ss a');
+
+                </script>
+
+            </div>
+            <div class="output-date">
+                {{ parsing_date }}: <script>document.write(currentTimestamp);</script>
+            </div>
+        </div>
+<script src="js/d3.min.js"></script>
+<script src="js/d3pie.js"></script>
+<script>
+
+var pie = new d3pie("output-diagram", {
+	"header": {
+		"title": {
+			"fontSize": 24,
+			"font": "open sans"
+		},
+		"subtitle": {
+			"color": "#999999",
+			"fontSize": 12,
+			"font": "open sans"
+		},
+		"titleSubtitlePadding": 9
+	},
+	"footer": {
+		"color": "#999999",
+		"fontSize": 10,
+		"font": "open sans",
+		"location": "bottom-left"
+	},
+	"size": {
+		"canvasHeight": 300,
+		"canvasWidth": 300,
+		"pieOuterRadius": "100%"
+	},
+	"data": {
+		"sortOrder": "value-desc",
+		"content": [ // Отрисовка диаграммы по рассчитанным данным выше
+			{
+				"label": "",
+				"value": itemsGood,
+				"color": "#51c123" // Good
+			},
+			{
+				"label": "",
+				"value": itemsBad,
+				"color": "#da4e0a" // Bad
+			},
+			{
+				"label": "",
+				"value": itemsUnknown,
+				"color": "#489fca" // Unknown
+			}
+		]
+	},
+	"labels": {
+		"outer": {
+			"format": "none",
+			"pieDistance": 32
+		},
+		"inner": {
+			"format": "none"
+		},
+		"mainLabel": {
+			"fontSize": 11
+		},
+		"percentage": {
+			"color": "#ffffff",
+			"decimalPlaces": 0
+		},
+		"value": {
+			"color": "#adadad",
+			"fontSize": 11
+		},
+		"lines": {
+			"enabled": true
+		},
+		"truncation": {
+			"enabled": true
+		}
+	},
+	"effects": {
+		"load": {
+			"effect": "none"
+		},
+		"pullOutSegmentOnClick": {
+			"effect": "none",
+			"speed": 400,
+			"size": 8
+		},
+		"highlightSegmentOnMouseover": false,
+		"highlightLuminosity": -0.5
+	},
+	"callbacks": {
+		"onMouseoverSegment": null,
+		"onMouseoutSegment": null,
+		"onClickSegment": null
+	}
+});
+
+</script>
+
+        {% include '_includes/footer.twig' %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" dir="{{ html_dir }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="fonts/fontawesome-free-5.6.3-web/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ui-elements.css">
+    <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="css/mediaqueries.css">
+    <link rel="stylesheet" href="css/compat.css">
+    <script src="js/prefixfree.min.js"></script>
+    <script src="js/moment-with-locales.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <div class="title__header">
+                {{ title }}
+            </div>
+        </div>
+        
+            
+            <div class="msg msg-warning msg_old-browser">
+                <i class="fas fa-sad-tear"></i>
+                {{ msg_old_browser }}
+            </div>
+            <div class="msg msg-warning msg_small-width">
+                <i class="fas fa-sad-tear"></i>
+                {{ msg_too_small }}
+            </div>
+            <div class="msg msg-success msg__save-success">
+            <i class="fas fa-grin"></i>
+                {{ msg_changed }}
+            </div>
+           

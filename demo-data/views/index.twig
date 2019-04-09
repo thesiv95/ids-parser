@@ -1,0 +1,28 @@
+{% include '_includes/header.twig' %}
+        <div class="menu">
+            <div class="menu__item" onclick="go_to('/parsing');">
+                <div class="menu__item_logo">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="menu__item_name">
+                    {{ header_parsing }}
+                </div>
+            </div>
+            <div class="menu__item" onclick="go_to('/settings');">
+                <div class="menu__item_logo">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="menu__item_name">
+                    {{ header_settings }}
+                </div>
+            </div>
+            <div class="menu__item" onclick="go_to('/help');">
+                <div class="menu__item_logo">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="menu__item_name">
+                    {{ header_help }}
+                </div>
+            </div>
+        </div>
+        {% include '_includes/footer.twig' %}

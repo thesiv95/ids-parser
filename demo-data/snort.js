@@ -25,7 +25,7 @@ var Snort = {
                 times.push(l[i]);
             }  
         }
-        singleRecordObject.times = times;
+        singleRecordObject.times = times[0];
     },
     // Дата
     dateExtract: function (){
@@ -39,7 +39,7 @@ var Snort = {
         for (var j = 0; j < dates.length; j++) {
             dates[j] = dates[j].slice(1);     
         }
-        singleRecordObject.dates = dates;
+        singleRecordObject.dates = dates[0];
     },
     // IP источника
     ipSrcExtract: function (){
@@ -64,7 +64,7 @@ var Snort = {
                 
             }
         }
-        singleRecordObject.ipsSrc = ips;
+        singleRecordObject.ipsSrc = ips[0];
     },
     // Порт источника
     portSrcExtract: function (){
@@ -121,7 +121,7 @@ var Snort = {
             }
         }
 
-        singleRecordObject.ipsDest = ips;
+        singleRecordObject.ipsDest = ips[0];
     },
     
     // Порт назначения
@@ -163,7 +163,7 @@ var Snort = {
                 protocols.push(protocol);
             }
         }
-        singleRecordObject.protocols = protocols;
+        singleRecordObject.protocols = protocols[0];
     },
      // Сигнатура. Строка не полная!! пока не знаю как сделать всю строку
      defineSignature: function (){
@@ -180,7 +180,7 @@ var Snort = {
                 signs[j] = signs[j].slice(1);
             }  
         }
-        singleRecordObject.signatures = signs;
+        singleRecordObject.signatures = signs[0];
     },
     // Кол-во подключений (= кол-ву строк в логе)
     // Если их меньше 0 или 0, то делаем 1 (так как одно подключение к объекту с СОВ точно было)
@@ -228,7 +228,8 @@ mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
 
 console.log('ok');
 // "Шаблон" записи в БД
-const snortSchema = new Schema({ 
+const snortSchema = new Schema({
+    ids_name: String, 
     date_reg: String,
     time_reg: String,
     ip_src: String,
@@ -236,15 +237,19 @@ const snortSchema = new Schema({
     ip_dest: String,
     port_dest: Number,
     protocol: String,
+    signatures: String,
     conn_quantity: Number,
     status: String
  });
 
-var SnortRecord = mongoose.model('SnortRecord', snortSchema);
+
+const SnortRecord = mongoose.model('SnortRecord', snortSchema);
+
 
 // Отформатированная запись в БД, которая будет добавлена
 
 var record = new SnortRecord({
+    ids_name: 'Snort',
     date_reg: singleRecordObject.dates,
     time_reg: singleRecordObject.times,
     ip_src: singleRecordObject.ipsSrc,
@@ -252,11 +257,12 @@ var record = new SnortRecord({
     ip_dest: singleRecordObject.ipsDest,
     port_dest: parseInt(singleRecordObject.portsDest),
     protocol: singleRecordObject.protocols,
+    signatures: singleRecordObject.signatures,
     conn_quantity: singleRecordObject.quantity,
     status: singleRecordObject.status
 });
 
-console.log(record);
+// console.log(record);
 
 record.save(function(err){
     if (err !== null) {
@@ -266,5 +272,7 @@ record.save(function(err){
     mongoose.disconnect();
 });
 
+
+module.exports = {SnortRecord: SnortRecord};
 // Удаление массива для очищения ОЗУ
 delete l;

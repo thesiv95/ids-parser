@@ -1,0 +1,28 @@
+{% include '_includes/header.twig' %}
+        <div class="help">
+            <div class="help-inner">
+                <p>
+                    <a class="link-std" href="docs/parsing-ru.pdf" target="_blank">{{ help_link_parsing }}</a>
+                    <i class="far fa-file-pdf"></i>
+                </p>
+                
+            </div>
+            <div class="help-inner">
+                <p>
+                    <a class="link-std" href="docs/settings-ru.pdf" target="_blank">{{ help_link_settings }}</a>
+                    <i class="far fa-file-pdf"></i>
+                </p>
+            </div>
+            <div class="help-inner">
+                <p>{{ help_version }}: 0.1 (beta)</p>
+                <p>{{ help_build_date }}: 01.2019</p>
+                <p>{{ help_license }}: <a class="link-std" target="_blank" href="https://www.gnu.org/licenses/old-licenses/gpl-1.0.ru.html">GNU GPL v.1</a></p>
+            </div>
+            <div class="help-inner">
+                <p>
+                    <input type="button" class="btn btn-std" value="{{ btn_to_main_page }}" onclick="go_to('/')">
+                </p>
+            </div>
+        </div>
+        {% include '_includes/footer.twig' %}
+

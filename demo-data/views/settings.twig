@@ -1,0 +1,27 @@
+{% include '_includes/header.twig' %}
+        
+        <div class="settings">
+            <div class="settings-inner">
+                {{ settings_language }}:
+                <select name="set_lang" id="set_lang">
+                    <option value="ru">Russian (Русский)</option>
+                    <option value="en">English</option>
+                    <option value="he">Hebrew (עברית)</option>
+                    <option value="ua">Ukranian (Українська)</option>
+                    <option value="by">Belarusian (Беларуская)</option>
+                </select>
+            </div>
+            <div class="settings-inner">
+                {{ settings_theme }}:
+                <select name="set_style" id="set_style">
+                    <option value="1">White</option>
+                    <option value="2">Black</option>
+                </select>
+            </div>
+            <div class="settings-inner">
+                <input type="button" class="btn btn-std" value="{{ btn_apply_settings }}" onclick="apply();">
+                <input type="button" class="btn btn-std" value="{{btn_to_main_page }}" onclick="go_to('/');">
+            </div>
+        </div>
+
+        {% include '_includes/footer.twig' %}
