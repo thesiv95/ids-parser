@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.6.0
- * Build https://modernizr.com/download?-animation-arrow-atobbtoa-backgroundsize-bgpositionshorthand-bgpositionxy-bgrepeatspace_bgrepeatround-bgsizecover-blobconstructor-borderradius-boxshadow-boxsizing-canvas-canvastext-canvaswinding-checked-cors-cssanimations-csscalc-csschunit-cssexunit-cssgradients-cssinvalid-csspointerevents-csspseudoanimations-csspseudotransitions-cssremunit-csstransforms-csstransforms3d-csstransitions-cssvalid-cssvhunit-cssvminunit-cssvwunit-cubicbezierrange-dataview-ellipsis-es5-es5array-es5date-es5function-es5object-es5string-es5syntax-es5undefined-eventlistener-flexwrap-fontface-generatedcontent-generators-history-hsla-indexeddb-indexeddbblob-inlinesvg-json-lastchild-ligatures-mediaqueries-multiplebgs-nthchild-opacity-promises-queryselector-rgba-scriptasync-scriptdefer-sessionstorage-strictmode-svg-svgasimg-svgclippaths-svgfilters-target-textalignlast-textshadow-todataurljpeg_todataurlpng_-websockets-xhrresponsetype-xhrresponsetypearraybuffer-xhrresponsetypeblob-xhrresponsetypedocument-xhrresponsetypetext-setclasses-dontmin-cssclassprefix:modern-
+ * Build https://modernizr.com/download?-animation-arrow-atobbtoa-backgroundsize-bgpositionxy-bgrepeatspace_bgrepeatround-bgsizecover-borderradius-boxshadow-boxsizing-canvas-canvastext-checked-cors-cssanimations-cssexunit-cssgradients-cssinvalid-csspointerevents-cssremunit-csstransforms-csstransforms3d-csstransitions-cssvalid-dataview-ellipsis-es5undefined-eventlistener-flexwrap-fontface-generatedcontent-generators-history-hsla-inlinesvg-json-lastchild-mediaqueries-multiplebgs-nthchild-opacity-promises-queryselector-rgba-scriptasync-scriptdefer-sessionstorage-strictmode-svg-svgasimg-svgclippaths-target-textshadow-todataurljpeg_todataurlpng_-xhrresponsetype-xhrresponsetypearraybuffer-xhrresponsetypedocument-xhrresponsetypetext-setclasses-dontmin-cssclassprefix:modern-
  *
  * Copyright (c)
  *  Faruk Ates
@@ -85,36 +85,7 @@
   // Leak modernizr globally when you `require` it rather than force it here.
   // Overwrite name so constructor name is nicer :D
   Modernizr = new Modernizr();
-
   
-
-/*!
-{
-  "name": "Blob constructor",
-  "property": "blobconstructor",
-  "aliases": ["blob-constructor"],
-  "builderAliases": ["blob_constructor"],
-  "caniuse": "blobbuilder",
-  "notes": [{
-    "name": "W3C spec",
-    "href": "https://w3c.github.io/FileAPI/#constructorBlob"
-  }],
-  "polyfills": ["blobjs"]
-}
-!*/
-/* DOC
-Detects support for the Blob constructor, for creating file-like objects of immutable, raw data.
-*/
-
-  Modernizr.addTest('blobconstructor', function() {
-    try {
-      return !!new Blob();
-    } catch (e) {
-      return false;
-    }
-  }, {
-    aliases: ['blob-constructor']
-  });
 
 /*!
 {
@@ -286,39 +257,6 @@ Detects support for SVG in `<embed>` or `<object>` elements.
 
 /*!
 {
-  "name": "WebSockets Support",
-  "property": "websockets",
-  "authors": ["Phread [fearphage]", "Mike Sherov [mikesherov]", "Burak Yigit Kaya [BYK]"],
-  "caniuse": "websockets",
-  "tags": ["html5"],
-  "warnings": [
-    "This test will reject any old version of WebSockets even if it is not prefixed such as in Safari 5.1"
-  ],
-  "notes": [{
-    "name": "CLOSING State and Spec",
-    "href": "https://www.w3.org/TR/websockets/#the-websocket-interface"
-  }],
-  "polyfills": [
-    "sockjs",
-    "socketio",
-    "kaazing-websocket-gateway",
-    "websocketjs",
-    "atmosphere",
-    "graceful-websocket",
-    "portal",
-    "datachannel"
-  ]
-}
-!*/
-
-  var supports = false;
-  try {
-    supports = 'WebSocket' in window && window.WebSocket.CLOSING === 2;
-  } catch (e) {}
-  Modernizr.addTest('websockets', supports);
-
-/*!
-{
   "name": "CSS :target pseudo-class",
   "caniuse": "css-sel3",
   "property": "target",
@@ -350,222 +288,7 @@ Detects support for the ':target' CSS pseudo-class.
     }
   });
 
-/*!
-{
-  "name": "ES5 Array",
-  "property": "es5array",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }],
-  "polyfills": ["es5shim"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "tags": ["es5"]
-}
-!*/
-/* DOC
-Check if browser implements ECMAScript 5 Array per specification.
-*/
 
-  Modernizr.addTest('es5array', function() {
-    return !!(Array.prototype &&
-      Array.prototype.every &&
-      Array.prototype.filter &&
-      Array.prototype.forEach &&
-      Array.prototype.indexOf &&
-      Array.prototype.lastIndexOf &&
-      Array.prototype.map &&
-      Array.prototype.some &&
-      Array.prototype.reduce &&
-      Array.prototype.reduceRight &&
-      Array.isArray);
-  });
-
-/*!
-{
-  "name": "ES5 Date",
-  "property": "es5date",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }],
-  "polyfills": ["es5shim"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "tags": ["es5"]
-}
-!*/
-/* DOC
-Check if browser implements ECMAScript 5 Date per specification.
-*/
-
-  Modernizr.addTest('es5date', function() {
-    var isoDate = '2013-04-12T06:06:37.307Z',
-      canParseISODate = false;
-    try {
-      canParseISODate = !!Date.parse(isoDate);
-    } catch (e) {
-      // no ISO date parsing yet
-    }
-    return !!(Date.now &&
-      Date.prototype &&
-      Date.prototype.toISOString &&
-      Date.prototype.toJSON &&
-      canParseISODate);
-  });
-
-/*!
-{
-  "name": "ES5 Function",
-  "property": "es5function",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }],
-  "polyfills": ["es5shim"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "tags": ["es5"]
-}
-!*/
-/* DOC
-Check if browser implements ECMAScript 5 Function per specification.
-*/
-
-  Modernizr.addTest('es5function', function() {
-    return !!(Function.prototype && Function.prototype.bind);
-  });
-
-/*!
-{
-  "name": "ES5 Object",
-  "property": "es5object",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }],
-  "polyfills": ["es5shim", "es5sham"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "tags": ["es5"]
-}
-!*/
-/* DOC
-Check if browser implements ECMAScript 5 Object per specification.
-*/
-
-  Modernizr.addTest('es5object', function() {
-    return !!(Object.keys &&
-      Object.create &&
-      Object.getPrototypeOf &&
-      Object.getOwnPropertyNames &&
-      Object.isSealed &&
-      Object.isFrozen &&
-      Object.isExtensible &&
-      Object.getOwnPropertyDescriptor &&
-      Object.defineProperty &&
-      Object.defineProperties &&
-      Object.seal &&
-      Object.freeze &&
-      Object.preventExtensions);
-  });
-
-/*!
-{
-  "name": "ES5 Strict Mode",
-  "property": "strictmode",
-  "caniuse": "sctrict-mode",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }],
-  "authors": ["@kangax"],
-  "tags": ["es5"],
-  "builderAliases": ["es5_strictmode"]
-}
-!*/
-/* DOC
-Check if browser implements ECMAScript 5 Object strict mode.
-*/
-
-  Modernizr.addTest('strictmode', (function() {'use strict'; return !this; })());
-
-/*!
-{
-  "name": "ES5 String",
-  "property": "es5string",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }],
-  "polyfills": ["es5shim"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "tags": ["es5"]
-}
-!*/
-/* DOC
-Check if browser implements ECMAScript 5 String per specification.
-*/
-
-  Modernizr.addTest('es5string', function() {
-    return !!(String.prototype && String.prototype.trim);
-  });
-
-/*!
-{
-  "name": "ES5 Syntax",
-  "property": "es5syntax",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }, {
-    "name": "original implementation of detect code",
-    "href": "http://kangax.github.io/es5-compat-table/"
-  }],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "warnings": ["This detect uses `eval()`, so CSP may be a problem."],
-  "tags": ["es5"]
-}
-!*/
-/* DOC
-Check if browser accepts ECMAScript 5 syntax.
-*/
-
-  Modernizr.addTest('es5syntax', function() {
-    var value, obj, stringAccess, getter, setter, reservedWords, zeroWidthChars;
-    try {
-      /* eslint no-eval: "off" */
-      // Property access on strings
-      stringAccess = eval('"foobar"[3] === "b"');
-      // Getter in property initializer
-      getter = eval('({ get x(){ return 1 } }).x === 1');
-      eval('({ set x(v){ value = v; } }).x = 1');
-      // Setter in property initializer
-      setter = value === 1;
-      // Reserved words as property names
-      eval('obj = ({ if: 1 })');
-      reservedWords = obj['if'] === 1;
-      // Zero-width characters in identifiers
-      zeroWidthChars = eval('_\u200c\u200d = true');
-
-      return stringAccess && getter && setter && reservedWords && zeroWidthChars;
-    } catch (ignore) {
-      return false;
-    }
-  });
-
-/*!
-{
-  "name": "ES5 Immutable Undefined",
-  "property": "es5undefined",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }, {
-    "name": "original implementation of detect code",
-    "href": "http://kangax.github.io/es5-compat-table/"
-  }],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "tags": ["es5"]
-}
-!*/
 /* DOC
 Check if browser prevents assignment to global `undefined` per ECMAScript 5.
 */
@@ -582,38 +305,6 @@ Check if browser prevents assignment to global `undefined` per ECMAScript 5.
     }
     return result;
   });
-
-/*!
-{
-  "name": "ES5",
-  "property": "es5",
-  "notes": [{
-    "name": "ECMAScript 5.1 Language Specification",
-    "href": "http://www.ecma-international.org/ecma-262/5.1/"
-  }],
-  "polyfills": ["es5shim", "es5sham"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "tags": ["es5"]
-}
-!*/
-/* DOC
-Check if browser implements everything as specified in ECMAScript 5.
-*/
-
-  Modernizr.addTest('es5', function() {
-    return !!(
-      Modernizr.es5array &&
-      Modernizr.es5date &&
-      Modernizr.es5function &&
-      Modernizr.es5object &&
-      Modernizr.strictmode &&
-      Modernizr.es5string &&
-      Modernizr.json &&
-      Modernizr.es5syntax &&
-      Modernizr.es5undefined
-    );
-  });
-
 
 /*!
 {
@@ -639,32 +330,6 @@ Tests for XMLHttpRequest xhr.responseType.
     return 'response' in xhr;
   }()));
 
-
-/*!
-{
-  "name": "SVG filters",
-  "property": "svgfilters",
-  "caniuse": "svg-filters",
-  "tags": ["svg"],
-  "builderAliases": ["svg_filters"],
-  "authors": ["Erik Dahlstrom"],
-  "notes": [{
-    "name": "W3C Spec",
-    "href": "https://www.w3.org/TR/SVG11/filters.html"
-  }]
-}
-!*/
-
-  // Should fail in Safari: https://stackoverflow.com/questions/9739955/feature-detecting-support-for-svg-filters.
-  Modernizr.addTest('svgfilters', function() {
-    var result = false;
-    try {
-      result = 'SVGFEColorMatrixElement' in window &&
-        SVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_SATURATE == 2;
-    }
-    catch (e) {}
-    return result;
-  });
 
 /*!
 {
@@ -929,68 +594,6 @@ Detects support for the text APIs for `<canvas>` elements.
 
 /*!
 {
-  "name": "canvas winding support",
-  "property": ["canvaswinding"],
-  "tags": ["canvas"],
-  "async" : false,
-  "notes": [{
-    "name": "Article",
-    "href": "https://blogs.adobe.com/webplatform/2013/01/30/winding-rules-in-canvas/"
-  }]
-}
-!*/
-/* DOC
-Determines if winding rules, which controls if a path can go clockwise or counterclockwise
-*/
-
-
-  Modernizr.addTest('canvaswinding', function() {
-    if (Modernizr.canvas === false) {
-      return false;
-    }
-    var ctx = createElement('canvas').getContext('2d');
-
-    ctx.rect(0, 0, 10, 10);
-    ctx.rect(2, 2, 6, 6);
-    return ctx.isPointInPath(5, 5, 'evenodd') === false;
-  });
-
-
-/*!
-{
-  "name": "Background Position Shorthand",
-  "property": "bgpositionshorthand",
-  "tags": ["css"],
-  "builderAliases": ["css_backgroundposition_shorthand"],
-  "notes": [{
-    "name": "MDN Docs",
-    "href": "https://developer.mozilla.org/en/CSS/background-position"
-  }, {
-    "name": "W3 Spec",
-    "href": "https://www.w3.org/TR/css3-background/#background-position"
-  }, {
-    "name": "Demo",
-    "href": "https://jsfiddle.net/Blink/bBXvt/"
-  }]
-}
-!*/
-/* DOC
-Detects if you can use the shorthand method to define multiple parts of an
-element's background-position simultaniously.
-
-eg `background-position: right 10px bottom 10px`
-*/
-
-  Modernizr.addTest('bgpositionshorthand', function() {
-    var elem = createElement('a');
-    var eStyle = elem.style;
-    var val = 'right 10px bottom 10px';
-    eStyle.cssText = 'background-position: ' + val + ';';
-    return (eStyle.backgroundPosition === val);
-  });
-
-/*!
-{
   "name": "CSS Multiple Backgrounds",
   "caniuse": "multibackgrounds",
   "property": "multiplebgs",
@@ -1220,58 +823,7 @@ Detects support for inline SVG in HTML (not within XHTML).
   // expose these for the plugin API. Look in the source for how to join() them against your input
   ModernizrProto._prefixes = prefixes;
 
-  
-/*!
-{
-  "name": "CSS Calc",
-  "property": "csscalc",
-  "caniuse": "calc",
-  "tags": ["css"],
-  "builderAliases": ["css_calc"],
-  "authors": ["@calvein"]
-}
-!*/
-/* DOC
-Method of allowing calculated values for length units. For example:
 
-```css
-//lem {
-  width: calc(100% - 3em);
-}
-```
-*/
-
-  Modernizr.addTest('csscalc', function() {
-    var prop = 'width:';
-    var value = 'calc(10px);';
-    var el = createElement('a');
-
-    el.style.cssText = prop + prefixes.join(value + prop);
-
-    return !!el.style.length;
-  });
-
-/*!
-{
-  "name": "CSS Cubic Bezier Range",
-  "property": "cubicbezierrange",
-  "tags": ["css"],
-  "builderAliases": ["css_cubicbezierrange"],
-  "doc" : null,
-  "authors": ["@calvein"],
-  "warnings": ["cubic-bezier values can't be > 1 for Webkit until [bug #45761](https://bugs.webkit.org/show_bug.cgi?id=45761) is fixed"],
-  "notes": [{
-    "name": "Comprehensive Compat Chart",
-    "href": "http://muddledramblings.com/table-of-css3-border-radius-compliance"
-  }]
-}
-!*/
-
-  Modernizr.addTest('cubicbezierrange', function() {
-    var el = createElement('a');
-    el.style.cssText = prefixes.join('transition-timing-function:cubic-bezier(1,0,0,1.1); ');
-    return !!el.style.length;
-  });
 
 /*!
 {
@@ -1355,32 +907,6 @@ Method of allowing calculated values for length units. For example:
   // Clean up this element
   Modernizr._q.push(function() {
     delete modElem.elem;
-  });
-
-  
-/*!
-{
-  "name": "CSS Font ch Units",
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "property": "csschunit",
-  "tags": ["css"],
-  "notes": [{
-    "name": "W3C Spec",
-    "href": "https://www.w3.org/TR/css3-values/#font-relative-lengths"
-  }]
-}
-!*/
-
-  Modernizr.addTest('csschunit', function() {
-    var elemStyle = modElem.elem.style;
-    var supports;
-    try {
-      elemStyle.fontSize = '3ch';
-      supports = elemStyle.fontSize.indexOf('ch') !== -1;
-    } catch (e) {
-      supports = false;
-    }
-    return supports;
   });
 
 /*!
@@ -1538,22 +1064,6 @@ Tests for XMLHttpRequest xhr.responseType='arraybuffer'.
 
   Modernizr.addTest('xhrresponsetypearraybuffer', testXhrType('arraybuffer'));
 
-/*!
-{
-  "name": "XHR responseType='blob'",
-  "property": "xhrresponsetypeblob",
-  "tags": ["network"],
-  "notes": [{
-    "name": "XMLHttpRequest Living Standard",
-    "href": "https://xhr.spec.whatwg.org/#the-responsetype-attribute"
-  }]
-}
-!*/
-/* DOC
-Tests for XMLHttpRequest xhr.responseType='blob'.
-*/
-
-  Modernizr.addTest('xhrresponsetypeblob', testXhrType('blob'));
 
 /*!
 {
@@ -2268,84 +1778,7 @@ Detects support for the ':nth-child()' CSS pseudo-selector.
     });
   });
 
-/*!
-{
-  "name": "CSS vh unit",
-  "property": "cssvhunit",
-  "caniuse": "viewport-units",
-  "tags": ["css"],
-  "builderAliases": ["css_vhunit"],
-  "notes": [{
-    "name": "Related Modernizr Issue",
-    "href": "https://github.com/Modernizr/Modernizr/issues/572"
-  },{
-    "name": "Similar JSFiddle",
-    "href": "https://jsfiddle.net/FWeinb/etnYC/"
-  }]
-}
-!*/
 
-  testStyles('#modernizr { height: 50vh; }', function(elem) {
-    var height = parseInt(window.innerHeight / 2, 10);
-    var compStyle = parseInt(computedStyle(elem, null, 'height'), 10);
-
-    Modernizr.addTest('cssvhunit', roundedEquals(compStyle, height));
-  });
-
-/*!
-{
-  "name": "CSS vmin unit",
-  "property": "cssvminunit",
-  "caniuse": "viewport-units",
-  "tags": ["css"],
-  "builderAliases": ["css_vminunit"],
-  "notes": [{
-    "name": "Related Modernizr Issue",
-    "href": "https://github.com/Modernizr/Modernizr/issues/572"
-  },{
-    "name": "JSFiddle Example",
-    "href": "https://jsfiddle.net/glsee/JRmdq/8/"
-  }]
-}
-!*/
-
-  testStyles('#modernizr1{width: 50vm;width:50vmin}#modernizr2{width:50px;height:50px;overflow:scroll}#modernizr3{position:fixed;top:0;left:0;bottom:0;right:0}', function(node) {
-    var elem = node.childNodes[2];
-    var scroller = node.childNodes[1];
-    var fullSizeElem = node.childNodes[0];
-    var scrollbarWidth = parseInt((scroller.offsetWidth - scroller.clientWidth) / 2, 10);
-
-    var one_vw = fullSizeElem.clientWidth / 100;
-    var one_vh = fullSizeElem.clientHeight / 100;
-    var expectedWidth = parseInt(Math.min(one_vw, one_vh) * 50, 10);
-    var compWidth = parseInt(computedStyle(elem, null, 'width'), 10);
-
-    Modernizr.addTest('cssvminunit', roundedEquals(expectedWidth, compWidth) || roundedEquals(expectedWidth, compWidth - scrollbarWidth));
-  }, 3);
-
-/*!
-{
-  "name": "CSS vw unit",
-  "property": "cssvwunit",
-  "caniuse": "viewport-units",
-  "tags": ["css"],
-  "builderAliases": ["css_vwunit"],
-  "notes": [{
-    "name": "Related Modernizr Issue",
-    "href": "https://github.com/Modernizr/Modernizr/issues/572"
-  },{
-    "name": "JSFiddle Example",
-    "href": "https://jsfiddle.net/FWeinb/etnYC/"
-  }]
-}
-!*/
-
-  testStyles('#modernizr { width: 50vw; }', function(elem) {
-    var width = parseInt(window.innerWidth / 2, 10);
-    var compStyle = parseInt(computedStyle(elem, null, 'width'), 10);
-
-    Modernizr.addTest('cssvwunit', roundedEquals(compStyle, width));
-  });
 
 
   /**
@@ -2940,134 +2373,6 @@ Detects support for the ':nth-child()' CSS pseudo-selector.
     }
   };
 
-/*!
-{
-  "name": "IndexedDB",
-  "property": "indexeddb",
-  "caniuse": "indexeddb",
-  "tags": ["storage"],
-  "polyfills": ["indexeddb"],
-  "async": true
-}
-!*/
-/* DOC
-Detects support for the IndexedDB client-side storage API (final spec).
-*/
-
-  // Vendors had inconsistent prefixing with the experimental Indexed DB:
-  // - Webkit's implementation is accessible through webkitIndexedDB
-  // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
-  // For speed, we don't test the legacy (and beta-only) indexedDB
-
-  Modernizr.addAsyncTest(function() {
-
-    var indexeddb;
-
-    try {
-      // Firefox throws a Security Error when cookies are disabled
-      indexeddb = prefixed('indexedDB', window);
-    } catch (e) {
-    }
-
-    if (!!indexeddb) {
-      var testDBName = 'modernizr-' + Math.random();
-      var req = indexeddb.open(testDBName);
-
-      req.onerror = function() {
-        if (req.error && req.error.name === 'InvalidStateError') {
-          addTest('indexeddb', false);
-        } else {
-          addTest('indexeddb', true);
-          detectDeleteDatabase(indexeddb, testDBName);
-        }
-      };
-
-      req.onsuccess = function() {
-        addTest('indexeddb', true);
-        detectDeleteDatabase(indexeddb, testDBName);
-      };
-    } else {
-      addTest('indexeddb', false);
-    }
-  });
-
-  function detectDeleteDatabase(indexeddb, testDBName) {
-    var deleteReq = indexeddb.deleteDatabase(testDBName);
-    deleteReq.onsuccess = function() {
-      addTest('indexeddb.deletedatabase', true);
-    };
-    deleteReq.onerror = function() {
-      addTest('indexeddb.deletedatabase', false);
-    };
-  }
-
-;
-/*!
-{
-  "name": "IndexedDB Blob",
-  "property": "indexeddbblob"
-}
-!*/
-/* DOC
-Detects if the browser can save File/Blob objects to IndexedDB
-*/
-
-  // Vendors had inconsistent prefixing with the experimental Indexed DB:
-  // - Webkit's implementation is accessible through webkitIndexedDB
-  // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
-  // For speed, we don't test the legacy (and beta-only) indexedDB
-
-  Modernizr.addAsyncTest(function() {
-    var indexeddb;
-    var dbname = 'detect-blob-support';
-    var supportsBlob = false;
-    var openRequest;
-    var db;
-    var putRequest;
-
-    try {
-      indexeddb = prefixed('indexedDB', window);
-    } catch (e) {
-    }
-
-    if (!(Modernizr.indexeddb && Modernizr.indexeddb.deletedatabase)) {
-      return false;
-    }
-
-    // Calling `deleteDatabase` in a try…catch because some contexts (e.g. data URIs)
-    // will throw a `SecurityError`
-    try {
-      indexeddb.deleteDatabase(dbname).onsuccess = function() {
-        openRequest = indexeddb.open(dbname, 1);
-        openRequest.onupgradeneeded = function() {
-          openRequest.result.createObjectStore('store');
-        };
-        openRequest.onsuccess = function() {
-          db = openRequest.result;
-          try {
-            putRequest = db.transaction('store', 'readwrite').objectStore('store').put(new Blob(), 'key');
-            putRequest.onsuccess = function() {
-              supportsBlob = true;
-            };
-            putRequest.onerror = function() {
-              supportsBlob = false;
-            };
-          }
-          catch (e) {
-            supportsBlob = false;
-          }
-          finally {
-            addTest('indexeddbblob', supportsBlob);
-            db.close();
-            indexeddb.deleteDatabase(dbname);
-          }
-        };
-      };
-    }
-    catch (e) {
-      addTest('indexeddbblob', false);
-    }
-  });
 
 
   /**
@@ -3112,22 +2417,6 @@ Detects if the browser can save File/Blob objects to IndexedDB
   }
   ModernizrProto.testAllProps = testAllProps;
   
-/*!
-{
-  "name": "Font Ligatures",
-  "property": "ligatures",
-  "caniuse": "font-feature",
-  "notes": [{
-    "name": "Cross-browser Web Fonts",
-    "href": "http://www.sitepoint.com/cross-browser-web-fonts-part-3/"
-  }]
-}
-!*/
-/* DOC
-Detects support for OpenType ligatures
-*/
-
-  Modernizr.addTest('ligatures', testAllProps('fontFeatureSettings', '"liga" 1'));
 
 /*!
 {
@@ -3149,34 +2438,6 @@ Detects whether or not elements can be animated using CSS
 
   Modernizr.addTest('cssanimations', testAllProps('animationName', 'a', true));
 
-/*!
-{
-  "name": "CSS Generated Content Animations",
-  "property": "csspseudoanimations",
-  "tags": ["css"]
-}
-!*/
-
-  Modernizr.addTest('csspseudoanimations', function() {
-    var result = false;
-
-    if (!Modernizr.cssanimations || !window.getComputedStyle) {
-      return result;
-    }
-
-    var styles = [
-      '@', Modernizr._prefixes.join('keyframes csspseudoanimations { from { font-size: 10px; } }@').replace(/\@$/, ''),
-      '#modernizr:before { content:" "; font-size:5px;',
-      Modernizr._prefixes.join('animation:csspseudoanimations 1ms infinite;'),
-      '}'
-    ].join('');
-
-    Modernizr.testStyles(styles, function(elem) {
-      result = window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '10px';
-    });
-
-    return result;
-  });
 
 /*!
 {
@@ -3327,55 +2588,6 @@ Detects the ability to use round and space as properties for background-repeat
 
   Modernizr.addTest('ellipsis', testAllProps('textOverflow', 'ellipsis'));
 
-/*!
-{
-  "name": "Flex Line Wrapping",
-  "property": "flexwrap",
-  "tags": ["css", "flexbox"],
-  "notes": [{
-    "name": "W3C Flexible Box Layout spec",
-    "href": "http://dev.w3.org/csswg/css3-flexbox"
-  }],
-  "warnings": [
-    "Does not imply a modern implementation – see documentation."
-  ]
-}
-!*/
-/* DOC
-Detects support for the `flex-wrap` CSS property, part of Flexbox, which isn’t present in all Flexbox implementations (notably Firefox).
-
-This featured in both the 'tweener' syntax (implemented by IE10) and the 'modern' syntax (implemented by others). This detect will return `true` for either of these implementations, as long as the `flex-wrap` property is supported. So to ensure the modern syntax is supported, use together with `Modernizr.flexbox`:
-
-```javascript
-if (Modernizr.flexbox && Modernizr.flexwrap) {
-  // Modern Flexbox with `flex-wrap` supported
-}
-else {
-  // Either old Flexbox syntax, or `flex-wrap` not supported
-}
-```
-*/
-
-  Modernizr.addTest('flexwrap', testAllProps('flexWrap', 'wrap', true));
-
-
-/*!
-{
-  "name": "CSS text-align-last",
-  "property": "textalignlast",
-  "tags": ["css"],
-  "knownBugs": ["IE does not support the 'start' or 'end' values."],
-  "notes": [{
-      "name": "Quicksmode",
-      "href": "http://www.quirksmode.org/css/text/textalignlast.html"
-    },{
-      "name": "MDN",
-      "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/text-align-last"
-    }]
-}
-!*/
-
-  Modernizr.addTest('textalignlast', testAllProps('textAlignLast'));
 
 /*!
 {
@@ -3419,35 +2631,6 @@ else {
 !*/
 
   Modernizr.addTest('csstransitions', testAllProps('transition', 'all', true));
-
-/*!
-{
-  "name": "CSS Generated Content Transitions",
-  "property": "csspseudotransitions",
-  "tags": ["css"]
-}
-!*/
-
-  Modernizr.addTest('csspseudotransitions', function() {
-    var result = false;
-
-    if (!Modernizr.csstransitions || !window.getComputedStyle) {
-      return result;
-    }
-
-    var styles =
-      '#modernizr:before { content:" "; font-size:5px;' + Modernizr._prefixes.join('transition:0s 100s;') + '}' +
-      '#modernizr.trigger:before { font-size:10px; }';
-
-    Modernizr.testStyles(styles, function(elem) {
-      // Force rendering of the element's styles so that the transition will trigger
-      window.getComputedStyle(elem, ':before').getPropertyValue('font-size');
-      elem.className += 'trigger';
-      result = window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '5px';
-    });
-
-    return result;
-  });
 
 
   // Run each test

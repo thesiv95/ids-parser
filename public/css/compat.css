@@ -1,11 +1,4 @@
 /* Normal browsers */
-.modern-blobconstructor .msg_old-browser {
-    display: none; 
-}
-
-.modern-blob-constructor .msg_old-browser {
-    display: none;
-}
 
 .modern-cors .msg_old-browser {
     display: none;
@@ -35,27 +28,7 @@
     display: none;
 }
 
-.modern-websockets .msg_old-browser {
-    display: none;
-}
-
 .modern-target .msg_old-browser {
-    display: none;
-}
-
-.modern-es5array .msg_old-browser {
-    display: none;
-}
-
-.modern-es5date .msg_old-browser {
-    display: none;
-}
-
-.modern-es5function .msg_old-browser {
-    display: none;
-}
-
-.modern-es5object .msg_old-browser {
     display: none;
 }
 
@@ -63,19 +36,7 @@
     display: none;
 }
 
-.modern-es5string .msg_old-browser {
-    display: none;
-}
-
-.modern-es5syntax .msg_old-browser {
-    display: none;
-}
-
 .modern-es5undefined .msg_old-browser {
-    display: none;
-}
-
-.modern-es5 .msg_old-browser {
     display: none;
 }
 
@@ -96,10 +57,6 @@
 }
 
 .modern-xhr2 .msg_old-browser {
-    display: none;
-}
-
-.modern-svgfilters .msg_old-browser {
     display: none;
 }
 
@@ -124,14 +81,6 @@
 }
 
 .modern-todataurlpng .msg_old-browser {
-    display: none;
-}
-
-.modern-canvaswinding .msg_old-browser {
-    display: none;
-}
-
-.modern-bgpositionshorthand .msg_old-browser {
     display: none;
 }
 
@@ -163,23 +112,11 @@
     display: none;  
 }
 
-.modern-csscalc .msg_old-browser {
-    display: none;
-}
-
-.modern-cubicbezierrange .msg_old-browser {
-    display: none;
-}
-
 .modern-cssgradients .msg_old-browser {
     display: none;
 }
 
 .modern-opacity .msg_old-browser {
-    display: none;
-}
-
-.modern-csschunit .msg_old-browser {
     display: none;
 }
 
@@ -192,10 +129,6 @@
 }
 
 .modern-xhrresponsetypearraybuffer .msg_old-browser {
-    display: none;
-}
-
-.modern-xhrresponsetypeblob .msg_old-browser {
     display: none;
 }
 
@@ -242,18 +175,6 @@
     display: none;
 }
 
-.modern-cssvhunit .msg_old-browser {
-    display: none;
-}
-
-.modern-cssvminunit .msg_old-browser {
-    display: none;
-}
-
-.modern-cssvwunit .msg_old-browser {
-    display: none;
-}
-
 .modern-mediaqueries .msg_old-browser {
     display: none;
 }
@@ -262,15 +183,7 @@
     display: none;
 }
 
-.modern-ligatures .msg_old-browser {
-    display: none;
-}
-
 .modern-cssanimations .msg_old-browser {
-    display: none;
-}
-
-.modern-csspseudoanimations .msg_old-browser {
     display: none;
 }
 
@@ -310,14 +223,6 @@
     display: none;
 }
 
-.modern-flexwrap .msg_old-browser {
-    display: none;
-}
-
-.modern-textalignlast .msg_old-browser {
-    display: none;
-}
-
 .modern-csstransforms .msg_old-browser {
     display: none;
 }
@@ -330,27 +235,8 @@
     display: none;
 }
 
-.modern-csspseudotransitions .msg_old-browser {
-    display: none;
-}
-
-.modern-indexeddb .msg_old-browser {
-    display: none;
-}
-
-.modern-indexeddb-deletedatabase .msg_old-browser {
-    display: none;
-}
-
 
 /* Old browsers */
-.modern-no-blobconstructor .msg_old-browser {
-    display: block; 
-}
-
-.modern-no-blob-constructor .msg_old-browser {
-    display: block;
-}
 
 .modern-no-cors .msg_old-browser {
     display: block;
@@ -380,27 +266,7 @@
     display: block;
 }
 
-.modern-no-websockets .msg_old-browser {
-    display: block;
-}
-
 .modern-no-target .msg_old-browser {
-    display: block;
-}
-
-.modern-no-es5array .msg_old-browser {
-    display: block;
-}
-
-.modern-no-es5date .msg_old-browser {
-    display: block;
-}
-
-.modern-no-es5function .msg_old-browser {
-    display: block;
-}
-
-.modern-no-es5object .msg_old-browser {
     display: block;
 }
 
@@ -408,19 +274,7 @@
     display: block;
 }
 
-.modern-no-es5string .msg_old-browser {
-    display: block;
-}
-
-.modern-no-es5syntax .msg_old-browser {
-    display: block;
-}
-
 .modern-no-es5undefined .msg_old-browser {
-    display: block;
-}
-
-.modern-no-es5 .msg_old-browser {
     display: block;
 }
 
@@ -441,10 +295,6 @@
 }
 
 .modern-no-xhr2 .msg_old-browser {
-    display: block;
-}
-
-.modern-no-svgfilters .msg_old-browser {
     display: block;
 }
 
@@ -469,14 +319,6 @@
 }
 
 .modern-no-todataurlpng .msg_old-browser {
-    display: block;
-}
-
-.modern-no-canvaswinding .msg_old-browser {
-    display: block;
-}
-
-.modern-no-bgpositionshorthand .msg_old-browser {
     display: block;
 }
 
@@ -508,23 +350,11 @@
     display: block;  
 }
 
-.modern-no-csscalc .msg_old-browser {
-    display: block;
-}
-
-.modern-no-cubicbezierrange .msg_old-browser {
-    display: block;
-}
-
 .modern-no-cssgradients .msg_old-browser {
     display: block;
 }
 
 .modern-no-opacity .msg_old-browser {
-    display: block;
-}
-
-.modern-no-csschunit .msg_old-browser {
     display: block;
 }
 
@@ -537,10 +367,6 @@
 }
 
 .modern-no-xhrresponsetypearraybuffer .msg_old-browser {
-    display: block;
-}
-
-.modern-no-xhrresponsetypeblob .msg_old-browser {
     display: block;
 }
 
@@ -587,18 +413,6 @@
     display: block;
 }
 
-.modern-no-cssvhunit .msg_old-browser {
-    display: block;
-}
-
-.modern-no-cssvminunit .msg_old-browser {
-    display: block;
-}
-
-.modern-no-cssvwunit .msg_old-browser {
-    display: block;
-}
-
 .modern-no-mediaqueries .msg_old-browser {
     display: block;
 }
@@ -607,15 +421,7 @@
     display: block;
 }
 
-.modern-no-ligatures .msg_old-browser {
-    display: block;
-}
-
 .modern-no-cssanimations .msg_old-browser {
-    display: block;
-}
-
-.modern-no-csspseudoanimations .msg_old-browser {
     display: block;
 }
 
@@ -655,14 +461,6 @@
     display: block;
 }
 
-.modern-no-flexwrap .msg_old-browser {
-    display: block;
-}
-
-.modern-no-textalignlast .msg_old-browser {
-    display: block;
-}
-
 .modern-no-csstransforms .msg_old-browser {
     display: block;
 }
@@ -675,14 +473,3 @@
     display: block;
 }
 
-.modern-no-csspseudotransitions .msg_old-browser {
-    display: block;
-}
-
-.modern-no-indexeddb .msg_old-browser {
-    display: block;
-}
-
-.modern-no-indexeddb-deletedatabase .msg_old-browser {
-    display: block;
-}
