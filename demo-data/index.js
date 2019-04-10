@@ -1,8 +1,12 @@
+
 // Библиотеки
 var express = require('express');
 var app = express();
 const mongoose = require('mongoose');
 const twig = require('./node_modules/twig');
+
+// Самописные библиотеки и модули
+const Pdfgen = require('./pdfgen');
 
 // порт для сервера express и параметры подключения к БД
 var port = 3000;
@@ -124,7 +128,34 @@ app.get('/404', function(req, res){
         title: 'Страница не найдена!',
         go_back: 'Вернуться назад'
     })
-})
+});
+
+// Вызов модуля PDFRender.js
+app.get('/pdf', function(req, res){
+    // Передаваемая информация
+    var data = {
+        title: 'IDS Parser Report',
+        pieChart: 'pie.png', // TODO: придумать, как получить изображение
+        text: ['str1 - good', 'str2 - good', 'str3 - bad', 'str4 - bad', 'str5 - bad', 'str6 - unknown'],
+        traffic: {
+            good: {
+                quantity: 2,
+                percent: 33
+            },
+            bad: {
+                quantity: 3,
+                percent: 50
+            },
+            unknown: {
+                quantity: 1,
+                percent: 16
+            }
+        },
+        total: 6
+    };
+    // Главная и единственная функция в модуле
+    Pdfgen.renderReport(data, res);
+});
 
 // Запуск сервера
 app.listen(port, function () {
