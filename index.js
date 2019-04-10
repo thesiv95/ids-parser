@@ -7,6 +7,7 @@ const twig = require('./node_modules/twig');
 
 // Самописные библиотеки и модули
 const Pdfgen = require('./pdfgen');
+var detected = require('./detector');
 
 // порт для сервера express и параметры подключения к БД
 var port = 3000;
@@ -63,7 +64,7 @@ app.get('/parsing', function(req, res){
                 parsing_conn_total: 'Всего записей в журнале',
                 parsing_date: 'Дата обработки',
                 data: data,
-                ids_name: 'Snort' // нужно придумать, как менять!
+                ids_name: detected // переменная из библиотеки detector
             })
     });
 
