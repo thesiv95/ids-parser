@@ -1,18 +1,19 @@
 {
   "name": "ids-parser",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Build graphic pies from well-known Invasion Destruction Systems Logs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Ilia Soloveychik (@thesiv95)",
+  "license": "GNU-GPL-1.0-or-later",
   "devDependencies": {
     "mongoose": "^5.4.19",
     "xml2js": "^0.4.19"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "moment": "^2.24.0",
     "pdfkit": "^0.9.0",

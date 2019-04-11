@@ -5,7 +5,7 @@
 const fs = require('fs');
 const regExp = require('./regexp'); // ПРИЗНАКИ по которым определяется файл!!!
 var ids = fs.readFileSync('demo-secretnet.snlog', 'utf8'); // типа сюда должен попасть этот признак))
-
+const bodyParser = require("body-parser");
 var detected = ''; // результат определения
 
 if (ids.match(regExp.detectionBro)) {
@@ -22,5 +22,5 @@ if (ids.match(regExp.detectionBro)) {
 	detected = '?';
 }
 
-console.log(detected);
+
 module.exports = detected; 

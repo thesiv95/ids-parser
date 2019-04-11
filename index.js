@@ -4,6 +4,7 @@ var express = require('express');
 var app = express();
 const mongoose = require('mongoose');
 const twig = require('./node_modules/twig');
+const bodyParser = require("body-parser");
 
 // Самописные библиотеки и модули
 const Pdfgen = require('./pdfgen');
@@ -41,7 +42,7 @@ app.get('/parsing', function(req, res){
         const Snort = require('./snort').SnortRecord;
         // Вытаскиваем из БД информацию (переменная data), потом передаём эту информацию серверу, и он все выводит через twig
         // TODO: 1) Надо реализовать отправку файла через форму, а то сейчас передается только снорт (и то данные были занесены в базу вручную) - главное
-        // TODO: 2) pdf export! - главное
+        
         
         Snort.find().select().lean().exec(function(err, data){
             // console.log(data);
@@ -69,6 +70,12 @@ app.get('/parsing', function(req, res){
     });
 
 });
+
+// // ??? - обработка формы...
+// app.post('/parse', function(req, res){
+//     // console.log(jquery);
+// });
+
 
 app.get('/settings', function(req, res){
     // TODO: 3) реализовать изменение настроек - доп
