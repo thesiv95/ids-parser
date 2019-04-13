@@ -3,6 +3,7 @@
 var express = require('express');
 var app = express();
 const mongoose = require('mongoose');
+
 const twig = require('./node_modules/twig');
 const bodyParser = require("body-parser");
 
@@ -164,6 +165,13 @@ app.get('/pdf', function(req, res){
     // Главная и единственная функция в модуле
     Pdfgen.renderReport(data, res);
 });
+
+
+// ??? detector
+app.post('/detector', function(req, res){
+    console.log(req.file);
+})
+
 
 // Запуск сервера
 app.listen(port, function () {

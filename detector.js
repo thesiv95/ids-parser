@@ -2,10 +2,11 @@
 // (мб) подключить все файлы .js, так как модуль-экспорт там прописан везде
 // не понятно, нужен или нет extractor.js (проще их объединить)
 
+
 const fs = require('fs');
 const regExp = require('./regexp'); // ПРИЗНАКИ по которым определяется файл!!!
-var ids = fs.readFileSync('demo-secretnet.snlog', 'utf8'); // типа сюда должен попасть этот признак))
-const bodyParser = require("body-parser");
+var ids = '' // типа сюда должен попасть этот признак))
+// const bodyParser = require("body-parser");
 var detected = ''; // результат определения
 
 if (ids.match(regExp.detectionBro)) {
@@ -24,3 +25,6 @@ if (ids.match(regExp.detectionBro)) {
 
 
 module.exports = detected; 
+
+
+// https://github.com/expressjs/multer/blob/master/doc/README-ru.md

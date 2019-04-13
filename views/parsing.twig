@@ -40,8 +40,8 @@
                     var doc = document;
 
                     var itemsGood = doc.getElementsByClassName('item-good').length,
-                        itemsBad = doc.getElementsByClassName('item-bad').length,
-                        itemsUnknown = doc.getElementsByClassName('item-unknown').length;
+						itemsBad = doc.getElementsByClassName('item-bad').length,
+						itemsUnknown = doc.getElementsByClassName('item-unknown').length;
 
                     var totalTraffic = itemsGood + itemsBad + itemsUnknown;
 
@@ -67,30 +67,26 @@
 
                 </script>
 				<script>
+
 					// Отправка файла
 
 					function start(){
+						var formData = new FormData();
+						var files = $('#filepicker').prop('files');
+						formData.append('file', files[0]);
+					
 						showOutput(); // показываем поле вывода
 						toggleExportButton(); // делаем кликабельной кнопку Экспорт
-						var filepicker = doc.getElementById('filepicker');
-						// Делаем запрос
-						$.ajax({
-							url: '/detector',
-							type: 'POST',
-							cache: false,
-							data: filepicker.files[0]
-
+						$('#filepicker').fileupload({
+							dataType: 'json',
+							done: function (e, data) {
+								$.each(data.result.files, function (index, file) {
+									console.log(data.result.files);
+								});
+							}
 						});
-
 					}
-
-					{# // Illegal invocation
-    at e (jquery-1.6.2.min.js:18)
-    at bY (jquery-1.6.2.min.js:16)
-    at Function.param (jquery-1.6.2.min.js:18)
-    at Function.ajax (jquery-1.6.2.min.js:18)
-    at start (parsing:147)
-    at HTMLInputElement.onclick (parsing:45) #}
+		
 					
 				</script>
 
@@ -132,19 +128,16 @@ var pie = new d3pie("output-diagram", {
 		"sortOrder": "value-desc",
 		"content": [ // Отрисовка диаграммы по рассчитанным данным выше
 			{
-				"label": "",
 				"value": itemsGood,
-				"color": "#51c123" // Good
+				"color": "#51c123" // Легитимный трафик
 			},
 			{
-				"label": "",
 				"value": itemsBad,
-				"color": "#da4e0a" // Bad
+				"color": "#da4e0a" // Нелегитимный трафик
 			},
 			{
-				"label": "",
 				"value": itemsUnknown,
-				"color": "#489fca" // Unknown
+				"color": "#489fca" // Неопознанный трафик
 			}
 		]
 	},
