@@ -5,7 +5,6 @@ var app = express();
 const mongoose = require('mongoose');
 
 const twig = require('./node_modules/twig');
-const bodyParser = require("body-parser");
 
 // Самописные библиотеки и модули
 const Pdfgen = require('./pdfgen');
@@ -145,22 +144,29 @@ app.get('/pdf', function(req, res){
     var data = {
         title: 'IDS Parser Report',
         pieChart: 'pie.png', // TODO: придумать, как получить изображение
-        text: ['str1 - good', 'str2 - good', 'str3 - bad', 'str4 - bad', 'str5 - bad', 'str6 - unknown'],
+        text: ['192.168.192.168:12354 -> 192.168.192.168:12354 [TCP] at 2019-01-01 10-10-10 - 200 [] - good',
+        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [snort] - good',
+        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [snort] - bad',
+        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [snort] - bad',
+        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [snort] - good',
+        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [] - unknown',
+        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [] - unknown',
+        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [snort] - good'],
         traffic: {
             good: {
-                quantity: 2,
-                percent: 33
-            },
-            bad: {
-                quantity: 3,
+                quantity: 4,
                 percent: 50
             },
+            bad: {
+                quantity: 2,
+                percent: 25
+            },
             unknown: {
-                quantity: 1,
-                percent: 16
+                quantity: 2,
+                percent: 25
             }
         },
-        total: 6
+        total: 8
     };
     // Главная и единственная функция в модуле
     Pdfgen.renderReport(data, res);
