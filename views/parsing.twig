@@ -77,7 +77,7 @@
 					
 						showOutput(); // показываем поле вывода
 						toggleExportButton(); // делаем кликабельной кнопку Экспорт
-						$('#filepicker').fileupload({
+						$('#filepicker').fileupload({ // ??? не робит
 							dataType: 'json',
 							done: function (e, data) {
 								console.log(data);
