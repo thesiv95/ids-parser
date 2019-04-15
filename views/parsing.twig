@@ -80,9 +80,7 @@
 						$('#filepicker').fileupload({
 							dataType: 'json',
 							done: function (e, data) {
-								$.each(data.result.files, function (index, file) {
-									console.log(data.result.files);
-								});
+								console.log(data);
 							}
 						});
 					}
