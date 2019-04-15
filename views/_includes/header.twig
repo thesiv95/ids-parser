@@ -25,15 +25,29 @@
     <script src="js/jquery.iframe-transport.js"></script>
     <script src="js/jquery.fileupload.js"></script>
 </head>
+<script>
+    // Check modernizr props where is no devtools
+    function checkMod(){
+        var h = document.getElementsByTagName('html')[0];
+        var hCl = h.getAttribute('class');
+        alert(hCl);
+    }
+</script>
 <body>
     <div class="container">
         <div class="title">
             <div class="title__header">
                 {{ title }}
+                <button onclick="checkMod();">Checkmod</button>
             </div>
         </div>
         
-            
+            <noscript>
+                <div class="msg msg-warning msg_old-browser">
+                    <i class="fas fa-sad-tear"></i>
+                    Please, turn on JavaScript in your browser!
+                </div>
+            </noscript>
             <div class="msg msg-warning msg_old-browser">
                 <i class="fas fa-sad-tear"></i>
                 {{ msg_old_browser }}
