@@ -1,12 +1,41 @@
-// Прописать функцию, которая бы читала файл с формы, и определяла, что за СОВ
-// (мб) подключить все файлы .js, так как модуль-экспорт там прописан везде
-// не понятно, нужен или нет extractor.js (проще их объединить)
-
+// Определение СОВ
 
 const fs = require('fs');
+const path = require('path');
 const regExp = require('./regexp'); // ПРИЗНАКИ по которым определяется файл!!!
-var ids = '' // типа сюда должен попасть этот признак))
-// const bodyParser = require("body-parser");
+// Предполагается, что файл будет на сервере единственным (он был загружен ранее через форму на странице Обработка)
+var pathToFile = ''; // путь к нужному файлу
+
+// https://stackoverflow.com/questions/25460574/find-files-by-extension-html-under-a-folder-in-nodejs/42734993#42734993
+// Функция поиска файла в папке по расширению
+function fromDir(startPath,filter){
+
+    if (!fs.existsSync(startPath)){
+        console.log("no dir ",startPath);
+        return;
+    }
+
+    var files=fs.readdirSync(startPath);
+    for(var i=0;i<files.length;i++){
+        var filename=path.join(startPath,files[i]);
+        var stat = fs.lstatSync(filename);
+        if (stat.isDirectory()){
+            fromDir(filename,filter); //recurse
+        }
+        else if (filename.indexOf(filter)>=0) {
+			console.log('-- found: ',filename);
+			pathToFile = filename;
+        };
+    };
+};
+
+fromDir(__dirname + '/public/uploads/','.log');
+fromDir(__dirname + '/public/uploads/','.txt');
+fromDir(__dirname + '/public/uploads/','.xml');
+fromDir(__dirname + '/public/uploads/','.snlog');
+console.log(pathToFile);
+
+var ids = fs.readFileSync(pathToFile, 'utf-8'); // Открываем файл с сервера для его проверки
 var detected = ''; // результат определения
 
 if (ids.match(regExp.detectionBro)) {
@@ -23,8 +52,15 @@ if (ids.match(regExp.detectionBro)) {
 	detected = '?';
 }
 
-
+console.log('Detected = ' + detected);
 module.exports = detected; 
 
 
-// https://github.com/expressjs/multer/blob/master/doc/README-ru.md
+// После всех манипуляций файл нужно удалить
+fs.unlink(pathToFile, function(err){
+	if (err) {
+		console.log(err);
+	} else {
+		console.log('Delete file - ok');
+	}
+});

@@ -6,8 +6,8 @@
         </div>
 		<div class="state">
             <input class="btn btn-std" type="button" onclick="go_to('/');" value="{{ btn_to_main_page }}">
-            <input class="btn btn-std" type="button" id="outputStart" value="{{ btn_start_parsing }}"><!-- disabled onclick="start();" -->
-            <input class="btn btn-std" type="button" id="outputExport" value="{{ btn_export_parsing }}" onclick="go_to('/pdf');" title="{{ parsing_report_download }}"><!-- disabled -->
+            <input class="btn btn-std" type="button" id="outputStart" value="{{ btn_start_parsing }}" disabled onclick="start();"><!-- disabled onclick="start();" -->
+            <input class="btn btn-std" type="button" id="outputExport" value="{{ btn_export_parsing }}" onclick="go_to('/pdf');" title="{{ parsing_report_download }}" disabled><!-- disabled -->
         </div>
 	
 	{# </form> #}
@@ -63,16 +63,15 @@
 
                 </script>
 				<script>
+					// Запуск плагина для загрузки файлов
 					$('#filepicker').fileupload({ dataType: 'json' });
-					{# function start(){
+					function start(){
 						// показываем поле вывода
 						showOutput(); 
 						// делаем кликабельной кнопку Экспорт
 						toggleExportButton(); 
-						// Запуск плагина для загрузки файлов
-						$('#filepicker').fileupload({ dataType: 'json' });
-
-					} #}
+						
+					}
 		
 					
 				</script>
