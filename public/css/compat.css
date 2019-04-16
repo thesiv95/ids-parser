@@ -187,18 +187,6 @@
     display: none;
 }
 
-.modern-bgpositionxy .msg_old-browser {
-    display: none;
-}
-
-.modern-bgrepeatround .msg_old-browser {
-    display: none;
-}
-
-.modern-bgrepeatspace .msg_old-browser {
-    display: none;
-}
-
 .modern-backgroundsize .msg_old-browser {
     display: none;
 }
@@ -422,18 +410,6 @@
 }
 
 .modern-no-cssanimations .msg_old-browser {
-    display: block;
-}
-
-.modern-no-bgpositionxy .msg_old-browser {
-    display: block;
-}
-
-.modern-no-bgrepeatround .msg_old-browser {
-    display: block;
-}
-
-.modern-no-bgrepeatspace .msg_old-browser {
     display: block;
 }
 

@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.6.0
- * Build https://modernizr.com/download?-animation-arrow-atobbtoa-backgroundsize-bgpositionxy-bgrepeatspace_bgrepeatround-bgsizecover-borderradius-boxshadow-boxsizing-canvas-canvastext-checked-cors-cssanimations-cssexunit-cssgradients-cssinvalid-csspointerevents-cssremunit-csstransforms-csstransforms3d-csstransitions-cssvalid-dataview-ellipsis-es5undefined-eventlistener-flexwrap-fontface-generatedcontent-generators-history-hsla-inlinesvg-json-lastchild-mediaqueries-multiplebgs-nthchild-opacity-promises-queryselector-rgba-scriptasync-scriptdefer-sessionstorage-strictmode-svg-svgasimg-svgclippaths-target-textshadow-todataurljpeg_todataurlpng_-xhrresponsetype-xhrresponsetypearraybuffer-xhrresponsetypedocument-xhrresponsetypetext-setclasses-dontmin-cssclassprefix:modern-
+ * Build https://modernizr.com/download?-animation-arrow-atobbtoa-backgroundsize-bgsizecover-borderradius-boxshadow-boxsizing-canvas-canvastext-checked-cors-cssanimations-cssexunit-cssgradients-cssinvalid-csspointerevents-cssremunit-csstransforms-csstransforms3d-csstransitions-cssvalid-dataview-ellipsis-es5undefined-eventlistener-flexwrap-fontface-generatedcontent-generators-history-hsla-inlinesvg-json-lastchild-mediaqueries-multiplebgs-nthchild-opacity-promises-queryselector-rgba-scriptasync-scriptdefer-sessionstorage-strictmode-svg-svgasimg-svgclippaths-target-textshadow-todataurljpeg_todataurlpng_-xhrresponsetype-xhrresponsetypearraybuffer-xhrresponsetypedocument-xhrresponsetypetext-setclasses-dontmin-cssclassprefix:modern-
  *
  * Copyright (c)
  *  Faruk Ates
@@ -2439,56 +2439,7 @@ Detects whether or not elements can be animated using CSS
   Modernizr.addTest('cssanimations', testAllProps('animationName', 'a', true));
 
 
-/*!
-{
-  "name": "Background Position XY",
-  "property": "bgpositionxy",
-  "tags": ["css"],
-  "builderAliases": ["css_backgroundposition_xy"],
-  "authors": ["Allan Lei", "Brandom Aaron"],
-  "notes": [{
-    "name": "Demo",
-    "href": "https://jsfiddle.net/allanlei/R8AYS/"
-  }, {
-    "name": "Adapted From",
-    "href": "https://github.com/brandonaaron/jquery-cssHooks/blob/master/bgpos.js"
-  }]
-}
-!*/
-/* DOC
-Detects the ability to control an element's background position using css
-*/
 
-  Modernizr.addTest('bgpositionxy', function() {
-    return testAllProps('backgroundPositionX', '3px', true) && testAllProps('backgroundPositionY', '5px', true);
-  });
-
-/*!
-{
-  "name": "Background Repeat",
-  "property": ["bgrepeatspace", "bgrepeatround"],
-  "tags": ["css"],
-  "builderAliases": ["css_backgroundrepeat"],
-  "authors": ["Ryan Seddon"],
-  "notes": [{
-    "name": "MDN Docs",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat"
-  }, {
-    "name": "Test Page",
-    "href": "https://jsbin.com/uzesun/"
-  }, {
-    "name": "Demo",
-    "href": "https://jsfiddle.net/ryanseddon/yMLTQ/6/"
-  }]
-}
-!*/
-/* DOC
-Detects the ability to use round and space as properties for background-repeat
-*/
-
-  // Must value-test these
-  Modernizr.addTest('bgrepeatround', testAllProps('backgroundRepeat', 'round'));
-  Modernizr.addTest('bgrepeatspace', testAllProps('backgroundRepeat', 'space'));
 
 /*!
 {

@@ -9,6 +9,7 @@
   "author": "Ilia Soloveychik (@thesiv95)",
   "license": "GNU-GPL-1.0-or-later",
   "devDependencies": {
+    "jquery-file-upload-middleware": "^0.1.8",
     "mongoose": "^5.4.19",
     "xml2js": "^0.4.19"
   },

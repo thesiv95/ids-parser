@@ -21,13 +21,7 @@ function goPosition(position){
     his.go(position);
 }
 
-// EULA file read
-// https://ru.stackoverflow.com/questions/360173/Чтение-txt-документа
-
-// @todo eula file read (server)
-// UI = User Interface
 // EULA UI
-
 var agreedOKBtn = doc.getElementById('agreedOKBtn'),
     agreedChkbox = doc.getElementById('agreed');
 
