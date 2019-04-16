@@ -57,13 +57,13 @@ console.log('Detected = ' + detected);
 
 
 // После всех манипуляций файл нужно удалить
-// fs.unlink(pathToFile, function(err){
-// 	if (err) {
-// 		console.log(err);
-// 	} else {
-// 		console.log('Delete file - ok');
-// 	}
-// });
+fs.unlink(pathToFile, function(err){
+	if (err) {
+		console.log(err);
+	} else {
+		console.log('Delete file - ok');
+	}
+});
 
 module.exports = {
 	detected: detected,

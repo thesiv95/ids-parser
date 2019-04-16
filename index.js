@@ -7,7 +7,7 @@ var upload = require('jquery-file-upload-middleware');
 
 // Самописные библиотеки и модули
 const Pdfgen = require('./pdfgen');
-var detected = require('./detector');
+// var extractor = require('./extractor');
 
 // порт для сервера express и параметры подключения к БД
 var port = 3000;
@@ -44,11 +44,14 @@ app.get('/', function(req, res){ // Главная
 
 
 app.get('/parsing', function(req, res){
-        const Snort = require('./snort').SnortRecord;
+        // const Snort = require('./snort').SnortRecord;
+
+        
+
         // Вытаскиваем из БД информацию (переменная data), потом передаём эту информацию серверу, и он все выводит через twig
                 
         
-        Snort.find().select().lean().exec(function(err, data){
+        // Snort.find().select().lean().exec(function(err, data){
             // console.log(data);
             res.render('parsing', {
                 html_lang: 'ru',
@@ -59,19 +62,19 @@ app.get('/parsing', function(req, res){
                 title: 'Обработка',
                 btn_to_main_page: 'На главную страницу',
                 btn_start_parsing: 'Начать обработку',
-                btn_export_parsing: 'Экспортировать результат',
-                parsing_ids_detected: 'Распознанная СОВ',
-                parsing_report_download: 'Скачать в формате PDF',
-                parsing_timestamp: 'в',
-                parsing_signature: 'Сигнатура',
-                parsing_legal: 'Легитимный',
-                parsing_illegal: 'Нелегитимный',
-                parsing_unknown: 'Неопределённый',
-                parsing_conn_total: 'Всего записей в журнале',
-                parsing_date: 'Дата обработки',
-                data: data,
-                ids_name: detected // переменная из библиотеки detector
-            })
+                btn_export_parsing: 'Экспортировать результат'
+                // parsing_ids_detected: 'Распознанная СОВ',
+                // parsing_report_download: 'Скачать в формате PDF',
+                // parsing_timestamp: 'в',
+                // parsing_signature: 'Сигнатура',
+                // parsing_legal: 'Легитимный',
+                // parsing_illegal: 'Нелегитимный',
+                // parsing_unknown: 'Неопределённый',
+                // parsing_conn_total: 'Всего записей в журнале',
+                // parsing_date: 'Дата обработки',
+                // data: data,
+                
+            // })
     });
 
 });
@@ -176,12 +179,14 @@ app.get('/pdf', function(req, res){
 });
 
 
-// ??? detector
-app.post('/detector', function(req, res){
-    console.log(req.file);
-})
-
-
+// Кнопка "Начать обработку"
+// TODO: привязать к кнопке скрипт extractor
+// TODO: как-то описать вывод инфы из базы
+app.get('extractor', function(req, res){
+    console.log('Extractor');
+    
+});
+   
 // Загрузка файла на сервер
 upload.configure({
     uploadDir: __dirname + '/public/uploads', // куда сохранять

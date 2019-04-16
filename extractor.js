@@ -7,6 +7,7 @@ var Snort = require('./snort');
 var Suricata = require('./suricata');
 var uIDS = require('./unknown_ids');
 
+
 switch (detector.detected){
     case 'Bro':
         Bro.extract();
@@ -27,3 +28,4 @@ switch (detector.detected){
         uIDS.extract();
         break;
 }
+ 
