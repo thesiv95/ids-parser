@@ -2,8 +2,6 @@
  * Extractor: IDS DallasLock
  */
 // TODO: полностью рабочие extractors - довести до ума
-// TODO: апи для базы данных
-// TODO: шаблонизатор + привязка к фронтенду
 // TODO: отчет + доделать ВКР + преза
 // 1. Импорт содержимого лог-файла
 //  xml2js - npm https://www.npmjs.com/package/xml2js

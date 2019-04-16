@@ -53,14 +53,19 @@ if (ids.match(regExp.detectionBro)) {
 }
 
 console.log('Detected = ' + detected);
-module.exports = detected; 
+
 
 
 // После всех манипуляций файл нужно удалить
-fs.unlink(pathToFile, function(err){
-	if (err) {
-		console.log(err);
-	} else {
-		console.log('Delete file - ok');
-	}
-});
+// fs.unlink(pathToFile, function(err){
+// 	if (err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log('Delete file - ok');
+// 	}
+// });
+
+module.exports = {
+	detected: detected,
+	pathToFile: pathToFile
+}; // далее подключим к библиотеке extractor.js, и библиотекам-"расщепителям"

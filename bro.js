@@ -5,7 +5,8 @@ const fs = require('fs');
 const regExp = require('./regexp');
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var l = fs.readFileSync('demo-bro.log', 'utf8');
+var detector = require('./detector');
+var l = fs.readFileSync(detector.pathToFile, 'utf8');// указать путь
 
 var singleRecordObject = {}; // объект для записи в БД
 
