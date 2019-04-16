@@ -1,26 +1,29 @@
 // А здесь вызовем детектор, а также все функции - расщепители лог файлов!
 var detector = require('./detector');
-// var Bro = require('./bro');
+var Bro = require('./bro');
 var DallasLock = require('./dallaslock');
+var SecretNet = require('./secretnet');
+var Snort = require('./snort');
+var Suricata = require('./suricata');
+var uIDS = require('./unknown_ids');
 
 switch (detector.detected){
     case 'Bro':
-        console.log('Bro');
+        Bro.extract();
         break;
     case 'Dallas Lock':
-    
-        console.log('Dallas Lock');
+        DallasLock.extract();
         break;
     case 'SecretNet':
-        console.log('SecretNet');
+        SecretNet.extract();
         break;
     case 'Snort':
-        console.log('Snort');
+        Snort.extract();
         break;
     case 'Suricata':
-        console.log('Suricata');
+        Suricata.extract();
         break;
     default:
-        console.log('unknown IDS');
+        uIDS.extract();
         break;
 }
