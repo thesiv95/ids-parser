@@ -6,10 +6,10 @@ const regExp = require('./regexp'); // ПРИЗНАКИ по которым оп
 // Предполагается, что файл будет на сервере единственным (он был загружен ранее через форму на странице Обработка)
 var pathToFile = ''; // путь к нужному файлу
 var ids = fs.readFileSync(pathToFile, 'utf-8'); // Открываем файл с сервера для его проверки
+
 // https://stackoverflow.com/questions/25460574/find-files-by-extension-html-under-a-folder-in-nodejs/42734993#42734993
 // Функция поиска файла в папке по расширению
 function fromDir(startPath,filter){
-
     if (!fs.existsSync(startPath)){
         console.log("no dir ",startPath);
         return;

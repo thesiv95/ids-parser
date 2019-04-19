@@ -62,16 +62,16 @@ app.get('/parsing', function(req, res){
                 title: 'Обработка',
                 btn_to_main_page: 'На главную страницу',
                 btn_start_parsing: 'Начать обработку',
-                btn_export_parsing: 'Экспортировать результат'
-                // parsing_ids_detected: 'Распознанная СОВ',
-                // parsing_report_download: 'Скачать в формате PDF',
-                // parsing_timestamp: 'в',
-                // parsing_signature: 'Сигнатура',
-                // parsing_legal: 'Легитимный',
-                // parsing_illegal: 'Нелегитимный',
-                // parsing_unknown: 'Неопределённый',
-                // parsing_conn_total: 'Всего записей в журнале',
-                // parsing_date: 'Дата обработки',
+                btn_export_parsing: 'Экспортировать результат',
+                parsing_ids_detected: 'Распознанная СОВ',
+                parsing_report_download: 'Скачать в формате PDF',
+                parsing_timestamp: 'в',
+                parsing_signature: 'Сигнатура',
+                parsing_legal: 'Легитимный',
+                parsing_illegal: 'Нелегитимный',
+                parsing_unknown: 'Неопределённый',
+                parsing_conn_total: 'Всего записей в журнале',
+                parsing_date: 'Дата обработки'
                 // data: data,
                 
             // })
