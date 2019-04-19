@@ -9,10 +9,13 @@
   "author": "Ilia Soloveychik (@thesiv95)",
   "license": "GNU-GPL-1.0-or-later",
   "devDependencies": {
+    "dont-sniff-mimetype": "^1.0.0",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
     "jquery-file-upload-middleware": "^0.1.8",
     "mongoose": "^5.4.19",
-    "xml2js": "^0.4.19",
-    "express": "^4.16.4"
+    "x-xss-protection": "^1.1.0",
+    "xml2js": "^0.4.19"
   },
   "dependencies": {
     "moment": "^2.24.0",

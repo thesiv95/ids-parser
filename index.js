@@ -1,6 +1,9 @@
 // Сторонние библиотеки
 var express = require('express');
 var app = express();
+const helmet = require('helmet');
+const xssFilter = require('x-xss-protection');
+const nosniff = require('dont-sniff-mimetype');
 const mongoose = require('mongoose');
 const twig = require('./node_modules/twig');
 var upload = require('jquery-file-upload-middleware');
@@ -23,8 +26,15 @@ app.set('twig options', {
 // Папка для статических файлов (то есть стили css, скрипты js, и т.п.)
 app.use(express.static('public'));
 
+// Безопасные заголовки
+app.use(helmet());
+app.use(xssFilter());
+
+
+
 // Страницы
 app.get('/', function(req, res){ // Главная
+    app.use(nosniff());
     res.render('index', {
         html_lang: 'ru',
         html_dir: 'ltr',
