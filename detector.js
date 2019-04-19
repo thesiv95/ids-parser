@@ -5,7 +5,7 @@ const path = require('path');
 const regExp = require('./regexp'); // ПРИЗНАКИ по которым определяется файл!!!
 // Предполагается, что файл будет на сервере единственным (он был загружен ранее через форму на странице Обработка)
 var pathToFile = ''; // путь к нужному файлу
-
+var ids = fs.readFileSync(pathToFile, 'utf-8'); // Открываем файл с сервера для его проверки
 // https://stackoverflow.com/questions/25460574/find-files-by-extension-html-under-a-folder-in-nodejs/42734993#42734993
 // Функция поиска файла в папке по расширению
 function fromDir(startPath,filter){
@@ -35,7 +35,7 @@ fromDir(__dirname + '/public/uploads/','.xml');
 fromDir(__dirname + '/public/uploads/','.snlog');
 console.log(pathToFile);
 
-var ids = fs.readFileSync(pathToFile, 'utf-8'); // Открываем файл с сервера для его проверки
+
 var detected = ''; // результат определения
 
 if (ids.match(regExp.detectionBro)) {
@@ -69,3 +69,5 @@ module.exports = {
 	detected: detected,
 	pathToFile: pathToFile
 }; // далее подключим к библиотеке extractor.js, и библиотекам-"расщепителям"
+
+fs.close();

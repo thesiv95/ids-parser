@@ -7,7 +7,7 @@ var upload = require('jquery-file-upload-middleware');
 
 // Самописные библиотеки и модули
 const Pdfgen = require('./pdfgen');
-var extractor = require('./extractor');
+
 
 // порт для сервера express и параметры подключения к БД
 var port = 3000;
@@ -212,13 +212,12 @@ app.use('/upload', function(req, res, next){ // ссылка для загруз
 // TODO: привязать к кнопке скрипт extractor
 // TODO: как-то описать вывод инфы из базы
 
-extractor.start();
 
-// app.get('e', function(req, res){
+app.get('extr', function(req, res){
+    var extractor = require('./extractor'); // именно сюда, иначе скрипт запускается сразу
+    extractor.start();
     
-//     extractor.start();
-    
-// });
+});
 
 // Запуск сервера
 app.listen(port, function () {
