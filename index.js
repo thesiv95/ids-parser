@@ -7,6 +7,7 @@ const nosniff = require('dont-sniff-mimetype');
 const mongoose = require('mongoose');
 const twig = require('./node_modules/twig');
 var upload = require('jquery-file-upload-middleware');
+// var extractor = require('./extractor'); 
 
 // Самописные библиотеки и модули
 const Pdfgen = require('./pdfgen');
@@ -29,12 +30,11 @@ app.use(express.static('public'));
 // Безопасные заголовки
 app.use(helmet());
 app.use(xssFilter());
-
-
+app.use(nosniff());
 
 // Страницы
 app.get('/', function(req, res){ // Главная
-    app.use(nosniff());
+    
     res.render('index', {
         html_lang: 'ru',
         html_dir: 'ltr',
@@ -48,6 +48,15 @@ app.get('/', function(req, res){ // Главная
     });
 });
 
+
+// Кнопка Начать Обработку
+app.get('/extr123', function(req, res){
+    // console.log(res);
+    console.log('extractor чтоб тебя');
+    var extractor = require('./extractor'); // именно сюда, иначе скрипт запускается сразу
+    extractor.start();
+
+});
 
 // TODO: связать скрипт и сохраненный файл
 // Сохранение файла уже реализовано
@@ -216,17 +225,6 @@ app.use('/upload', function(req, res, next){ // ссылка для загруз
             return '/uploads'
         }
     })(req, res, next);
-});
-
-// Кнопка "Начать обработку"
-// TODO: привязать к кнопке скрипт extractor
-// TODO: как-то описать вывод инфы из базы
-
-
-app.get('extr', function(req, res){
-    var extractor = require('./extractor'); // именно сюда, иначе скрипт запускается сразу
-    extractor.start();
-    
 });
 
 // Запуск сервера
