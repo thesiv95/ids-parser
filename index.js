@@ -51,15 +51,13 @@ app.get('/', function(req, res){ // Главная
 
 // Кнопка Начать Обработку
 app.get('/extr123', function(req, res){
-    // console.log(res);
-    console.log('extractor чтоб тебя');
+    
     var extractor = require('./extractor'); // именно сюда, иначе скрипт запускается сразу
     extractor.start();
 
 });
 
-// TODO: связать скрипт и сохраненный файл
-// Сохранение файла уже реализовано
+// TODO: реализовать модуль draw.js
 
 
 app.get('/parsing', function(req, res){

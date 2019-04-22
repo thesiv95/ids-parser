@@ -86,7 +86,7 @@ module.exports = {
 			},
 			defineQuantity: function(){
 				var connectionMessage = l['Журнал']['Запись'][0].Сообщение;
-				console.log(connectionMessage);
+				// console.log(connectionMessage);
 				// Количество совпадений "ТСР" = количеству подключений! Все гениальное просто))))
 				// ???
 				// https://learn.javascript.ru/string
@@ -103,7 +103,7 @@ module.exports = {
 			defineStatus: function(){
 				var statusString = l['Журнал']['Запись'][0].Результат;
 				statusString = statusString[0].toString();
-				console.log(statusString);
+				// console.log(statusString);
 				if (statusString == 'Доступ запрещен !'){
 						status = 'bad';
 				} else {
