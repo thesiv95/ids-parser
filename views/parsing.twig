@@ -13,17 +13,17 @@
 	{# </form> #}
 
         <div class="output" style="display: none;">
-            <div class="output-title">{{ parsing_ids_detected }}: {{ ids_name }}</p></div>
+            <div class="output-title">{{ parsing_ids_detected }}: {{ draw.ids_name }}</p></div>
             <div class="output-diagram">
                 <div class="output-diagram-inner" id="output-diagram"></div>
                 <div class="output-diagram-inner output-diagram-inner__text">
 
                         <ul class="output-diagram-list">
                             
-                            {% for dataItem in data %}
+                            {% for drawItem in draw %}
 
-                            <li class="output-diagram-list_item item-{{ dataItem.status }}">{{ dataItem.ip_src }}:{{ dataItem.port_src }} -&gt; {{ dataItem.ip_dest }}:{{ dataItem.port_dest }} [{{ dataItem.protocol }}] {{ parsing_timestamp }} {{ dataItem.date_reg }} {{ dataItem.time_reg }} - {{ dataItem.conn_quantity }}
-                            <br />{{ parsing_signature }}: {{ dataItem.signatures }}</li>
+                            <li class="output-diagram-list_item item-{{ draw.status }}">{{ draw.ip_src }}:{{ draw.port_src }} -&gt; {{ draw.ip_dest }}:{{ draw.port_dest }} [{{ draw.protocol }}] {{ parsing_timestamp }} {{ draw.date_reg }} {{ draw.time_reg }} - {{ draw.conn_quantity }}
+                            <br />{{ parsing_signature }}: {{ draw.signatures }}</li>
 
                             {% endfor %}
 

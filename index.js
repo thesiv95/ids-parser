@@ -16,7 +16,7 @@ const Pdfgen = require('./pdfgen');
 
 // порт для сервера express и параметры подключения к БД
 var port = 3000;
-var dbc = mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
+// var dbc = mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
 
 // Настройки шаблонизатора Twig
 app.set('views', __dirname + '/views'); // папка с HTML-разметкой
@@ -63,37 +63,27 @@ app.get('/extr123', function(req, res){
 
 
 app.get('/parsing', function(req, res){
-        // const Snort = require('./snort').SnortRecord;
-
-        
-
-        // Вытаскиваем из БД информацию (переменная data), потом передаём эту информацию серверу, и он все выводит через twig
-                
-        
-        // Snort.find().select().lean().exec(function(err, data){
-            // console.log(data);
-            res.render('parsing', {
-                html_lang: 'ru',
-                html_dir: 'ltr',
-                msg_no_script: 'Пожалуйста, включите JavaScript в вашем браузере!',
-                msg_old_browser: 'Этот браузер поддерживает не все технологии, которые использует программа. Программа может работать, но с перебоями. Настоятельно рекомендуется использовать браузер, указанный в инструкции, во избежание возникновения проблем. Инструкция находится в разделе &quot;Справка&quot;.',
-                msg_too_small: 'Размер ширины окна слишком мал, чтобы отобразить результат обработки данных. Если вы используете мобильное устройство, измените ориентацию экрана на альбомную.',
-                title: 'Обработка',
-                btn_to_main_page: 'На главную страницу',
-                btn_start_parsing: 'Начать обработку',
-                btn_export_parsing: 'Экспортировать результат',
-                parsing_ids_detected: 'Распознанная СОВ',
-                parsing_report_download: 'Скачать в формате PDF',
-                parsing_timestamp: 'в',
-                parsing_signature: 'Сигнатура',
-                parsing_legal: 'Легитимный',
-                parsing_illegal: 'Нелегитимный',
-                parsing_unknown: 'Неопределённый',
-                parsing_conn_total: 'Всего записей в журнале',
-                parsing_date: 'Дата обработки'
-                // data: data,
-                
-            // })
+    
+    res.render('parsing', {
+        html_lang: 'ru',
+        html_dir: 'ltr',
+        msg_no_script: 'Пожалуйста, включите JavaScript в вашем браузере!',
+        msg_old_browser: 'Этот браузер поддерживает не все технологии, которые использует программа. Программа может работать, но с перебоями. Настоятельно рекомендуется использовать браузер, указанный в инструкции, во избежание возникновения проблем. Инструкция находится в разделе &quot;Справка&quot;.',
+        msg_too_small: 'Размер ширины окна слишком мал, чтобы отобразить результат обработки данных. Если вы используете мобильное устройство, измените ориентацию экрана на альбомную.',
+        title: 'Обработка',
+        btn_to_main_page: 'На главную страницу',
+        btn_start_parsing: 'Начать обработку',
+        btn_export_parsing: 'Экспортировать результат',
+        parsing_ids_detected: 'Распознанная СОВ',
+        parsing_report_download: 'Скачать в формате PDF',
+        parsing_timestamp: 'в',
+        parsing_signature: 'Сигнатура',
+        parsing_legal: 'Легитимный',
+        parsing_illegal: 'Нелегитимный',
+        parsing_unknown: 'Неопределённый',
+        parsing_conn_total: 'Всего записей в журнале',
+        parsing_date: 'Дата обработки',
+        draw: Draw // объект с нужной информацией из модуля Draw.js
     });
 
 });
@@ -235,4 +225,4 @@ app.listen(port, function () {
 
 
 // Когда все запущено, то нужно отключиться от БД, чтобы процесс приложения завершился
-mongoose.disconnect();
+// mongoose.disconnect();

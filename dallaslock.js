@@ -131,7 +131,8 @@ module.exports = {
 
 		
 		// "Шаблон" записи в БД
-		const dallasLockSchema = new Schema({ 
+		const dallasLockSchema = new Schema({
+				ids_name: String, 
 				date_reg: String,
 				time_reg: String,
 				ip_src: String,
@@ -139,6 +140,7 @@ module.exports = {
 				ip_dest: String,
 				port_dest: Number,
 				protocol: String,
+				signatures: String,
 				conn_quantity: Number,
 				status: String
 		});
@@ -148,6 +150,7 @@ module.exports = {
 		// Отформатированная запись в БД, которая будет добавлена
 
 		var record = new dallasLockRecord({
+				ids_name: 'Dallas Lock',
 				date_reg: singleRecordObject.dates,
 				time_reg: singleRecordObject.times,
 				ip_src: singleRecordObject.ipsSrc,
@@ -155,6 +158,7 @@ module.exports = {
 				ip_dest: singleRecordObject.ipsDest,
 				port_dest: parseInt(singleRecordObject.portsDest),
 				protocol: singleRecordObject.protocols,
+				signatures: singleRecordObject.signatures,
 				conn_quantity: singleRecordObject.quantity,
 				status: singleRecordObject.status
 		});

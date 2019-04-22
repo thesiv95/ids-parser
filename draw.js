@@ -34,29 +34,127 @@ dbc.once('open', function(callback) {
         status: String
     }; // один шаблон для всех
 
+
+    /****** promise */
+    // var a = 3, b;
+
+    // var addToDrawObject = new Promise(function (resolve, reject) {
+    //     if (a == 3){
+    //         b = 3;
+    //         resolve(b);
+    //     } else {
+    //         var c = new Error(10);
+    //         reject(c);
+    //     }
+    // });
+    // var askMom = function () {
+    //     addToDrawObject
+    //         .then(function (fulfilled) {
+    //             console.log(fulfilled);
+    //         })
+    //         .catch(function (error) {
+    //             console.log(error.message);
+    //         });
+    // };
+    
+    // askMom();
+    /****** promise */
+
+
     switch (detector.detected){
+        case 'Bro':
+            console.log('Bro');
+            break;
+        case 'Dallas Lock':
+            console.log('Dallas');
+            var dallasLockSchema = new Schema(idsRecordSchema);
+            var DallasLockModel = mongoose.model('Dallas Lock', dallasLockSchema, 'dallaslockrecords');
+            DallasLockModel.find({}, function(err, recordings){
+                if (err) console.log('error - ' + err);
+                var drawPromise = new Promise(function (resolve, reject) {
+                    if (recordings[0]){
+                        drawOneRecord.ids_name = recordings[0].ids_name;
+                        drawOneRecord.date_reg = recordings[0].date_reg;
+                        drawOneRecord.time_reg = recordings[0].time_reg;
+                        drawOneRecord.ip_src = recordings[0].ip_src;
+                        drawOneRecord.port_src = recordings[0].port_src;
+                        drawOneRecord.ip_dest = recordings[0].ip_dest;
+                        drawOneRecord.port_dest = recordings[0].port_dest;
+                        drawOneRecord.protocol = recordings[0].protocol;
+                        drawOneRecord.signatures = recordings[0].signatures;
+                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
+                        drawOneRecord.status = recordings[0].status;
+
+                        resolve(console.log(drawOneRecord));
+                    } else {
+                        var e = new Error(error);
+                        reject(e);
+                    }
+                });
+
+                var addToDrawObject = function () {
+                    drawPromise
+                        .then(function (done) {
+                            console.log(done);
+                        })
+                        .catch(function (error) {
+                            console.log(error.message);
+                        });
+                }
+
+                addToDrawObject();
+            })
+            break;
+        case 'SecretNet':
+            console.log('SecretNet');
+            break;
         case 'Snort':
             var snortSchema = new Schema(idsRecordSchema);
             var SnortModel = mongoose.model('Snort', snortSchema, 'snortrecords');
             SnortModel.find({ids_name: 'Snort'}, function(err, recordings) {
                 if (err) console.log('error - ' + err);
                 // Записываем в объект вывода
-                console.log(recordings[0]);
-                // drawOneRecord.ids_name = recordings[0].ids_name;
-                // drawOneRecord.date_reg = recordings[0].date_reg;
-                // drawOneRecord.time_reg = recordings[0].time_reg;
-                // drawOneRecord.ip_src = recordings[0].ip_src;
-                // drawOneRecord.port_src = recordings[0].port_src;
-                // drawOneRecord.ip_dest = recordings[0].ip_dest;
-                // drawOneRecord.port_dest = recordings[0].port_dest;
-                // drawOneRecord.protocol = recordings[0].protocol;
-                // drawOneRecord.signatures = recordings[0].signatures;
-                // drawOneRecord.conn_quantity = recordings[0].conn_quantity;
-                // drawOneRecord.status = recordings[0].status;
+                // console.log(recordings[0]);
+
+                var drawPromise = new Promise(function (resolve, reject) {
+                    if (recordings[0]){
+                        drawOneRecord.ids_name = recordings[0].ids_name;
+                        drawOneRecord.date_reg = recordings[0].date_reg;
+                        drawOneRecord.time_reg = recordings[0].time_reg;
+                        drawOneRecord.ip_src = recordings[0].ip_src;
+                        drawOneRecord.port_src = recordings[0].port_src;
+                        drawOneRecord.ip_dest = recordings[0].ip_dest;
+                        drawOneRecord.port_dest = recordings[0].port_dest;
+                        drawOneRecord.protocol = recordings[0].protocol;
+                        drawOneRecord.signatures = recordings[0].signatures;
+                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
+                        drawOneRecord.status = recordings[0].status;
+
+                        resolve(console.log(drawOneRecord));
+                    } else {
+                        var e = new Error(error);
+                        reject(e);
+                    }
+                });
+
+                var addToDrawObject = function () {
+                    drawPromise
+                        .then(function (done) {
+                            console.log(done);
+                        })
+                        .catch(function (error) {
+                            console.log(error.message);
+                        });
+                }
+
+                addToDrawObject();
                 
             });
             
             break;
+            case 'Suricata':
+                console.log('Suricata');
+                break;
         default:
             console.log('Default');
             break;
@@ -66,19 +164,6 @@ dbc.once('open', function(callback) {
 });
 
 
-// Записи не добавляются в объект внутри switch/case :(
-// потому что все асинхронно
-// как бы сделать синхронно?
-drawOneRecord.foo = 'bar';
-
-
-
-// 192.168.1.20:123 -> 8.8.8.8:444 [TCP] в 21.11.2017 10:00:01 - 55 
-// Сигнатура [cve] [icat] [cve] [icat] [bugtraq] [bugtraq] [bugtraq] [snort]
-// Объект для экспорта
-
-console.log('draw record');
-console.log(drawOneRecord);
 
 // Что останется:
 // Допилить модуль пдфки
