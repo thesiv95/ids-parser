@@ -10,6 +10,7 @@ var upload = require('jquery-file-upload-middleware');
 // var extractor = require('./extractor'); 
 
 // Самописные библиотеки и модули
+const Draw = require('./draw');
 const Pdfgen = require('./pdfgen');
 
 
@@ -54,6 +55,7 @@ app.get('/extr123', function(req, res){
     
     var extractor = require('./extractor'); // именно сюда, иначе скрипт запускается сразу
     extractor.start();
+    
 
 });
 
