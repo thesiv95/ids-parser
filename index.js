@@ -1,22 +1,22 @@
+/***** Настройка Приложения ******/
+
 // Сторонние библиотеки
 var express = require('express');
 var app = express();
 const helmet = require('helmet');
 const xssFilter = require('x-xss-protection');
 const nosniff = require('dont-sniff-mimetype');
-//const mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const twig = require('./node_modules/twig');
 var upload = require('jquery-file-upload-middleware');
-// var extractor = require('./extractor'); 
 
 // Самописные библиотеки и модули
 const Draw = require('./draw');
 const Pdfgen = require('./pdfgen');
 
-
 // порт для сервера express 
 var port = 3000;
-// var dbc = mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
 
 // Настройки шаблонизатора Twig
 app.set('views', __dirname + '/views'); // папка с HTML-разметкой
@@ -33,16 +33,57 @@ app.use(helmet());
 app.use(xssFilter());
 app.use(nosniff());
 
-
-var draw = Draw; // переменная для модуля пдф
-console.log("kek lal " + draw.time_reg);
-
+// переменная для модуля пдф
+var draw = Draw; 
 
 
-// Страницы
+
+// Подключение к БД, для загрузки настроек
+mongoose.connect('mongodb://localhost:27017/config', {useNewUrlParser: true});
+const setupSchema = new Schema({
+    eula: Boolean,
+    lang: String,
+    styles: Number
+});
+
+const Setup = mongoose.model('Setup', setupSchema, 'setup');
+var styles = 1;
+Setup.find({}, function(err, res){
+    if (err) {
+        console.log('Setup DB connection error: ' + err);
+        return;
+    }
+    // нужно получить res.styles
+    // styles = res.styles;
+     
+    console.log('RESULT');
+    console.log(res);
+
+    //mongoose.disconnect(); 
+});
+
+
+/***** Страницы ******/
+// Лицензионное соглашение - по идее, должно загружаться в первый раз
+
+
+
+app.get('/eula', function(req, res){
+    res.render('eula', {
+        html_lang: 'ru',
+        html_dir: 'ltr',
+        msg_noscript: 'Пожалуйста, включите JavaScript в вашем браузере!',
+        msg_old_browser: 'Этот браузер поддерживает не все технологии, которые использует программа. Программа может работать, но с перебоями. Настоятельно рекомендуется использовать браузер, указанный в инструкции, во избежание возникновения проблем. Инструкция находится в разделе &quot;Справка&quot;.',
+        msg_too_small: 'Размер ширины окна слишком мал, чтобы отобразить результат обработки данных. Если вы используете мобильное устройство, измените ориентацию экрана на альбомную.',
+        title: 'Лицензионное соглашение',
+        styles: 1
+    });
+});
+
 app.get('/', function(req, res){ // Главная
-    
+
     res.render('index', {
+        // Элементы на странице
         html_lang: 'ru',
         html_dir: 'ltr',
         msg_noscript: 'Пожалуйста, включите JavaScript в вашем браузере!',
@@ -51,7 +92,9 @@ app.get('/', function(req, res){ // Главная
         title: 'Главная страница',
         header_parsing: 'Обработка',
         header_settings: 'Настройки',
-        header_help: 'Справка'
+        header_help: 'Справка',
+        // Какой стиль выбран?
+        styles: styles
     });
 });
 
@@ -89,7 +132,9 @@ app.get('/parsing', function(req, res){
         parsing_unknown: 'Неопределённый',
         parsing_conn_total: 'Всего записей в журнале',
         parsing_date: 'Дата обработки',
-        draw: Draw // объект с нужной информацией из модуля Draw.js
+        draw: Draw, // объект с нужной информацией из модуля Draw.js
+        // Какой стиль выбран?
+        styles: styles
     });
 
 });
@@ -107,7 +152,9 @@ app.get('/settings', function(req, res){
         settings_language: 'Язык (Language)',
         settings_theme: 'Тема оформления',
         btn_to_main_page: 'На главную страницу',
-	    btn_apply_settings: 'Применить'
+        btn_apply_settings: 'Применить',
+        // Какой стиль выбран?
+        styles: styles
     });
 });
 
@@ -124,7 +171,9 @@ app.get('/help', function(req, res){
         help_version: 'Версия программы',
         help_build_date: 'Дата сборки',
         help_license: 'Лицензия',
-        btn_to_main_page: 'На главную страницу'
+        btn_to_main_page: 'На главную страницу',
+        // Какой стиль выбран?
+        styles: styles
 
     });
 });
@@ -143,7 +192,9 @@ app.get('/author', function(req, res){
         author_github: 'Github',
         author_vk: 'ВКонтакте',
         author_diploma: 'Данный проект является дипломной работой для НГТУ',
-        btn_to_main_page: 'На главную страницу'
+        btn_to_main_page: 'На главную страницу',
+        // Какой стиль выбран?
+        styles: styles
     })
 });
 
@@ -155,7 +206,9 @@ app.get('/404', function(req, res){
         msg_old_browser: 'Этот браузер поддерживает не все технологии, которые использует программа. Программа может работать, но с перебоями. Настоятельно рекомендуется использовать браузер, указанный в инструкции, во избежание возникновения проблем. Инструкция находится в разделе &quot;Справка&quot;.',
         msg_too_small: 'Размер ширины окна слишком мал, чтобы отобразить результат обработки данных. Если вы используете мобильное устройство, измените ориентацию экрана на альбомную.',
         title: 'Страница не найдена!',
-        go_back: 'Вернуться назад'
+        go_back: 'Вернуться назад',
+        // Какой стиль выбран?
+        styles: styles
     })
 });
 
@@ -233,7 +286,7 @@ app.use('/upload', function(req, res, next){ // ссылка для загруз
     })(req, res, next);
 });
 
-// Запуск сервера
+/***** Запуск сервера ******/
 app.listen(port, function () {
     console.log('Parser was started, using port ' + port);
     console.log('Home directory: ' + __dirname);

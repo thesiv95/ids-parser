@@ -24,6 +24,49 @@
     <script src="js/jquery.ui.widget.js"></script>
     <script src="js/jquery.iframe-transport.js"></script>
     <script src="js/jquery.fileupload.js"></script>
+
+    {% if styles == 2 %}
+    
+    <style type="text/css">
+        /* If dark theme enabled */
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        select {
+            background-color: #eeeede;
+        }
+
+        .btn-std {
+            background-color: #eeeede;
+        }
+
+        .btn:hover {
+            border: 2px solid white;
+        }
+
+        input[type="file"] {
+            color: white;
+        }
+
+        .link-std {
+            color: white;
+        }
+
+        .menu__item {
+            background-color: #eeeede;
+            border: solid 2px white;
+        }
+
+        .msg {
+            background-color: #eeeede;
+        }
+
+    </style>
+    {% endif %}
+
+
 </head>
 <body>
     <div class="container">

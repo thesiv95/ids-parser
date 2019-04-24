@@ -195,7 +195,7 @@ module.exports = {
 			status: singleRecordObject.status
 		});
 
-		console.log(record);
+		// console.log(record);
 
 		record.save(function(err){
 		if (err !== null) {

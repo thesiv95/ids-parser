@@ -37,7 +37,6 @@ dbc.once('open', function(callback) {
 
     switch (detector.detected){
         case 'Bro':
-            console.log('Bro');
             var broSchema = new Schema(idsRecordSchema);
             var BroModel = mongoose.model('Bro', broSchema, 'brorecords');
             BroModel.find({ids_name: 'Bro'}, function(err, recordings){
@@ -66,10 +65,10 @@ dbc.once('open', function(callback) {
                 var addToDrawObject = function () {
                     drawPromise
                         .then(function (done) {
-                            console.log(done);
+                            // console.log(done);
                         })
                         .catch(function (error) {
-                            console.log(error.message);
+                            // console.log(error.message);
                         });
                 }
 
@@ -80,7 +79,7 @@ dbc.once('open', function(callback) {
             var dallasLockSchema = new Schema(idsRecordSchema);
             var DallasLockModel = mongoose.model('Dallas Lock', dallasLockSchema, 'dallaslockrecords');
             DallasLockModel.find({ids_name: 'Dallas Lock'}, function(err, recordings){
-                console.log(recordings);
+                
             
                 if (err) console.log('error - ' + err);
                 var drawPromise = new Promise(function (resolve, reject) {
@@ -204,8 +203,49 @@ dbc.once('open', function(callback) {
             });
             
             break;
+            // TODO: dopilit'
             case 'Suricata':
-                console.log('Suricata');
+                var suricataSchema = new Schema(idsRecordSchema);
+                var SuricataModel = mongoose.model('Suricata', suricataSchema, 'suricatarecords');
+                SuricataModel.find({ids_name: 'Suricata'}, function(err, recordings) {
+                    if (err) console.log('error - ' + err);
+                    // Записываем в объект вывода
+                    // console.log(recordings[0]);
+
+                    var drawPromise = new Promise(function (resolve, reject) {
+                        if (recordings[0]){
+                            drawOneRecord.ids_name = recordings[0].ids_name;
+                            drawOneRecord.date_reg = recordings[0].date_reg;
+                            drawOneRecord.time_reg = recordings[0].time_reg;
+                            drawOneRecord.ip_src = recordings[0].ip_src;
+                            drawOneRecord.port_src = recordings[0].port_src;
+                            drawOneRecord.ip_dest = recordings[0].ip_dest;
+                            drawOneRecord.port_dest = recordings[0].port_dest;
+                            drawOneRecord.protocol = recordings[0].protocol;
+                            drawOneRecord.signatures = recordings[0].signatures;
+                            drawOneRecord.conn_quantity = recordings[0].conn_quantity;
+                            drawOneRecord.status = recordings[0].status;
+
+                            resolve(console.log(drawOneRecord));
+                        } else {
+                        // var e = new Error(error);
+                        // reject(e);
+                        }
+                    });
+
+                    var addToDrawObject = function () {
+                        drawPromise
+                            .then(function (done) {
+                                console.log(done);
+                            })
+                            .catch(function (error) {
+                                console.log(error.message);
+                            });
+                    }
+
+                    addToDrawObject();
+                    
+                });
                 break;
         default:
             console.log('Default');

@@ -23,7 +23,7 @@ function fromDir(startPath,filter){
             fromDir(filename,filter); //recurse
         }
         else if (filename.indexOf(filter)>=0) {
-			console.log('-- found: ',filename);
+			// console.log('-- found: ',filename);
 			pathToFile = filename;
         };
     };
@@ -52,7 +52,7 @@ if (ids.match(regExp.detectionBro)) {
     detected = '?';
 }
 
-console.log('Detected = ' + detected);
+// console.log('Detected = ' + detected);
 
 
 

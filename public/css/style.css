@@ -149,14 +149,14 @@
 
 .eula-inner {
     width: 1800px;
-    height: 600px;
+    height: 200px;
     resize: none;
     overflow-y: scroll;
     border: 2px solid #000000;
     border-radius: 7px;
     padding: 15px;
     font-family: monospace;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .state {
