@@ -111,6 +111,7 @@
 
 .output-diagram-list {
     line-height: 27px;
+    word-break: break-word; /* перенос строк */
 }
 
 .output-date {

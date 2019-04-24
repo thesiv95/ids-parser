@@ -18,16 +18,10 @@ var Pdfgen = {
             underline: true
         });
         doc.text('\n'); // пустая строка между элементами
-        doc.image(data.pieChart, {
-            // fit: [200, 200],
-            align: 'center',
-            valign: 'center',
-            width: 200,
-            height: 200
-        }) // диаграмма
+        doc.text('IDS detected: ' + data.ids_name);
         doc.text('\n');
         // Список записей
-        doc.list(data.text); 
+        doc.list(data.text); // массив выведется как маркированный список
         doc.text('\n');
         // Информация о типах трафика
         doc.text('Traffic information:\n');

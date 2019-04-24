@@ -1,17 +1,13 @@
 {% include '_includes/header.twig' %}
 
-	{# <form action="/parse" method="post"> #}
 		<div class="filepicker">
            <input onchange="toggleStartButton();" class="filepicker-inner" id="filepicker" type="file" name="files[]" data-url="/upload" multiple>
         </div>
 		<div class="state">
             <input class="btn btn-std" type="button" onclick="go_to('/');" value="{{ btn_to_main_page }}">
-            <input class="btn btn-std" type="button" id="outputStart" value="{{ btn_start_parsing }}" disabled onclick="start();"><!-- disabled onclick="start();" -->
-            <input class="btn btn-std" type="button" id="outputExport" value="{{ btn_export_parsing }}" onclick="go_to('/pdf');" title="{{ parsing_report_download }}" disabled><!-- disabled -->
+            <input class="btn btn-std" type="button" id="outputStart" value="{{ btn_start_parsing }}" disabled onclick="start();">
+            <input class="btn btn-std" type="button" id="outputExport" value="{{ btn_export_parsing }}" onclick="go_to('/pdf');" title="{{ parsing_report_download }}" disabled>
         </div>
-	
-	{# </form> #}
-
         <div class="output" style="display: none;">
             <div class="output-title">{{ parsing_ids_detected }}: {{ draw.ids_name }}</p></div>
             <div class="output-diagram">
@@ -68,9 +64,7 @@
 					function start(){
 						
 						// запускаем экстрактор, перейдя по "ссылке" (get-запрос)
-						// нужно именно привязать к кнопке!!
 						$.ajax({
-							// type: 'POST',
 							url: '/extr123'
 						});
 						// показываем поле вывода

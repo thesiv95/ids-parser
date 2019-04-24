@@ -35,41 +35,12 @@ dbc.once('open', function(callback) {
     }; // один шаблон для всех
 
 
-    /****** promise */
-    // var a = 3, b;
-
-    // var addToDrawObject = new Promise(function (resolve, reject) {
-    //     if (a == 3){
-    //         b = 3;
-    //         resolve(b);
-    //     } else {
-    //         var c = new Error(10);
-    //         reject(c);
-    //     }
-    // });
-    // var askMom = function () {
-    //     addToDrawObject
-    //         .then(function (fulfilled) {
-    //             console.log(fulfilled);
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error.message);
-    //         });
-    // };
-    
-    // askMom();
-    /****** promise */
-
-
     switch (detector.detected){
         case 'Bro':
             console.log('Bro');
-            break;
-        case 'Dallas Lock':
-            console.log('Dallas');
-            var dallasLockSchema = new Schema(idsRecordSchema);
-            var DallasLockModel = mongoose.model('Dallas Lock', dallasLockSchema, 'dallaslockrecords');
-            DallasLockModel.find({}, function(err, recordings){
+            var broSchema = new Schema(idsRecordSchema);
+            var BroModel = mongoose.model('Bro', broSchema, 'brorecords');
+            BroModel.find({ids_name: 'Bro'}, function(err, recordings){
                 if (err) console.log('error - ' + err);
                 var drawPromise = new Promise(function (resolve, reject) {
                     if (recordings[0]){
@@ -85,6 +56,47 @@ dbc.once('open', function(callback) {
                         drawOneRecord.conn_quantity = recordings[0].conn_quantity;
                         drawOneRecord.status = recordings[0].status;
 
+                        resolve(console.log(drawOneRecord));
+                    } else {
+                        //var e = new Error(error);
+                        //reject(e);
+                    }
+                });
+
+                var addToDrawObject = function () {
+                    drawPromise
+                        .then(function (done) {
+                            console.log(done);
+                        })
+                        .catch(function (error) {
+                            console.log(error.message);
+                        });
+                }
+
+                addToDrawObject();
+            })
+            break;
+        case 'Dallas Lock':
+            var dallasLockSchema = new Schema(idsRecordSchema);
+            var DallasLockModel = mongoose.model('Dallas Lock', dallasLockSchema, 'dallaslockrecords');
+            DallasLockModel.find({ids_name: 'Dallas Lock'}, function(err, recordings){
+                console.log(recordings);
+            
+                if (err) console.log('error - ' + err);
+                var drawPromise = new Promise(function (resolve, reject) {
+                    if (recordings[0]){
+                        drawOneRecord.ids_name = recordings[0].ids_name;
+                        drawOneRecord.date_reg = recordings[0].date_reg;
+                        drawOneRecord.time_reg = recordings[0].time_reg;
+                        drawOneRecord.ip_src = recordings[0].ip_src;
+                        drawOneRecord.port_src = recordings[0].port_src;
+                        drawOneRecord.ip_dest = recordings[0].ip_dest;
+                        drawOneRecord.port_dest = recordings[0].port_dest;
+                        drawOneRecord.protocol = recordings[0].protocol;
+                        drawOneRecord.signatures = recordings[0].signatures;
+                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
+                        drawOneRecord.status = recordings[0].status;
+                        
                         resolve(console.log(drawOneRecord));
                     } else {
                         var e = new Error(error);
@@ -103,10 +115,50 @@ dbc.once('open', function(callback) {
                 }
 
                 addToDrawObject();
-            })
+            });
             break;
         case 'SecretNet':
-            console.log('SecretNet');
+            var secretNetSchema = new Schema(idsRecordSchema);
+            var secretNetModel = mongoose.model('SecretNet', secretNetSchema, 'secretnetrecords');
+            secretNetModel.find({ids_name: 'Secret Net'}, function(err, recordings) {
+                if (err) console.log('error - ' + err);
+                // Записываем в объект вывода
+                // console.log(recordings[0]);
+
+                var drawPromise = new Promise(function (resolve, reject) {
+                    if (recordings[0]){
+                        drawOneRecord.ids_name = recordings[0].ids_name;
+                        drawOneRecord.date_reg = recordings[0].date_reg;
+                        drawOneRecord.time_reg = recordings[0].time_reg;
+                        drawOneRecord.ip_src = recordings[0].ip_src;
+                        drawOneRecord.port_src = recordings[0].port_src;
+                        drawOneRecord.ip_dest = recordings[0].ip_dest;
+                        drawOneRecord.port_dest = recordings[0].port_dest;
+                        drawOneRecord.protocol = recordings[0].protocol;
+                        drawOneRecord.signatures = recordings[0].signatures;
+                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
+                        drawOneRecord.status = recordings[0].status;
+
+                        resolve(console.log(drawOneRecord));
+                    } else {
+                        //var e = new Error(error);
+                        //reject(e);
+                    }
+                });
+
+                var addToDrawObject = function () {
+                    drawPromise
+                        .then(function (done) {
+                            console.log(done);
+                        })
+                        .catch(function (error) {
+                            console.log(error.message);
+                        });
+                }
+
+                addToDrawObject();
+                
+            }); 
             break;
         case 'Snort':
             var snortSchema = new Schema(idsRecordSchema);
@@ -132,8 +184,8 @@ dbc.once('open', function(callback) {
 
                         resolve(console.log(drawOneRecord));
                     } else {
-                        var e = new Error(error);
-                        reject(e);
+                       // var e = new Error(error);
+                       // reject(e);
                     }
                 });
 
@@ -167,7 +219,6 @@ dbc.once('open', function(callback) {
 
 // Что останется:
 // Допилить модуль пдфки
-// Доделать скрины, вставить в текст ВКР - тогда текст будет готов (если научрук не скажет что-то еще поправить канеш)
 // Реализовать изменение настроек (языки в отдельной БД)
 // И в принципе сырая версия приложения готова (сырая, но хоть что-то)
 

@@ -4,7 +4,7 @@ var app = express();
 const helmet = require('helmet');
 const xssFilter = require('x-xss-protection');
 const nosniff = require('dont-sniff-mimetype');
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 const twig = require('./node_modules/twig');
 var upload = require('jquery-file-upload-middleware');
 // var extractor = require('./extractor'); 
@@ -14,7 +14,7 @@ const Draw = require('./draw');
 const Pdfgen = require('./pdfgen');
 
 
-// порт для сервера express и параметры подключения к БД
+// порт для сервера express 
 var port = 3000;
 // var dbc = mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
 
@@ -32,6 +32,12 @@ app.use(express.static('public'));
 app.use(helmet());
 app.use(xssFilter());
 app.use(nosniff());
+
+
+var draw = Draw; // переменная для модуля пдф
+console.log("kek lal " + draw.time_reg);
+
+
 
 // Страницы
 app.get('/', function(req, res){ // Главная
@@ -155,33 +161,43 @@ app.get('/404', function(req, res){
 
 // Вызов модуля PDFRender.js
 app.get('/pdf', function(req, res){
+    // Подсчет некоторой информации перед ее передачей
+    // Воспользуемся объектом draw (инфа, полученная из БД)
+    var textString = draw.ip_src + ':' + draw.port_src + '->' + draw.ip_dest + ':' + draw.port_dest + ' [' + draw.protocol + '] at ' + draw.date_reg + ' ' + draw.time_reg + ' - ' + draw.conn_quantity + ' ' + draw.signatures + ' - ' + draw.status;
+    var textStringArray = [];
+    for (var i = 0; i < draw.conn_quantity; i++){
+        textStringArray.push(textString);
+    }
+    var goodTraffic = 0, badTraffic = 0, unknownTraffic = 0;
+    for (var i = 0; i < textStringArray.length; i++){
+        if (textStringArray[i].indexOf('good') !== -1) {
+            goodTraffic++;
+        } else if (textStringArray[i].indexOf('bad') !== -1) {
+            badTraffic++;
+        } else {
+            unknownTraffic++;
+        }
+    }
     // Передаваемая информация
     var data = {
         title: 'IDS Parser Report',
-        pieChart: 'pie.png', // TODO: придумать, как получить изображение
-        text: ['192.168.192.168:12354 -> 192.168.192.168:12354 [TCP] at 2019-01-01 10-10-10 - 200 [] - good',
-        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [snort] - good',
-        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [snort] - bad',
-        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [snort] - bad',
-        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [snort] - good',
-        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [] - unknown',
-        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [] - unknown',
-        '192.168.1.69:2540 -> 209.197.3.15:443 [TCP] at 2019-02-04 20-14-36 - 16 [snort] - good'],
+        ids_name: draw.ids_name,
+        text: textStringArray,
         traffic: {
             good: {
-                quantity: 4,
-                percent: 50
+                quantity: goodTraffic,
+                percent: parseInt(goodTraffic / draw.conn_quantity * 100)
             },
             bad: {
-                quantity: 2,
-                percent: 25
+                quantity: badTraffic,
+                percent: parseInt(badTraffic / draw.conn_quantity * 100)
             },
             unknown: {
-                quantity: 2,
-                percent: 25
+                quantity: unknownTraffic,
+                percent: parseInt(unknownTraffic / draw.conn_quantity * 100)
             }
         },
-        total: 8
+        total: draw.conn_quantity
     };
     // Главная и единственная функция в модуле
     Pdfgen.renderReport(data, res);
