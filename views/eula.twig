@@ -216,12 +216,12 @@ Twig 2.x (c) 2010-2019 Symfony - BSD License
         <div class="state">
             <p>
                 <label class="chkbox" onclick="eulaBtnToggle();">
-                    <span>Я принимаю условия соглашения</span>
+                    <span>{{ eula_i_accept }}</span>
                     <input type="checkbox" name="agreed" id="agreed">
                     <span class="checkmark"></span>
                 </label>
             </p>
-            <p><input class="btn btn-std" type="button" id="agreedOKBtn" value="Продолжить" disabled></p>
+            <p><input class="btn btn-std" type="button" id="agreedOKBtn" value="{{ eula_continue }}" disabled></p>
 
         </div>
     </div>

@@ -1,6 +1,3 @@
-/**
- * TODO: Extractor: IDS Bro
- */
 const fs = require('fs');
 const regExp = require('./regexp');
 const mongoose = require('mongoose');
