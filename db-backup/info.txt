@@ -1,0 +1,107 @@
+brorecords
+
+{
+    "_id" : ObjectId("5cbd5616b5fd0f6893f14dd9"),
+    "ids_name" : "Bro",
+    "date_reg" : "2019-02-05",
+    "time_reg" : "21-14-17",
+    "ip_src" : "192.168.1.69",
+    "port_src" : 25143,
+    "ip_dest" : "87.250.247.183",
+    "port_dest" : 443,
+    "protocol" : "tcp",
+    "signatures" : "C6rhft2Ak6NqOsJ6qf",
+    "conn_quantity" : 20,
+    "status" : "good",
+    "__v" : 0
+}
+
+dallaslockrecords
+
+{
+    "_id" : ObjectId("5cbff7e1f0eaf82a81d3a9e3"),
+    "ids_name" : "Dallas Lock",
+    "date_reg" : "18.02.2019",
+    "time_reg" : "14:30:59",
+    "ip_src" : "192.168.1.66",
+    "port_src" : 63027,
+    "ip_dest" : "192.168.1.35",
+    "port_dest" : 23,
+    "protocol" : "TCP",
+    "signatures" : "(детектор атак)",
+    "conn_quantity" : 1,
+    "status" : "bad",
+    "__v" : 0
+}
+
+secretnetrecords
+
+{
+    "_id" : ObjectId("5cbd5510809a20650996d054"),
+    "ids_name" : "SecretNet",
+    "date_reg" : "2019-02-04",
+    "time_reg" : "12:44:19",
+    "ip_src" : "192.168.1.47",
+    "port_src" : 54585,
+    "ip_dest" : "192.168.1.2",
+    "port_dest" : 36804,
+    "protocol" : "TCP",
+    "signatures" : "S-1-5-21-2952462522-1152063880-525777333",
+    "conn_quantity" : 1,
+    "status" : "unknown",
+    "__v" : 0
+}
+
+snortrecords
+
+{
+    "_id" : ObjectId("5cbff6c6b53f122855af2f60"),
+    "ids_name" : "Snort",
+    "date_reg" : "2019-02-04",
+    "time_reg" : "20:14:36",
+    "ip_src" : "192.168.1.69",
+    "port_src" : 2540,
+    "ip_dest" : "209.197.3.15",
+    "port_dest" : 443,
+    "protocol" : "TCP",
+    "signatures" : "[snort]",
+    "conn_quantity" : 16,
+    "status" : "good",
+    "__v" : 0
+}
+
+suricatarecords
+
+{
+    "_id" : ObjectId("5cbd571b701a646afe9e5e19"),
+    "ids_name" : "Suricata",
+    "date_reg" : "04/22/20",
+    "time_reg" : "19:46:19",
+    "ip_src" : "192.168.1.137",
+    "port_src" : 57535,
+    "ip_dest" : "82.165.177.154",
+    "port_dest" : 80,
+    "protocol" : "TCP",
+    "signatures" : "Wget/1.15 (linux-gnu)",
+    "conn_quantity" : 1,
+    "status" : "unknown",
+    "__v" : 0
+}
+
+uidsrecords
+
+{
+    "_id" : ObjectId("5cbd5510809a00050996d054"),
+    "ids_name" : "?",
+    "date_reg" : "2008-06-04",
+    "time_reg" : "17:36:08",
+    "ip_src" : "192.168.0.200",
+    "port_src" : "[no port defined]",
+    "ip_dest" : "[no ip defined]",
+    "port_dest" : "[no port defined]",
+    "protocol" : "TCP",
+    "signatures" : "REQUEST.test=%5C%22%3EXXX%3Cscript%3Ealert%281%29%3C%2Fscript%3E GET.test=%5C%22%3EXXX%3Cscript%3Ealert%281%29%3C%2Fscript%3E",
+    "conn_quantity" : 1,
+    "status" : "unknown",
+    "__v" : 0
+}
