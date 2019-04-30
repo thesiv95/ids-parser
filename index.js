@@ -135,6 +135,7 @@ Lang.findById('5caef23ce4f44decbda7fc2e', function(err, res){
             loadedLanguage.btn_apply_settings = 'Применить';
             loadedLanguage.help_link_parsing = 'Раздел &quot;Обработка&quot;';
             loadedLanguage.help_link_settings = 'Раздел &quot;Настройки&quot;';
+            loadedLanguage.help_link_sysreq = 'Системные требования';
             loadedLanguage.help_version = 'Версия программы';
             loadedLanguage.help_build_date = 'Дата сборки';
             loadedLanguage.help_license = 'Лицензия';
@@ -170,6 +171,7 @@ Lang.findById('5caef23ce4f44decbda7fc2e', function(err, res){
             loadedLanguage.settings_theme = "Styling theme";
             loadedLanguage.help_link_parsing = "Page &quot;Parsing&quot;";
             loadedLanguage.help_link_settings = "Page &quot;Settings&quot;";
+            loadedLanguage.help_link_sysreq = "System requirements";
             loadedLanguage.help_version = "Program version";
             loadedLanguage.help_build_date = "Build Date";
             loadedLanguage.help_license = "License";
@@ -214,6 +216,7 @@ Lang.findById('5caef23ce4f44decbda7fc2e', function(err, res){
             loadedLanguage.settings_theme = "נושא";
             loadedLanguage.help_link_parsing = "סעיף &quot;עיבוד&quot;";
             loadedLanguage.help_link_settings = "סעיף &quot;הגדרות&quot;";
+            loadedLanguage.help_link_sysreq = "דרישות מערכת";
             loadedLanguage.help_version = "גרסה של התוכנית";
             loadedLanguage.help_build_date = "תאריך יצירה";
             loadedLanguage.help_license = "רישיון";
@@ -258,6 +261,7 @@ Lang.findById('5caef23ce4f44decbda7fc2e', function(err, res){
             loadedLanguage.settings_theme = "Тема оформлення";
             loadedLanguage.help_link_parsing = "Роздiл &quot;Обробка&quot;";
             loadedLanguage.help_link_settings = "Роздiл &quot;Налаштування&quot;";
+            loadedLanguage.help_link_sysreq = "Системні вимоги";
             loadedLanguage.help_version = "Версія програми";
             loadedLanguage.help_build_date = "Дата складання";
             loadedLanguage.help_license = "Ліцензія";
@@ -302,6 +306,7 @@ Lang.findById('5caef23ce4f44decbda7fc2e', function(err, res){
             loadedLanguage.settings_theme = "Тэма афармлення";
             loadedLanguage.help_link_parsing = "Раздзел &quot;Апрацоўка&quot;";
             loadedLanguage.help_link_settings = "Раздзел &quot;Налады&quot;";
+            loadedLanguage.help_link_sysreq = "Сістэмныя патрабаванні";
             loadedLanguage.help_version = "Версія праграмы";
             loadedLanguage.help_build_date = "Дата зборкі";
             loadedLanguage.help_license = "Ліцэнзія";
@@ -443,6 +448,7 @@ app.get('/help', function(req, res){
         title: loadedLanguage.header_help,
         help_link_parsing: loadedLanguage.help_link_parsing,
         help_link_settings: loadedLanguage.help_link_settings,
+        help_link_sysreq: loadedLanguage.help_link_sysreq,
         help_version: loadedLanguage.help_version,
         help_build_date: loadedLanguage.help_build_date,
         help_license: loadedLanguage.help_license,
