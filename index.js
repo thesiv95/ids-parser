@@ -41,38 +41,33 @@ app.use(nosniff());
 var draw = Draw; 
 
 // Подключение к БД, для загрузки настроек
-mongoose.connect('mongodb://localhost:27017/config', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/config', { useNewUrlParser: true });
 const setupSchema = new Schema({
     eula: Boolean,
     lang: String,
     styles: Number
 });
+//,{'collection': 'setup'});
 
-const Setup = mongoose.model('Setup', setupSchema, 'setup');
+mongoose.set('debug', true);
+// экспорт базы
+
+setupSchema.set('collection', 'setup');
+
+const Setup = mongoose.model('Setup', setupSchema);
 var eula, lang, styles;
-Setup.findById('5caee5c4e4f44decbda7fad7', function(err, res){
+Setup.find({}).exec(function(err, res){
     if (err) {
         console.log('Setup DB connection error: ' + err);
         return;
     }
-       
-    // Почему то res не всегда возвращает то что должен
-    // Пока что напишу такую заглушку
-    if (res === null) {
-        // eula = false;
-        eula = true;
-        lang = 'en';
-        styles = 1;
-    } else {
-        console.log('База настроек загрузилась');
-        eula = res.eula;
-        lang = res.lang;
-        styles = res.styles;
-    }
-
+    
+    console.log(res);
+    res.forEach(function(element){
+        console.log(element);
+    })
     console.log('Setup Result');
-    console.log(eula + ' ' + lang + ' ' + styles);
-        
+    console.log(eula + ' ' + lang + ' ' + styles);   
     //mongoose.disconnect(); 
 });
 
@@ -92,8 +87,8 @@ Lang.find({}, function(err, res){
     if (err) {
         console.log('Language load error: ' + err);
     }
-    console.log('Language Result');
-    console.log(res);
+    // console.log('Language Result');
+    // console.log(res);
     loadedLanguage.html_dir = res;
     // loadedLanguage.msg_noscript
     // loadedLanguage.msg_old_browser
@@ -138,8 +133,8 @@ Lang.find({}, function(err, res){
     // loadedLanguage.author_diploma
     // loadedLanguage.go_back
     
-    console.log('Loaded language');
-    console.log(loadedLanguage);
+    // console.log('Loaded language');
+    // console.log(loadedLanguage);
         
         
     
