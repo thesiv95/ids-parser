@@ -67,9 +67,13 @@ function hideSuccessMsg(){
 }
 
 function apply(){
-    displaySuccessMsg();
-    // скрыть через 3 сек
-    setTimeout(hideSuccessMsg, 3000);
+    
+    // Вызвать страницу, передающую запрос в БД
+    go_to('/applysettings');
 
+    // Показать сообщение
+    displaySuccessMsg();
+    // Скрыть сообщение через 3 сек
+    setTimeout(hideSuccessMsg, 3000);
 }
 

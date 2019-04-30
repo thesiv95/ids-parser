@@ -3,6 +3,7 @@
         <div class="settings">
             <div class="settings-inner">
                 {{ settings_language }}:
+                <form>
                 <select name="set_lang" id="set_lang">
                     <option value="ru">Russian (Русский)</option>
                     <option value="en">English</option>
@@ -21,6 +22,7 @@
             <div class="settings-inner">
                 <input type="button" class="btn btn-std" value="{{ btn_apply_settings }}" onclick="apply();">
                 <input type="button" class="btn btn-std" value="{{ btn_to_main_page }}" onclick="go_to('/');">
+            </form>
             </div>
         </div>
 
