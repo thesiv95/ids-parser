@@ -2,6 +2,11 @@
 // есть проблемы с подключением к БД
 
 
+// TODO: пофиксить загрузку настроек
+// TODO: реализовать изменение настроек (привязать изменения настроек к выпадающим меню!)
+// TODO: обновить ВМ, дистрибутивы на сайте, файл readme
+// TODO: текст (достичь антиплагиата, мб поменять скрины, презентация, титульники и пр)
+
 /***** Инициализация и настройка Приложения ******/
 
 // Сторонние библиотеки
@@ -63,13 +68,10 @@ Setup.find({}).exec(function(err, res){
         return;
     }
     
-    console.log(res);
-    res.forEach(function(element){
-        console.log(element);
-    })
-    console.log('Setup Result');
-      
-    //mongoose.disconnect(); 
+    console.log('res: ' + res);
+    
+    console.log('res eula' + res.eula);
+    
     
 });
 
