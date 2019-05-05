@@ -327,7 +327,7 @@ app.use('/upload', function(req, res, next){ // ссылка для загруз
 });
 
 // Применение изменений в настройках
-app.post('/applysettings', function(req, res){
+app.get('/applysettings', function(req, res){
     console.log('Apply Settings');
 });
 
