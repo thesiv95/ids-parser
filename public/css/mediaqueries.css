@@ -101,6 +101,7 @@
 
     .menu__item_name {
         top: 45px;
+        font-size: 18px;
     }
 
     .copyright {
@@ -186,7 +187,7 @@
     }
 
     .menu__item_name {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .settings, .help, .author {

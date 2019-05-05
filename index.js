@@ -12,6 +12,7 @@ const xssFilter = require('x-xss-protection');
 const nosniff = require('dont-sniff-mimetype');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const fs = require('fs');
 const twig = require('./node_modules/twig');
 var upload = require('jquery-file-upload-middleware');
 
@@ -67,79 +68,28 @@ Setup.find({}).exec(function(err, res){
         console.log(element);
     })
     console.log('Setup Result');
-    console.log(eula + ' ' + lang + ' ' + styles);   
+      
     //mongoose.disconnect(); 
-});
-
-// Загружаем языковые константы
-const langSchema = new Schema({
-    ru: Object,
-    en: Object,
-    he: Object,
-    uk: Object,
-    be: Object
-});
-
-var loadedLanguage = {}; // загруженный, текущий язык, его передаем в шаблонизатор
-const Lang = mongoose.model('Lang', langSchema, 'language');
-
-Lang.find({}, function(err, res){
-    if (err) {
-        console.log('Language load error: ' + err);
-    }
-    // console.log('Language Result');
-    // console.log(res);
-    loadedLanguage.html_dir = res;
-    // loadedLanguage.msg_noscript
-    // loadedLanguage.msg_old_browser
-    // loadedLanguage.msg_too_small
-    // loadedLanguage.header_eula
-    // loadedLanguage.header_main_page
-    // loadedLanguage.eula_i_accept
-    // loadedLanguage.eula_continue
-    // loadedLanguage.header_parsing
-    // loadedLanguage.header_settings
-    // loadedLanguage.header_help
-    // loadedLanguage.header_parsing
-    // loadedLanguage.header_settings
-    // loadedLanguage.header_author
-    // loadedLanguage.header_404
-    // loadedLanguage.btn_to_main_page
-    // loadedLanguage.btn_start_parsing
-    // loadedLanguage.btn_export_parsing
-    // loadedLanguage.parsing_ids_detected
-    // loadedLanguage.parsing_report_download
-    // loadedLanguage.parsing_timestamp
-    // loadedLanguage.parsing_signature
-    // loadedLanguage.parsing_legal
-    // loadedLanguage.parsing_illegal
-    // loadedLanguage.parsing_unknown
-    // loadedLanguage.parsing_conn_total
-    // loadedLanguage.parsing_date
-    // loadedLanguage.settings_language
-    // loadedLanguage.settings_theme
-    // loadedLanguage.btn_apply_settings
-    // loadedLanguage.help_link_parsing
-    // loadedLanguage.help_link_settings
-    // loadedLanguage.help_link_sysreq
-    // loadedLanguage.help_version
-    // loadedLanguage.help_build_date
-    // loadedLanguage.help_license
-    // loadedLanguage.author_email
-    // loadedLanguage.author_facebook
-    // loadedLanguage.author_twitter
-    // loadedLanguage.author_github
-    // loadedLanguage.author_vk
-    // loadedLanguage.author_diploma
-    // loadedLanguage.go_back
     
-    // console.log('Loaded language');
-    // console.log(loadedLanguage);
-        
-        
-    
-
 });
+
+// Загрузка языковых файлов
+
+if (eula === undefined && lang === undefined && styles === undefined) {
+    console.log('База не загрузилась, берем изменения по умолчанию');
+    eula = true;
+    lang = 'ru';
+    styles = 2;
+}
+
+console.log(eula + ' ' + lang + ' ' + styles); 
+
+var langFile = fs.readFileSync('lang/lang_' + lang + '.json');
+
+var loadedLanguage = JSON.parse(langFile);
+
+// console.log('Loaded Language');
+// console.log(loadedLanguage);
 
 
 /***** Страницы ******/
