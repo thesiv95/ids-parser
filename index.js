@@ -47,7 +47,7 @@ app.use(nosniff());
 var draw = Draw; 
 
 // Подключение к БД, для загрузки настроек
-mongoose.connect('mongodb://localhost:27017/config', { useNewUrlParser: true });
+const db = mongoose.connect('mongodb://localhost:27017/config', { useNewUrlParser: true });
 const setupSchema = new Schema({
     eula: Boolean,
     lang: String,
@@ -62,6 +62,22 @@ setupSchema.set('collection', 'setup');
 
 const Setup = mongoose.model('Setup', setupSchema);
 var eula, lang, styles;
+
+
+// db.setup.find({"eula":{$exist: true}}, {_id:0, "eula":1}).exec(function(err, res){
+//         if (err) {
+//             console.log('Setup DB connection error: ' + err);
+//             return;
+//         }
+        
+//         console.log('res: ' + res);
+        
+//         console.log('res eula' + res.eula);
+        
+        
+//     });
+
+var langFile = '';
 Setup.find({}).exec(function(err, res){
     if (err) {
         console.log('Setup DB connection error: ' + err);
@@ -70,23 +86,34 @@ Setup.find({}).exec(function(err, res){
     
     console.log('res: ' + res);
     
-    console.log('res eula' + res.eula);
+    
+
+    eula = res[0].eula;
+    lang = res[0].lang;
+    styles = res[0].styles;
+
+    console.log('eula: ' + eula);
+    console.log('lang: ' + lang);
+    console.log('styles: ' + styles);
+    
     
     
 });
 
+
+
+// if (eula === undefined && lang === undefined && styles === undefined) {
+//     console.log('База не загрузилась, берем изменения по умолчанию');
+//     eula = true;
+//     lang = 'be';
+//     styles = 2;
+// }
+
 // Загрузка языковых файлов
+langFile = fs.readFileSync('lang/lang_' + lang + '.json');
 
-if (eula === undefined && lang === undefined && styles === undefined) {
-    console.log('База не загрузилась, берем изменения по умолчанию');
-    eula = true;
-    lang = 'be';
-    styles = 2;
-}
 
-console.log(eula + ' ' + lang + ' ' + styles); 
 
-var langFile = fs.readFileSync('lang/lang_' + lang + '.json');
 
 var loadedLanguage = JSON.parse(langFile);
 
