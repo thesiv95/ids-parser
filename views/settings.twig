@@ -5,18 +5,53 @@
                 {{ settings_language }}:
                 <form>
                 <select name="set_lang" id="set_lang">
+
+                    {% if html_lang == "ru" %}
+                    <option value="ru" selected="selected">Russian (Русский)</option>
+                    {% else %}
                     <option value="ru">Russian (Русский)</option>
+                    {% endif %}
+
+                    {% if html_lang == "en" %}
+                    <option value="en" selected="selected">English</option>
+                    {% else %}
                     <option value="en">English</option>
+                    {% endif %}
+
+                    {% if html_lang == "he" %}
+                    <option value="he" selected="selected">Hebrew (עברית)</option>
+                    {% else %}
                     <option value="he">Hebrew (עברית)</option>
+                    {% endif %}
+
+                    {% if html_lang == "uk" %}
+                    <option value="uk" selected="selected">Ukranian (Українська)</option>
+                    {% else %}
                     <option value="uk">Ukranian (Українська)</option>
+                    {% endif %}
+
+                    {% if html_lang == "be" %}
+                    <option value="be" selected="selected">Belarusian (Беларуская)</option>
+                    {% else %}
                     <option value="be">Belarusian (Беларуская)</option>
+                    {% endif %}
+                    
+                    
                 </select>
             </div>
             <div class="settings-inner">
                 {{ settings_theme }}:
                 <select name="set_style" id="set_style">
+                    {% if styles == 1 %}
+                    <option value="1" selected="selected">White</option>
+                    {% else %}
                     <option value="1">White</option>
+                    {% endif %}
+                    {% if styles == 2 %}
+                    <option value="2" selected="selected">Black</option>
+                    {% else %}
                     <option value="2">Black</option>
+                    {% endif %}
                 </select>
             </div>
             <div class="settings-inner">
