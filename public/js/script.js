@@ -66,14 +66,45 @@ function hideSuccessMsg(){
     successMsg.style.display = 'none';
 }
 
+
+// Применить настройки
 function apply(){
     
-    // Вызвать страницу, передающую запрос в БД
-    go_to('/applysettings');
+    
 
+    // Передать значения из формы, чтобы отправить их в базу данных
+    // var setupData = $('#set_form').serialize();
+    // console.log(setupData);
+    
+    var data = {};
+    data.title = "title";
+    data.message = "message";
+    
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: 'http://localhost:3000/applysettings',						
+        success: function(data) {
+            console.log('success');
+            console.log(JSON.stringify(data));
+        }
+    });
+
+    // $.ajax({
+    //     type: 'POST',
+    //     url: '/applysettings',
+    //     data: JSON.stringify(setupData),
+    //     // async: false,
+    //     contentType: 'application/json',
+    // })
+    
     // Показать сообщение
     displaySuccessMsg();
-    // Скрыть сообщение через 3 сек
-    setTimeout(hideSuccessMsg, 3000);
+    // Скрыть сообщение через 5 сек
+    setTimeout(hideSuccessMsg, 5000);
+    
+
+    
 }
 

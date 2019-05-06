@@ -64,24 +64,24 @@ setupSchema.set('collection', 'setup');
 const Setup = mongoose.model('Setup', setupSchema);
 var eula, lang, styles;
 
-Setup.findById('5ccfaf5a0c3c1612d4e2c905', function(err, setting){
-    if (err) {
-        console.log('Setup Init error');
-        console.log(err);
-    } else {
-        console.log('Setup Contents');
-        if (setting !== null || setting !== undefined){
-            console.log(setting[0]);
-            // eula = setting[0].eula;
-            // lang = setting[0].lang;
-            // styles = setting[0].styles;
-        } else {
-            console.log('Setting is null');
-        }
+// Setup.findById('5ccfaf5a0c3c1612d4e2c905', function(err, setting){
+//     if (err) {
+//         console.log('Setup Init error');
+//         console.log(err);
+//     } else {
+//         console.log('Setup Contents');
+//         if (setting !== null || setting !== undefined){
+//             console.log(setting[0]);
+//             // eula = setting[0].eula;
+//             // lang = setting[0].lang;
+//             // styles = setting[0].styles;
+//         } else {
+//             console.log('Setting is null');
+//         }
         
-    }
+//     }
 
-});
+// });
 
 // Setup.find({styles: 1}).exec(function(err, setting){
 //         if (err) {
@@ -347,8 +347,12 @@ app.use('/upload', function(req, res, next){ // ссылка для загруз
 });
 
 // Применение изменений в настройках
-app.get('/applysettings', function(req, res){
+// https://gist.github.com/diorahman/1520485
+app.post('/applysettings', function(req, res){
     console.log('Apply Settings');
+    var obj = {};
+	console.log('body: ' + JSON.stringify(req.body));
+	res.send(req.body);
 });
 
 /***** Запуск сервера ******/

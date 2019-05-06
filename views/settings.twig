@@ -3,7 +3,7 @@
         <div class="settings">
             <div class="settings-inner">
                 {{ settings_language }}:
-                <form>
+                <form name="set_form" id="set_form" method="post">
                 <select name="set_lang" id="set_lang">
 
                     {% if html_lang == "ru" %}
