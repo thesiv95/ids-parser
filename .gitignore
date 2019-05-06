@@ -1,6 +1,7 @@
-node_modules/
-demo-db/
-base/
+node_modules
+demo-db
+base
+base1
 db.txt
 .snyk
 *.djvu

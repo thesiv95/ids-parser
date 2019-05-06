@@ -47,79 +47,72 @@ app.use(nosniff());
 var draw = Draw; 
 
 // Подключение к БД, для загрузки настроек
-const db = mongoose.connect('mongodb://localhost:27017/config', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/config', { useNewUrlParser: true });
 const setupSchema = new Schema({
     eula: Boolean,
     lang: String,
     styles: Number
 });
-//,{'collection': 'setup'});
 
 mongoose.set('debug', true);
 // экспорт базы
 
 setupSchema.set('collection', 'setup');
 
+// Загрузка настроек
+// !!! баг с получением данных из базы
 const Setup = mongoose.model('Setup', setupSchema);
 var eula, lang, styles;
 
-
-// db.setup.find({"eula":{$exist: true}}, {_id:0, "eula":1}).exec(function(err, res){
-//         if (err) {
-//             console.log('Setup DB connection error: ' + err);
-//             return;
-//         }
-        
-//         console.log('res: ' + res);
-        
-//         console.log('res eula' + res.eula);
-        
-        
-//     });
-
-var langFile = '';
-Setup.find({}).exec(function(err, res){
+Setup.findById('5ccfaf5a0c3c1612d4e2c905', function(err, setting){
     if (err) {
-        console.log('Setup DB connection error: ' + err);
-        return;
+        console.log('Setup Init error');
+        console.log(err);
+    } else {
+        console.log('Setup Contents');
+        if (setting !== null || setting !== undefined){
+            console.log(setting[0]);
+            // eula = setting[0].eula;
+            // lang = setting[0].lang;
+            // styles = setting[0].styles;
+        } else {
+            console.log('Setting is null');
+        }
+        
     }
-    
-    console.log('res: ' + res);
-    
-    
 
-    eula = res[0].eula;
-    lang = res[0].lang;
-    styles = res[0].styles;
-
-    console.log('eula: ' + eula);
-    console.log('lang: ' + lang);
-    console.log('styles: ' + styles);
-    
-    
-    
 });
 
+// Setup.find({styles: 1}).exec(function(err, setting){
+//         if (err) {
+//             console.log('Setup Init error');
+//             console.log(err);
+//         } else {
+//             console.log('Setup Contents');
+//             if (setting !== null || setting !== undefined){
+//                 console.log(setting[0]);
+//                 eula = setting[0].eula;
+//                 lang = setting[0].lang;
+//                 styles = setting[0].styles;
+//             } else {
+//                 console.log('Setting is null/undefined');
+//             }
+            
+//         }
+    
+//     });
 
 
-// if (eula === undefined && lang === undefined && styles === undefined) {
-//     console.log('База не загрузилась, берем изменения по умолчанию');
-//     eula = true;
-//     lang = 'be';
-//     styles = 2;
-// }
+if (eula === undefined && lang === undefined && styles === undefined) {
+    console.log('База не загрузилась, берем изменения по умолчанию');
+    eula = true;
+    lang = 'en';
+    styles =1;
+}
 
 // Загрузка языковых файлов
-langFile = fs.readFileSync('lang/lang_' + lang + '.json');
-
-
-
-
+var langFile = fs.readFileSync('lang/lang_' + lang + '.json');
 var loadedLanguage = JSON.parse(langFile);
-
-// console.log('Loaded Language');
-// console.log(loadedLanguage);
-
 
 /***** Страницы ******/
 // Лицензионное соглашение - по идее, должно загружаться в первый раз
@@ -153,7 +146,7 @@ app.get('/', function(req, res){ // Главная
             // Элементы на странице
             html_lang: lang,
             html_dir: loadedLanguage.html_dir,
-            msg_noscript: loadedLanguage.msg_no_script,
+            msg_noscript: loadedLanguage.msg_noscript,
             msg_old_browser: loadedLanguage.msg_old_browser,
             msg_too_small: loadedLanguage.msg_too_small,
             title: loadedLanguage.header_main_page,
@@ -182,7 +175,7 @@ app.get('/parsing', function(req, res){
     res.render('parsing', {
         html_lang: lang,
         html_dir: loadedLanguage.html_dir,
-        msg_noscript: loadedLanguage.msg_no_script,
+        msg_noscript: loadedLanguage.msg_noscript,
         msg_old_browser: loadedLanguage.msg_old_browser,
         msg_too_small: loadedLanguage.msg_too_small,
         title: loadedLanguage.header_parsing,
@@ -210,7 +203,7 @@ app.get('/settings', function(req, res){
     res.render('settings', {
         html_lang: lang,
         html_dir: loadedLanguage.html_dir,
-        msg_noscript: loadedLanguage.msg_no_script,
+        msg_noscript: loadedLanguage.msg_noscript,
         msg_old_browser: loadedLanguage.msg_old_browser,
         msg_too_small: loadedLanguage.msg_too_small,
         msg_changed: loadedLanguage.msg_changed,
@@ -228,7 +221,7 @@ app.get('/help', function(req, res){
     res.render('help', {
         html_lang: lang,
         html_dir: loadedLanguage.html_dir,
-        msg_noscript: loadedLanguage.msg_no_script,
+        msg_noscript: loadedLanguage.msg_noscript,
         msg_old_browser: loadedLanguage.msg_old_browser,
         msg_too_small: loadedLanguage.msg_too_small,
         title: loadedLanguage.header_help,
@@ -249,7 +242,7 @@ app.get('/author', function(req, res){
     res.render('author', {
         html_lang: lang,
         html_dir: loadedLanguage.html_dir,
-        msg_noscript: loadedLanguage.msg_no_script,
+        msg_noscript: loadedLanguage.msg_noscript,
         msg_old_browser: loadedLanguage.msg_old_browser,
         msg_too_small: loadedLanguage.msg_too_small,
         title: loadedLanguage.header_author,
@@ -269,7 +262,7 @@ app.get('/404', function(req, res){
     res.render('404', {
         html_lang: lang,
         html_dir: loadedLanguage.html_dir,
-        msg_noscript: loadedLanguage.msg_no_script,
+        msg_noscript: loadedLanguage.msg_noscript,
         msg_old_browser: loadedLanguage.msg_old_browser,
         msg_too_small: loadedLanguage.msg_too_small,
         title: loadedLanguage.header_404,
