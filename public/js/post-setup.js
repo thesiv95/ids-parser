@@ -7,6 +7,10 @@ $(document).ready(function() {
       // Prevent the form from submitting via the browser.
       event.preventDefault();
       ajaxPost();
+      // Показать сообщение об успешном изменении настроек (см. файл script.js)
+      displaySuccessMsg();
+      // Скрыть сообщение через 5 сек
+      setTimeout(hideSuccessMsg, 5000);
     });
           
     function ajaxPost(){
@@ -28,11 +32,8 @@ $(document).ready(function() {
         data: JSON.stringify(formData),
         dataType : 'json',
         success : function(element) {
-          // alert(JSON.stringify(element));
-          // Показать сообщение об успешном изменении настроек (см. файл script.js)
-          displaySuccessMsg();
-          // Скрыть сообщение через 5 сек
-          setTimeout(hideSuccessMsg, 5000);
+          console.log(JSON.stringify(element));
+          
         },
         error : function(e) {
           alert("Error!")
