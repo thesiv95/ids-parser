@@ -70,15 +70,10 @@ function hideSuccessMsg(){
 // Применить настройки
 function apply(){
     
-    
-
     // Передать значения из формы, чтобы отправить их в базу данных
-    // var setupData = $('#set_form').serialize();
-    // console.log(setupData);
     
-    var data = {};
-    data.title = "title";
-    data.message = "message";
+    var data = $('#set_form').serialize();
+    console.log(data);
     
     $.ajax({
         type: 'POST',

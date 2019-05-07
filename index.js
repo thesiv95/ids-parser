@@ -103,10 +103,33 @@ var eula, lang, styles;
 //     });
 
 
+Setup.findById('5ccfaf5a0c3c1612d4e2c905', function(err, setting){
+    if (err) {
+        console.log('Setup Init error');
+        console.log(err);
+            // console.log('База не загрузилась, берем изменения по умолчанию');
+            // eula = true;
+            // lang = 'be';
+            // styles =1;
+    } else {
+        console.log('Setup Contents');
+        if (setting){
+            console.log(setting);
+            // eula = setting.eula;
+            // lang = setting.lang;
+            // styles = setting.styles;
+        } else {
+            console.log('Setting is null');
+        }
+
+    }
+
+});
+
 if (eula === undefined && lang === undefined && styles === undefined) {
     console.log('База не загрузилась, берем изменения по умолчанию');
     eula = true;
-    lang = 'en';
+    lang = 'be';
     styles =1;
 }
 
@@ -350,9 +373,7 @@ app.use('/upload', function(req, res, next){ // ссылка для загруз
 // https://gist.github.com/diorahman/1520485
 app.post('/applysettings', function(req, res){
     console.log('Apply Settings');
-    var obj = {};
 	console.log('body: ' + JSON.stringify(req.body));
-	res.send(req.body);
 });
 
 /***** Запуск сервера ******/
@@ -363,4 +384,4 @@ app.listen(port, function () {
 
 
 // Когда все запущено, то нужно отключиться от БД, чтобы процесс приложения завершился
-// mongoose.disconnect();
+mongoose.disconnect();

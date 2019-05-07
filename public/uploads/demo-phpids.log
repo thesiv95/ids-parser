@@ -1,2 +1,0 @@
-﻿"192.168.0.200",2008-06-04T17:36:08+02:00,54,"xss csrf id rfe lfi","REQUEST.test=%5C%22%3EXXX%3Cscript%3Ealert%281%29%3C%2Fscript%3E GET.test=%5C%22%3EXXX%3Cscript%3Ealert%281%29%3C%2Fscript%3E",
-"%2Finfo.php%3Ftest%3D%2522%253EXXX%253Cscript%253Ealert%281%29%253C%2Fscript%253E"

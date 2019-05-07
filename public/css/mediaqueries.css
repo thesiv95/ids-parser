@@ -35,7 +35,7 @@
     }
 
     .copyright {
-        position: fixed;
+        position: relative;
     }
 
 }
@@ -47,6 +47,7 @@
 
     .copyright {
         position: relative; /* Place copyright text at the end of the page */
+        margin-top: 30px;
     }
 
     .eula-inner {

@@ -29,6 +29,7 @@
     position: fixed;
     bottom: 10px;
     text-align: center;
+    margin-top: 30px;
 }
 
 
@@ -133,8 +134,14 @@
 
 /* Help, Settings & Author blocks */
 
-.help, .settings, .author {
+.author, .settings {
     padding: 0px 30px;
+    line-height: 45px;
+}
+
+.help {
+    padding: 0px 30px;
+    line-height: 25px;
 }
 
 .settings-inner {
