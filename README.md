@@ -64,13 +64,16 @@ http://parser2k19.xyz
 &copy; [SIV](https://www.facebook.com/thesiv95), 2019
 
 ### Libraries & frameworks used
-<li><a href="https://fonts.adobe.com/fonts/stolzl" target="_blank">Stolzl-Regular</a>: Copyright (c) 2015 by Mariya Pigoulevskaya. All rights reserved.</li>
-            <li><a href="https://code.jquery.com/jquery/" target="_blank">JQuery 1.9.1</a> (c) 2013-2019 The jQuery Foundation - MIT License</li>
-            <li><a href="https://leaverou.github.io/prefixfree/" target="_blank">StyleFix 1.0.3 & PrefixFree 1.0.7</a> (c) 2017 Lea Verou - MIT license</li>
-            <li><a href="https://modernizr.com" target="_blank">Modernizr 3.6.0</a> (c) 2019 Faruk Ateş, Paul Irish, Alex Sexton, Ryan Seddon, Patrick Kettner, Stu Cox, Richard Herrera - MIT License</li>
-            <li><a href="https://momentjs.com" target="_blank">Moment.js 2.24.0</a> (c) 2019 JS Foundation and other contributors - MIT License</li>
-            <li><a href="https://d3js.org" target="_blank">d3.js 5.9.1</a> (c) 2019 Mike Bostock - BSD license</li>
-            <li><a href="http://d3pie.org" target="_blank">d3pie 0.2.1</a> (c) 2014-2015 Benjamin Keen - MIT License</li>
-            <li><a href="https://mongoosejs.com" target="_blank">mongoose 5.4.19</a> (c) 2011 LearnBoost - MIT License</li>
-            <li><a href="https://www.npmjs.com/package/xml2js" target="_blank">xml2js 0.4.19</a> (c) 2017 @Leonidas-from-XIV - MIT License</li>
-            <li><a href="https://twig.symfony.com" target="_blank">Twig 2.x</a> (c) 2010-2019 Symfony - BSD License (<a href="https://www.npmjs.com/package/twig" target="_blank">version for node.js</a>)</li>
+<li><a href="https://fonts.adobe.com/fonts/stolzl" target="_blank">Stolzl-Regular</a>: Copyright &copy; 2015 by Mariya Pigoulevskaya. All rights reserved.</li>
+            <li><a href="https://code.jquery.com/jquery/" target="_blank">JQuery 1.9.1</a> &copy; 2013-2019 The jQuery Foundation - MIT License</li>
+            <li><a href="https://leaverou.github.io/prefixfree/" target="_blank">StyleFix 1.0.3 & PrefixFree 1.0.7</a> &copy; 2017 Lea Verou - MIT license</li>
+            <li><a href="https://modernizr.com" target="_blank">Modernizr 3.6.0</a> &copy; 2019 Faruk Ateş, Paul Irish, Alex Sexton, Ryan Seddon, Patrick Kettner, Stu Cox, Richard Herrera - MIT License</li>
+            <li><a href="https://momentjs.com" target="_blank">Moment.js 2.24.0</a> &copy; 2019 JS Foundation and other contributors - MIT License</li>
+            <li><a href="https://d3js.org" target="_blank">d3.js 5.9.1</a> &copy; 2019 Mike Bostock - BSD license</li>
+            <li><a href="http://d3pie.org" target="_blank">d3pie 0.2.1</a> &copy; 2014-2015 Benjamin Keen - MIT License</li>
+            <li><a href="https://mongoosejs.com" target="_blank">mongoose 5.4.19</a> &copy; 2011 LearnBoost - MIT License</li>
+            <li><a href="https://www.npmjs.com/package/xml2js" target="_blank">xml2js 0.4.19</a> &copy; 2017 @Leonidas-from-XIV - MIT License</li>
+            <li><a href="https://twig.symfony.com" target="_blank">Twig 2.x</a> &copy; 2010-2019 Symfony - BSD License (<a href="https://www.npmjs.com/package/twig" target="_blank">version for node.js</a>)</li>
+            <li><a href="https://helmetjs.github.io" target="_blank">Helmet 3.18.0</a> &copy; 2019 Adam Baldwin - CC 3.0 License</li>
+            <li><a href="https://www.npmjs.com/package/x-xss-protection" target="_blank">x-xss-protection 1.1.0</a> &copy; 2019 Evan Hahn - MIT License</li>
+            <li><a href="https://www.npmjs.com/package/dont-sniff-mimetype" target="_blank">dont-sniff-mimetype 1.0.0</a> &copy; 2019 Evan Hahn - MIT License</li>
