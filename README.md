@@ -66,7 +66,8 @@ http://parser2k19.xyz
 ### Libraries & frameworks used
 <li><a href="https://fonts.adobe.com/fonts/stolzl" target="_blank">Stolzl-Regular</a>: Copyright &copy; 2015 by Mariya Pigoulevskaya. All rights reserved.</li>
             <li><a href="https://code.jquery.com/jquery/" target="_blank">JQuery 1.9.1</a> &copy; 2013-2019 The jQuery Foundation - MIT License</li>
-            <li><a href="https://leaverou.github.io/prefixfree/" target="_blank">StyleFix 1.0.3 & PrefixFree 1.0.7</a> &copy; 2017 Lea Verou - MIT license</li>
+            <li><a href="https://blueimp.github.io/jQuery-File-Upload/" target="_blank">jQuery File Upload v9.25.1 </a> &copy; 2019 Sebastian Tschan - MIT License</li>
+            <li><a href="https://leaverou.github.io/prefixfree/" target="_blank">StyleFix 1.0.3 & PrefixFree 1.0.7</a> &copy; 2017 Lea Verou - MIT License</li>
             <li><a href="https://modernizr.com" target="_blank">Modernizr 3.6.0</a> &copy; 2019 Faruk Ateş, Paul Irish, Alex Sexton, Ryan Seddon, Patrick Kettner, Stu Cox, Richard Herrera - MIT License</li>
             <li><a href="https://momentjs.com" target="_blank">Moment.js 2.24.0</a> &copy; 2019 JS Foundation and other contributors - MIT License</li>
             <li><a href="https://d3js.org" target="_blank">d3.js 5.9.1</a> &copy; 2019 Mike Bostock - BSD license</li>
