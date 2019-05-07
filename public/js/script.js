@@ -67,39 +67,4 @@ function hideSuccessMsg(){
 }
 
 
-// Применить настройки
-function apply(){
-    
-    // Передать значения из формы, чтобы отправить их в базу данных
-    
-    var data = $('#set_form').serialize();
-    console.log(data);
-    
-    $.ajax({
-        type: 'POST',
-        data: JSON.stringify(data),
-        contentType: 'application/json',
-        url: 'http://localhost:3000/applysettings',						
-        success: function(data) {
-            console.log('success');
-            console.log(JSON.stringify(data));
-        }
-    });
-
-    // $.ajax({
-    //     type: 'POST',
-    //     url: '/applysettings',
-    //     data: JSON.stringify(setupData),
-    //     // async: false,
-    //     contentType: 'application/json',
-    // })
-    
-    // Показать сообщение
-    displaySuccessMsg();
-    // Скрыть сообщение через 5 сек
-    setTimeout(hideSuccessMsg, 5000);
-    
-
-    
-}
 

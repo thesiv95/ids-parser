@@ -3,8 +3,6 @@
 
 
 // TODO: пофиксить загрузку настроек
-// TODO: реализовать изменение настроек (выпадающее меню теперь робит как надо, то есть загружает то, что выбрано)
-// TODO: обновить ВМ, дистрибутивы на сайте, файл readme
 // TODO: текст (достичь антиплагиата, мб поменять скрины, презентация, титульники и пр)
 
 /***** Инициализация и настройка Приложения ******/
@@ -20,6 +18,10 @@ const Schema = mongoose.Schema;
 const fs = require('fs');
 const twig = require('./node_modules/twig');
 var upload = require('jquery-file-upload-middleware');
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
+
 
 // Самописные библиотеки и модули
 const Draw = require('./draw');
@@ -103,14 +105,10 @@ var eula, lang, styles;
 //     });
 
 
-Setup.findById('5ccfaf5a0c3c1612d4e2c905', function(err, setting){
+Setup.findOne({_id :'5ccfaf5a0c3c1612d4e2c905'}, function(err, setting){
     if (err) {
         console.log('Setup Init error');
         console.log(err);
-            // console.log('База не загрузилась, берем изменения по умолчанию');
-            // eula = true;
-            // lang = 'be';
-            // styles =1;
     } else {
         console.log('Setup Contents');
         if (setting){
@@ -370,11 +368,23 @@ app.use('/upload', function(req, res, next){ // ссылка для загруз
 });
 
 // Применение изменений в настройках
-// https://gist.github.com/diorahman/1520485
-app.post('/applysettings', function(req, res){
-    console.log('Apply Settings');
-	console.log('body: ' + JSON.stringify(req.body));
-});
+app.post("/applysettings", function(req,res){
+    
+    var setting = {};
+    setting.lang = req.body.lang;
+    setting.style = req.body.style;
+    console.log('Settings applied');
+    console.log(setting);
+
+    Setup.findOneAndUpdate({_id: '5ccfaf5a0c3c1612d4e2c905'}, {$set: {lang: setting.lang, styles: setting.style}}, function(err){
+        if (err) {
+            console.log('Apply settings error');
+            console.log(err);
+        }
+    });
+
+  });
+
 
 /***** Запуск сервера ******/
 app.listen(port, function () {
