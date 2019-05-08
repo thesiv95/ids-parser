@@ -48,6 +48,14 @@ app.use(nosniff());
 // переменная для модуля пдф
 var draw = Draw; 
 
+// { server: { 
+//     // sets how many times to try reconnecting
+//     reconnectTries: Number.MAX_VALUE,
+//     // sets the delay between every retry (milliseconds)
+//     reconnectInterval: 1000 
+//     } 
+// }
+
 // Подключение к БД, для загрузки настроек
 mongoose.connect('mongodb://localhost:27017/config', { useNewUrlParser: true });
 const setupSchema = new Schema({
@@ -56,15 +64,35 @@ const setupSchema = new Schema({
     styles: Number
 });
 
+// Загрузка настроек
+// !!! баг с получением данных из базы
+const Setup = mongoose.model('Setup', setupSchema, 'setup');
+var eula, lang, styles;
+
+//  MongoError: Topology was destroyed
+Setup.find({_id :'5ccfaf5a0c3c1612d4e2c905'}, function(err, setting){
+    if (err) {
+        console.log('Setup Init error');
+        console.log(err);
+    } else {
+        console.log('Setup Contents');
+        if (setting){
+            console.log(setting);
+            // eula = setting.eula;
+            // lang = setting.lang;
+            // styles = setting.styles;
+        } else {
+            console.log('Setting is null');
+        }
+
+    }
+
+});
+
 mongoose.set('debug', true);
 // экспорт базы
 
-setupSchema.set('collection', 'setup');
-
-// Загрузка настроек
-// !!! баг с получением данных из базы
-const Setup = mongoose.model('Setup', setupSchema);
-var eula, lang, styles;
+// setupSchema.set('collection', 'setup');
 
 // Setup.findById('5ccfaf5a0c3c1612d4e2c905', function(err, setting){
 //     if (err) {
@@ -105,29 +133,11 @@ var eula, lang, styles;
 //     });
 
 
-Setup.findOne({_id :'5ccfaf5a0c3c1612d4e2c905'}, function(err, setting){
-    if (err) {
-        console.log('Setup Init error');
-        console.log(err);
-    } else {
-        console.log('Setup Contents');
-        if (setting){
-            console.log(setting);
-            // eula = setting.eula;
-            // lang = setting.lang;
-            // styles = setting.styles;
-        } else {
-            console.log('Setting is null');
-        }
-
-    }
-
-});
 
 if (eula === undefined && lang === undefined && styles === undefined) {
     console.log('База не загрузилась, берем изменения по умолчанию');
     eula = true;
-    lang = 'be';
+    lang = 'en';
     styles =1;
 }
 
@@ -157,11 +167,12 @@ app.get('/', function(req, res){ // Главная
 
     // Если условия лиц. согл. не приняты - переброс на страницу eula
     if (!eula){
-        res.redirect('/eula');
+        
         // Обновляем значение в БД, чтобы потом редиректа не было
         Setup.findOneAndUpdate({eula: false}, {$set: {eula: true}}, function(err, res){
             if (err) console.log('Eula update error: ' + err);
         });
+        res.redirect('/eula');
     } else {
         res.render('index', {
             // Элементы на странице
