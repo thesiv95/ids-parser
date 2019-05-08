@@ -28,7 +28,10 @@ http://parser2k19.xyz
 
 [VMware Image (.zip)](http://parser2k19.xyz/files/ids-parser-vmware.zip)
             
-[Screenshot](http://parser2k19.xyz/files/scr.png)      
+[Screenshot](http://parser2k19.xyz/files/scr.png)  
+
+[Demo Log Files](http://parser2k19.xyz/files/demo-logs.zip)
+
 ### Minimal browser requirements 
 
 | Name        | Version           | Platform  |
