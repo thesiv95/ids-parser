@@ -1,13 +1,1 @@
-{"_id":{"$oid":"5cc863f68cf56a1ae8651407"},
-"ids_name":"Dallas Lock",
-"date_reg":"18.02.2019",
-"time_reg":"14:30:59",
-"ip_src":"192.168.1.66",
-"port_src":63027,
-"ip_dest":"192.168.1.35",
-"port_dest":23,
-"protocol":"TCP",
-"signatures":"(detektor atak)",
-"conn_quantity":1,
-"status":"bad"
-}
+{"_id":{"$oid":"5cc863f68cf56a1ae8651407"},"ids_name":"Dallas Lock","date_reg":"18.02.2019","time_reg":"14:30:59","ip_src":"192.168.1.66","port_src":{"$numberInt":"63027"},"ip_dest":"192.168.1.35","port_dest":{"$numberInt":"23"},"protocol":"TCP","signatures":"(detektor atak)","conn_quantity":{"$numberInt":"1"},"status":"bad"}
