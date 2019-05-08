@@ -57,42 +57,52 @@ var draw = Draw;
 // }
 
 // Подключение к БД, для загрузки настроек
+var eula, lang, styles;
 mongoose.connect('mongodb://localhost:27017/config', { useNewUrlParser: true });
+
 const setupSchema = new Schema({
     eula: Boolean,
     lang: String,
     styles: Number
 });
 
-// Загрузка настроек
-// !!! баг с получением данных из базы
 const Setup = mongoose.model('Setup', setupSchema, 'setup');
-var eula, lang, styles;
 
-//  MongoError: Topology was destroyed
-Setup.find({_id :'5ccfaf5a0c3c1612d4e2c905'}, function(err, setting){
-    if (err) {
-        console.log('Setup Init error');
-        console.log(err);
-    } else {
-        console.log('Setup Contents');
-        if (setting){
-            console.log(setting);
-            // eula = setting.eula;
-            // lang = setting.lang;
-            // styles = setting.styles;
-        } else {
-            console.log('Setting is null');
-        }
+// Наиболее приближенный к нужному вариант
+// mongoose.connection.once('open', function(){
+//     // Загрузка настроек
+//     // !!! баг с получением данных из базы
 
-    }
+//     //  MongoError: Topology was destroyed
+//     Setup.find({_id :'5ccfaf5a0c3c1612d4e2c905'}, function(err, setting){
+//         if (err) {
+//             console.log('Setup Init error');
+//             console.log(err);
+//         } else {
+//             console.log('Setup Contents');
+//             if (setting){
+//                 console.log(setting);
+//                 eula = setting.eula;
+//                 // if (setting.eula === null) eula = true;
+//                 lang = setting.lang;
+//                 styles = setting.styles;
+//             } else {
+//                 console.log('Setting is null');
+//                 // console.log('База не загрузилась, берем изменения по умолчанию');
+//                 // eula = true;
+//                 // lang = 'en';
+//                 // styles =1;
+//             }
 
-});
+//         }
+
+//     });
+
+// }).on('error', function(e){
+//     console.log('connection error!!! ' + e);
+// });
 
 mongoose.set('debug', true);
-// экспорт базы
-
-// setupSchema.set('collection', 'setup');
 
 // Setup.findById('5ccfaf5a0c3c1612d4e2c905', function(err, setting){
 //     if (err) {
@@ -133,16 +143,14 @@ mongoose.set('debug', true);
 //     });
 
 
-
-if (eula === undefined && lang === undefined && styles === undefined) {
-    console.log('База не загрузилась, берем изменения по умолчанию');
-    eula = true;
-    lang = 'en';
-    styles =1;
-}
+console.log('Отключена загрузка из БД, пока проблема не решена');
+eula = true;
+lang = 'ru';
+styles = 1;
 
 // Загрузка языковых файлов
 var langFile = fs.readFileSync('lang/lang_' + lang + '.json');
+console.log(lang);
 var loadedLanguage = JSON.parse(langFile);
 
 /***** Страницы ******/
@@ -290,7 +298,8 @@ app.get('/author', function(req, res){
     })
 });
 
-app.get('/404', function(req, res){
+// Любая другая неизвестная страница должна возвращать ошибку 404
+app.get('*', function(req, res){
     res.render('404', {
         html_lang: lang,
         html_dir: loadedLanguage.html_dir,
