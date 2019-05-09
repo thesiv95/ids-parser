@@ -1,1 +1,14 @@
-{"_id":{"$oid":"5cc866bf8cf56a1ae865140b"},"ids_name":"Suricata","date_reg":"04/22/20","time_reg":"19:46:19","ip_src":"192.168.1.137","port_src":{"$numberInt":"57535"},"ip_dest":"82.165.177.154","port_dest":{"$numberInt":"80"},"protocol":"TCP","signatures":"Wget/1.15 (linux-gnu)","conn_quantity":{"$numberInt":"1"},"status":"unknown"}
+{
+    "_id":{"$oid":"5cc866bf8cf56a1ae865140b"},
+    "ids_name":"Suricata",
+    "date_reg":"04/22/20",
+    "time_reg":"19:46:19",
+    "ip_src":"192.168.1.137",
+    "port_src":57535,
+    "ip_dest":"82.165.177.154",
+    "port_dest":80,
+    "protocol":"TCP",
+    "signatures":"Wget/1.15 (linux-gnu)",
+    "conn_quantity":1,
+    "status":"unknown"
+}
