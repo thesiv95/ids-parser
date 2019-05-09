@@ -1,0 +1,17 @@
+/etc/nginx/sites-enabled/default
+
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server ipv6only=on;
+
+        . . .
+
+        error_page 404 /404;
+
+}
+
+service nginx restart
+
+
+How To Configure Nginx to Use Custom Error Pages on Ubuntu 14.04 | DigitalOcean
+https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-to-use-custom-error-pages-on-ubuntu-14-04 10.03.2019

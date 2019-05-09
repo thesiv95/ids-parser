@@ -18,15 +18,20 @@ http://parser2k19.xyz
 
 [Files + node_modules (.zip)](http://parser2k19.xyz/files/ids-parser-beta_node.zip)
 
-[Auto install script (for Ubuntu/Debian)](http://parser2k19.xyz/files/ids-parser-install.sh)
+[Database (.zip)](http://parser2k19.xyz/files/ids-parser-db.zip)
 
-[Auto run script (for Ubuntu/Debian)](http://parser2k19.xyz/files/ids-parser-autorun.sh)
+[Auto install script (for Ubuntu 14+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-install.sh)
+
+[Auto run script (for Ubuntu 14+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-autorun.sh)
 
 [VirtualBox Image (.zip)](http://parser2k19.xyz/files/ids-parser-virtualbox.zip)
 
 [VMware Image (.zip)](http://parser2k19.xyz/files/ids-parser-vmware.zip)
             
-[Screenshot](http://parser2k19.xyz/files/scr.png)      
+[Screenshot](http://parser2k19.xyz/files/scr.png)  
+
+[Demo Log Files](http://parser2k19.xyz/files/demo-logs.zip)
+
 ### Minimal browser requirements 
 
 | Name        | Version           | Platform  |
@@ -52,10 +57,13 @@ http://parser2k19.xyz
 1. Put `ids-parser-install.sh` file to your server, run this file as sudo. Before running, you should delete packages like `apache`, `mysql-server`, `php-*`.
 2. Put `ids-parser-autorun.sh`, make it run when the OS of your server boots up (use file `/etc/rc.local`)
 3. Unzip the files of parser, put them to your server root (usually `/var/www/html`).
+4. Unzip and import MongoDB database backup `ids-parser-db.zip`. This app has the following structure:
+
+![structure](https://i.imgur.com/cH7uIa9.png)
 
 #### Virtual machines
 - *VirtualBox*: unzip archive, then go to File - Import Appliance and select unzipped `ids-parser-virtualbox.ova` file. Login & password: `idsp`. FTP is avaliable (IP = your VM IP, login & password - `idsp`).
-- *VMware*: unzip archive, then run `shalom-ids-parser.vmx` file. Login & password: `idsp`. FTP is avaliable (IP = your VM IP, login & password - `idsp`).
+- *VMware*: unzip archive, then run `ids-parser.vmx` file. Login & password: `idsp`. FTP is avaliable (IP = your VM IP, login & password - `idsp`).
 
 ### License
 [GNU GPL v1.0](https://www.gnu.org/licenses/old-licenses/gpl-1.0.en.html)
