@@ -218,6 +218,7 @@ app.get('/parsing', function(req, res){
         msg_noscript: loadedLanguage.msg_noscript,
         msg_old_browser: loadedLanguage.msg_old_browser,
         msg_too_small: loadedLanguage.msg_too_small,
+        msg_pdf_demo: loadedLanguage.msg_pdf_demo,
         title: loadedLanguage.header_parsing,
         btn_to_main_page: loadedLanguage.btn_to_main_page,
         btn_start_parsing: loadedLanguage.btn_start_parsing,

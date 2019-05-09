@@ -44,11 +44,11 @@ function toggleStartButton(){
     }
 }
 
-function toggleExportButton(){
-    if(outputExport.disabled) {
-        outputExport.disabled = false;
-    }
-}
+// function toggleExportButton(){
+//     if(outputExport.disabled) {
+//         outputExport.disabled = false;
+//     }
+// }
 
 function showOutput(){
     if (output.style.display == 'none') {

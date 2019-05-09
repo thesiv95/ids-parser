@@ -1,5 +1,9 @@
 {% include '_includes/header.twig' %}
 
+		<div class="msg msg-info msg__pdf_demo">
+            <i class="fas fa-info-circle"></i>
+            {{ msg_pdf_demo }}
+        </div>
 		<div class="filepicker">
            <input onchange="toggleStartButton();" class="filepicker-inner" id="filepicker" type="file" name="files[]" data-url="/upload" multiple>
         </div>
