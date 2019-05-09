@@ -4,8 +4,12 @@
 
 const fs = require('fs');
 const regExp = require('./regexp');
-const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+// const mongoose = require('mongoose');
+// var Schema = mongoose.Schema;
+
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
+
 var detector = require('./detector');
 
 module.exports = {
@@ -228,56 +232,74 @@ module.exports = {
     Snort.defineSignature();
     Snort.defineStatus();
 
-    mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
+    MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
+        db.collection('snortrecords').insert({
+            ids_name: 'Snort',
+            date_reg: singleRecordObject.dates,
+            time_reg: singleRecordObject.times,
+            ip_src: singleRecordObject.ipsSrc,
+            port_src: parseInt(singleRecordObject.portsSrc),
+            ip_dest: singleRecordObject.ipsDest,
+            port_dest: parseInt(singleRecordObject.portsDest),
+            protocol: singleRecordObject.protocols,
+            signatures: singleRecordObject.signatures,
+            conn_quantity: singleRecordObject.quantity,
+            status: singleRecordObject.status
+        });
+
+        db.close();
+    });
+
+    // mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
 
     
-    // "Шаблон" записи в БД
-    const snortSchema = new Schema({
-        ids_name: String, 
-        date_reg: String,
-        time_reg: String,
-        ip_src: String,
-        port_src: Number,
-        ip_dest: String,
-        port_dest: Number,
-        protocol: String,
-        signatures: String,
-        conn_quantity: Number,
-        status: String
-    });
+    // // "Шаблон" записи в БД
+    // const snortSchema = new Schema({
+    //     ids_name: String, 
+    //     date_reg: String,
+    //     time_reg: String,
+    //     ip_src: String,
+    //     port_src: Number,
+    //     ip_dest: String,
+    //     port_dest: Number,
+    //     protocol: String,
+    //     signatures: String,
+    //     conn_quantity: Number,
+    //     status: String
+    // });
 
 
-    const SnortRecord = mongoose.model('SnortRecord', snortSchema);
+    // const SnortRecord = mongoose.model('SnortRecord', snortSchema);
 
 
-    // Отформатированная запись в БД, которая будет добавлена
+    // // Отформатированная запись в БД, которая будет добавлена
 
-    var record = new SnortRecord({
-        ids_name: 'Snort',
-        date_reg: singleRecordObject.dates,
-        time_reg: singleRecordObject.times,
-        ip_src: singleRecordObject.ipsSrc,
-        port_src: parseInt(singleRecordObject.portsSrc),
-        ip_dest: singleRecordObject.ipsDest,
-        port_dest: parseInt(singleRecordObject.portsDest),
-        protocol: singleRecordObject.protocols,
-        signatures: singleRecordObject.signatures,
-        conn_quantity: singleRecordObject.quantity,
-        status: singleRecordObject.status
-    });
+    // var record = new SnortRecord({
+    //     ids_name: 'Snort',
+    //     date_reg: singleRecordObject.dates,
+    //     time_reg: singleRecordObject.times,
+    //     ip_src: singleRecordObject.ipsSrc,
+    //     port_src: parseInt(singleRecordObject.portsSrc),
+    //     ip_dest: singleRecordObject.ipsDest,
+    //     port_dest: parseInt(singleRecordObject.portsDest),
+    //     protocol: singleRecordObject.protocols,
+    //     signatures: singleRecordObject.signatures,
+    //     conn_quantity: singleRecordObject.quantity,
+    //     status: singleRecordObject.status
+    // });
 
-    console.log(record);
+    // console.log(record);
 
-    record.save(function(err){
-        if (err !== null) {
-            console.log('Ошибка записи');
-            console.log(err);
-        }
-        mongoose.disconnect();
-    });
+    // record.save(function(err){
+    //     if (err !== null) {
+    //         console.log('Ошибка записи');
+    //         console.log(err);
+    //     }
+    //     mongoose.disconnect();
+    // });
 
 
-    module.exports = {SnortRecord: SnortRecord};
+    // module.exports = {SnortRecord: SnortRecord};
     // Удаление массива для очищения ОЗУ
     delete l;
     }

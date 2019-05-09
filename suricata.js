@@ -3,8 +3,10 @@
  */
 const fs = require('fs');
 const regExp = require('./regexp');
-const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
+// const mongoose = require('mongoose');
+// var Schema = mongoose.Schema;
 var detector = require('./detector');
 
 module.exports = {
@@ -96,47 +98,66 @@ module.exports = {
 		Suricata.defineSignature();
 		Suricata.defineStatus();
 		
-		mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
-		
-		
-		// "Шаблон" записи в БД
-		const suricataSchema = new Schema({ 
-				date_reg: String,
-				time_reg: String,
-				ip_src: String,
-				port_src: Number,
-				ip_dest: String,
-				port_dest: Number,
-				protocol: String,
-				conn_quantity: Number,
-				status: String
-		 });
-		
-		var SuricataRecord = mongoose.model('SuricataRecord', suricataSchema);
-		
-		// Отформатированная запись в БД, которая будет добавлена
-		
-		var record = new SuricataRecord({
-				date_reg: singleRecordObject.times,
-				time_reg: singleRecordObject.dates,
+		// Connection
+		MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
+			db.collection('suricatarecords').insert({
+				ids_name: 'Suricata',
+				date_reg: singleRecordObject.dates,
+				time_reg: singleRecordObject.times,
 				ip_src: singleRecordObject.ipsSrc,
 				port_src: parseInt(singleRecordObject.portsSrc),
 				ip_dest: singleRecordObject.ipsDest,
 				port_dest: parseInt(singleRecordObject.portsDest),
 				protocol: singleRecordObject.protocols,
+				signatures: singleRecordObject.signatures,
 				conn_quantity: singleRecordObject.quantity,
 				status: singleRecordObject.status
-		});
+			});
+
+			db.close();
+   	 	});
+
+		// mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
 		
-		console.log(record);
 		
-		record.save(function(err){
-				if (err !== null) {
-				console.log('Ошибка записи');
-				console.log(err);
-			}
-			mongoose.disconnect();
-		});
+		// // "Шаблон" записи в БД
+		// const suricataSchema = new Schema({ 
+		// 		date_reg: String,
+		// 		time_reg: String,
+		// 		ip_src: String,
+		// 		port_src: Number,
+		// 		ip_dest: String,
+		// 		port_dest: Number,
+		// 		protocol: String,
+		// 		conn_quantity: Number,
+		// 		status: String
+		//  });
+		
+		// var SuricataRecord = mongoose.model('SuricataRecord', suricataSchema);
+		
+		// // Отформатированная запись в БД, которая будет добавлена
+		
+		// var record = new SuricataRecord({
+		// 		date_reg: singleRecordObject.times,
+		// 		time_reg: singleRecordObject.dates,
+		// 		ip_src: singleRecordObject.ipsSrc,
+		// 		port_src: parseInt(singleRecordObject.portsSrc),
+		// 		ip_dest: singleRecordObject.ipsDest,
+		// 		port_dest: parseInt(singleRecordObject.portsDest),
+		// 		protocol: singleRecordObject.protocols,
+		// 		conn_quantity: singleRecordObject.quantity,
+		// 		status: singleRecordObject.status
+		// });
+		
+		// console.log(record);
+		
+		// record.save(function(err){
+		// 		if (err !== null) {
+		// 		console.log('Ошибка записи');
+		// 		console.log(err);
+		// 	}
+		// 	mongoose.disconnect();
+		// });
 		
 		delete l;
 	}

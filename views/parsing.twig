@@ -35,7 +35,9 @@
 						itemsBad = doc.getElementsByClassName('item-bad').length,
 						itemsUnknown = doc.getElementsByClassName('item-unknown').length;
 
-                    var totalTraffic = {{ draw.conn_quantity }};
+                    {# var totalTraffic = {{ draw.conn_quantity }}; #}
+
+					var totalTraffic = itemsGood + itemsBad + itemsUnknown;
 
                     var itemsGoodPercent = parseInt(itemsGood / totalTraffic * 100),
                         itemsBadPercent = parseInt(itemsBad / totalTraffic * 100),

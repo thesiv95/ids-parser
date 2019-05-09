@@ -1,8 +1,6 @@
 /**
  * Extractor: IDS DallasLock
  */
-// TODO: полностью рабочие extractors - довести до ума
-// TODO: отчет + доделать ВКР + преза
 // 1. Импорт содержимого лог-файла
 //  xml2js - npm https://www.npmjs.com/package/xml2js
 // 2. Всю инф. вытаскиваем в массивы (ОЗУ)
@@ -13,8 +11,10 @@
 const fs = require('fs');
 const regExp = require('./regexp');
 var parseString = require('xml2js').parseString;
-const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
+// const mongoose = require('mongoose');
+// var Schema = mongoose.Schema;
 var detector = require('./detector');
 
 module.exports = {
@@ -126,53 +126,70 @@ module.exports = {
 		dallasLock.defineStatus();
 
 		// Connection
+	MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
+        db.collection('dallaslockrecords').insert({
+            ids_name: 'Dallas Lock',
+            date_reg: singleRecordObject.dates,
+            time_reg: singleRecordObject.times,
+            ip_src: singleRecordObject.ipsSrc,
+            port_src: parseInt(singleRecordObject.portsSrc),
+            ip_dest: singleRecordObject.ipsDest,
+            port_dest: parseInt(singleRecordObject.portsDest),
+            protocol: singleRecordObject.protocols,
+            signatures: singleRecordObject.signatures,
+            conn_quantity: singleRecordObject.quantity,
+            status: singleRecordObject.status
+        });
 
-		mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
+        db.close();
+    });
+
+		// mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
 
 		
-		// "Шаблон" записи в БД
-		const dallasLockSchema = new Schema({
-				ids_name: String, 
-				date_reg: String,
-				time_reg: String,
-				ip_src: String,
-				port_src: Number,
-				ip_dest: String,
-				port_dest: Number,
-				protocol: String,
-				signatures: String,
-				conn_quantity: Number,
-				status: String
-		});
+		// // "Шаблон" записи в БД
+		// const dallasLockSchema = new Schema({
+		// 		ids_name: String, 
+		// 		date_reg: String,
+		// 		time_reg: String,
+		// 		ip_src: String,
+		// 		port_src: Number,
+		// 		ip_dest: String,
+		// 		port_dest: Number,
+		// 		protocol: String,
+		// 		signatures: String,
+		// 		conn_quantity: Number,
+		// 		status: String
+		// });
 
-		var dallasLockRecord = mongoose.model('dallasLockRecord', dallasLockSchema);
+		// var dallasLockRecord = mongoose.model('dallasLockRecord', dallasLockSchema);
 
-		// Отформатированная запись в БД, которая будет добавлена
+		// // Отформатированная запись в БД, которая будет добавлена
 
-		var record = new dallasLockRecord({
-				ids_name: 'Dallas Lock',
-				date_reg: singleRecordObject.dates,
-				time_reg: singleRecordObject.times,
-				ip_src: singleRecordObject.ipsSrc,
-				port_src: parseInt(singleRecordObject.portsSrc),
-				ip_dest: singleRecordObject.ipsDest,
-				port_dest: parseInt(singleRecordObject.portsDest),
-				protocol: singleRecordObject.protocols,
-				signatures: singleRecordObject.signatures,
-				conn_quantity: singleRecordObject.quantity,
-				status: singleRecordObject.status
-		});
+		// var record = new dallasLockRecord({
+		// 		ids_name: 'Dallas Lock',
+		// 		date_reg: singleRecordObject.dates,
+		// 		time_reg: singleRecordObject.times,
+		// 		ip_src: singleRecordObject.ipsSrc,
+		// 		port_src: parseInt(singleRecordObject.portsSrc),
+		// 		ip_dest: singleRecordObject.ipsDest,
+		// 		port_dest: parseInt(singleRecordObject.portsDest),
+		// 		protocol: singleRecordObject.protocols,
+		// 		signatures: singleRecordObject.signatures,
+		// 		conn_quantity: singleRecordObject.quantity,
+		// 		status: singleRecordObject.status
+		// });
 
-		// console.log(record);
+		// // console.log(record);
 
-		record.save(function(err){
-				if (err !== null) {
-				console.log('Ошибка записи');
-				console.log(err);
-			}
-			mongoose.disconnect();
+		// record.save(function(err){
+		// 		if (err !== null) {
+		// 		console.log('Ошибка записи');
+		// 		console.log(err);
+		// 	}
+		// 	mongoose.disconnect();
 			
-		});
+		// });
 
 		delete l;
 	}
