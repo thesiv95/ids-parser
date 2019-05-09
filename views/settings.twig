@@ -1,10 +1,14 @@
 {% include '_includes/header.twig' %}
         
         <div class="settings">
+            <div class="msg msg-info msg__settings_demo">
+                <i class="fas fa-info-circle"></i>
+                {{ msg_settings_demo }}
+            </div>
             <div class="settings-inner">
                 {{ settings_language }}:
                 <form name="set_form" id="set_form" method="post">
-                <select name="set_lang" id="set_lang">
+                <select name="set_lang" id="set_lang" disabled="disabled">
 
                     {% if html_lang == "ru" %}
                     <option value="ru" selected="selected">Russian (Русский)</option>
@@ -41,7 +45,7 @@
             </div>
             <div class="settings-inner">
                 {{ settings_theme }}:
-                <select name="set_style" id="set_style">
+                <select name="set_style" id="set_style" disabled="disabled">
                     {% if styles == 1 %}
                     <option value="1" selected="selected">White</option>
                     {% else %}
@@ -55,7 +59,7 @@
                 </select>
             </div>
             <div class="settings-inner">
-                <input type="submit" class="btn btn-std" value="{{ btn_apply_settings }}">
+                <input type="submit" class="btn btn-std" value="{{ btn_apply_settings }}" disabled="disabled">
                 <input type="button" class="btn btn-std" value="{{ btn_to_main_page }}" onclick="go_to('/');">
             </form>
             </div>

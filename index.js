@@ -145,7 +145,7 @@ mongoose.set('debug', true);
 
 console.log('Отключена загрузка из БД, пока проблема не решена');
 eula = true;
-lang = 'ru';
+lang = 'en';
 styles = 1;
 
 // Загрузка языковых файлов
@@ -247,6 +247,7 @@ app.get('/settings', function(req, res){
         msg_old_browser: loadedLanguage.msg_old_browser,
         msg_too_small: loadedLanguage.msg_too_small,
         msg_changed: loadedLanguage.msg_changed,
+        msg_settings_demo: loadedLanguage.msg_settings_demo,
         title: loadedLanguage.header_settings,
         settings_language: loadedLanguage.settings_language,
         settings_theme: loadedLanguage.settings_theme,
