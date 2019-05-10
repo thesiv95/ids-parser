@@ -1,10 +1,3 @@
-// добавлены локализация и настройки, но
-// есть проблемы с подключением к БД
-
-
-// TODO: пофиксить загрузку настроек
-// TODO: текст (достичь антиплагиата, мб поменять скрины, презентация, титульники и пр)
-
 /***** Инициализация и настройка Приложения ******/
 
 // Сторонние библиотеки
@@ -13,19 +6,14 @@ var app = express();
 const helmet = require('helmet');
 const xssFilter = require('x-xss-protection');
 const nosniff = require('dont-sniff-mimetype');
-
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-
-
 const assert = require('assert');
-
 const fs = require('fs');
 const twig = require('./node_modules/twig');
 var upload = require('jquery-file-upload-middleware');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
-
 
 // Самописные библиотеки и модули
 const Draw = require('./draw');
@@ -96,11 +84,7 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
         // Если условия лиц. согл. не приняты - переброс на страницу eula
         if (!loadedSetup.eula){
             
-            // Обновляем значение в БД, чтобы потом редиректа не было
-            // Setup.findOneAndUpdate({eula: false}, {$set: {eula: true}}, function(err, res){
-            //     if (err) console.log('Eula update error: ' + err);
-            // });
-
+            db.collection('setup').findOneAndUpdate({_id: '5cc80f018cf56a1ae8651401'}, {$set: {eula: true}});
             res.redirect('/eula');
         } else {
             res.render('index', {
@@ -224,8 +208,29 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
         })
     });
 
-    
 
+// // Применение изменений в настройках
+//app.post("/applysettings", function(req,res){
+    
+//     var setting = {};
+//     setting.lang = req.body.lang;
+//     setting.style = req.body.style;
+//     console.log('Settings applied');
+//     console.log(setting);
+
+//     db.collection("setup").findOneAndUpdate({_id: '5cc80f018cf56a1ae8651401'}, {$set: {lang: setting.lang, styles: setting.style}}, function(err, result) {
+//         if (err) console.log(err);
+//         db.close();
+//     });
+
+
+//});
+
+
+    db.close();
+
+  });
+});
 
 
 // Применение изменений в настройках
@@ -235,30 +240,25 @@ app.post("/applysettings", function(req,res){
     setting.lang = req.body.lang;
     setting.style = req.body.style;
     console.log('Settings applied');
-    console.log(setting);
 
-    // Setup.findOneAndUpdate({_id: '5ccfaf5a0c3c1612d4e2c905'}, {$set: {lang: setting.lang, styles: setting.style}}, function(err){
-    //     if (err) {
-    //         console.log('Apply settings error');
-    //         console.log(err);
-    //     }
-    // });
 
-    
-    
-    db.collection("setup").findOneAndUpdate({_id: '5cc80f018cf56a1ae8651401'}, {$set: {lang: setting.lang, styles: setting.style}}, function(err, result) {
-        if (err) console.log(err);
-        
+
+    MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
+        db.collection("setup").findOneAndUpdate({_id: '5cc80f018cf56a1ae8651401'}, {$set: {lang: setting.lang, styles: setting.style}}, (err, options) => {
+            if (err) {
+                console.log('Setup update error: ' + err);
+            }
+
+        });
+        //db.close();
     });
 
 
-  });
+    
 
 
-    db.close();
-
-  });
 });
+
 
 
 // Вызов модуля PDFRender.js
@@ -350,16 +350,8 @@ app.use('/upload', function(req, res, next){ // ссылка для загруз
 */
 
 
-
-   
-
-
-
 /***** Запуск сервера ******/
 app.listen(port, function () {
     console.log('Parser was started, using port ' + port);
     console.log('Home directory: ' + __dirname);
   });
-
-
-// Когда все запущено, то нужно отключиться от БД, чтобы процесс приложения завершился
