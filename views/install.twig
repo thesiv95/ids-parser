@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parser Installation</title>
+    <link rel="stylesheet" href="fonts/fontawesome-free-5.6.3-web/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ui-elements.css">
+    <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="css/mediaqueries.css">
+    <link rel="stylesheet" href="css/compat.css">
+    <script src="js/prefixfree.min.js"></script>
+    <style>
+        .install {
+            padding: 0 20px;
+        }
+
+        .install__btn {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <div class="title__header">
+               Installation
+            </div>
+        </div>
+        
+            <!-- Msg -->
+            <div class="msg msg-warning msg_old-browser">
+                <i class="fas fa-sad-tear"></i>
+                Этот браузер поддерживает не все технологии, которые использует программа. Программа может работать, но с перебоями. Настоятельно рекомендуется использовать браузер, указанный в инструкции, во избежание возникновения проблем. Инструкция находится в разделе &quot;Справка&quot;.
+            </div>
+            <div class="msg msg-warning msg_small-width">
+                <i class="fas fa-sad-tear"></i>
+                Размер ширины окна слишком мал, чтобы отобразить результат обработки данных. Если вы используете мобильное устройство, измените ориентацию экрана на альбомную.
+            </div>
+           <div class="install">
+               <p>[ru] Убедитесь в том, что база данных запущена. После установки нужно удалить файл install.js, если он не будет удален автоматически!</p>
+               <p>[en] Make sure the database is running. After installation you need to delete the install.js file, if it has not been removed automatically!</p>
+               <p>[he] ודא שהמסד הנתונים פועל. לאחר ההתקנה, עליך למחוק את הקובץ install.js, אם הוא לא יוסר באופן אוטומטי!</p>
+               <p>[uk] Переконайтеся в тому, що база даних запущена. Після установки потрібно видалити файл install.js, якщо він не буде видалений автоматично!</p>
+               <p>[be] Пераканайцеся ў тым, што база дадзеных запушчана. Пасля ўстаноўкі трэба выдаліць файл install.js, калі ён не будзе выдалены аўтаматычна!</p>
+               <p class="install__btn">
+                   <input type="button" class="btn btn-std" onclick="startInstallation();" value="Start installation"></input>
+               </p>
+           </div>
+    </div>
+    <script src="js/modernizr-custom.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+    
+        function startInstallation(){
+            go_to('/startinstall');
+            alert('Installation complete. You can close this page.');
+        }
+        
+    
+    </script>
+</body>
+</html>
