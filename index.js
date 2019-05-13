@@ -269,8 +269,16 @@ app.post("/applysettings", function(req,res){
 app.get('/pdf', function(req, res){
     // Подсчет некоторой информации перед ее передачей
     // Воспользуемся объектом draw (инфа, полученная из БД)
+
+    // Если значения undefined (не распознались), то пишем, что названия неизвестны
+    if (isNaN(draw.conn_quantity)) draw.conn_quantity = 1;
+    if (draw.ids_name === undefined) draw.ids_name = '?';
+    
+
+    // Строка в журнале
     var textString = draw.ip_src + ':' + draw.port_src + '->' + draw.ip_dest + ':' + draw.port_dest + ' [' + draw.protocol + '] at ' + draw.date_reg + ' ' + draw.time_reg + ' - ' + draw.conn_quantity + ' ' + draw.signatures + ' - ' + draw.status;
     var textStringArray = [];
+    
     for (var i = 0; i < draw.conn_quantity; i++){
         textStringArray.push(textString);
     }

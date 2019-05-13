@@ -38,6 +38,7 @@ var drawOneRecord = new Object(); // объект для экспорта в ш�
 
 
 MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
+    console.log('Detected: ' + detector.detected);
     switch (detector.detected){
         case 'Bro':
 
@@ -112,26 +113,49 @@ MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
             }); 
             break;
         case 'Snort':
-            
-            db.collection('snortrecords').find({ids_name: 'Snort'}, function(err, recordings) {
-                if (err) console.log('error - ' + err);
-                                
-                if (recordings[0]){
-                    drawOneRecord.ids_name = recordings[0]['ids_name'];
-                    drawOneRecord.date_reg = recordings[0]['date_reg'];
-                    drawOneRecord.time_reg = recordings[0]['time_reg'];
-                    drawOneRecord.ip_src = recordings[0]['ip_src'];
-                    drawOneRecord.port_src = recordings[0]['port_src'];
-                    drawOneRecord.ip_dest = recordings[0]['ip_dest'];
-                    drawOneRecord.port_dest = recordings[0]['port_dest'];
-                    drawOneRecord.protocol = recordings[0]['protocol'];
-                    drawOneRecord.signatures = recordings[0]['signatures'];
-                    drawOneRecord.conn_quantity = recordings[0]['conn_quantity'];
-                    drawOneRecord.status = recordings[0]['status'];
-                    
-                }
-                
+            db.collection('snortrecords').find({ids_name: 'Snort'}).toArray(function(err, recordings){
+                //console.log(recordings[0].port_dest);// в демо-версии выведем только 1 запись :)
+                if (err) {
+                    console.log('error - ' + err)
+                } else {
+                    if (recordings[0]){
+                        drawOneRecord.ids_name = recordings[0].ids_name;
+                        drawOneRecord.date_reg = recordings[0].date_reg;
+                        drawOneRecord.time_reg = recordings[0].time_reg;
+                        drawOneRecord.ip_src = recordings[0].ip_src;
+                        drawOneRecord.port_src = recordings[0].port_src;
+                        drawOneRecord.ip_dest = recordings[0].ip_dest;
+                        drawOneRecord.port_dest = recordings[0].port_dest;
+                        drawOneRecord.protocol = recordings[0].protocol;
+                        drawOneRecord.signatures = recordings[0].signatures;
+                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
+                        drawOneRecord.status = recordings[0].status;
+                        
+                    }
+                };
+
             });
+            
+            // db.collection('snortrecords').findOne({ids_name: 'Snort'}, function(err, recordings) {
+            //     console.log(recordings[0]);
+            //     if (err) console.log('error - ' + err);
+                                
+            //     if (recordings[0]){
+            //         drawOneRecord.ids_name = recordings[0]['ids_name'];
+            //         drawOneRecord.date_reg = recordings[0]['date_reg'];
+            //         drawOneRecord.time_reg = recordings[0]['time_reg'];
+            //         drawOneRecord.ip_src = recordings[0]['ip_src'];
+            //         drawOneRecord.port_src = recordings[0]['port_src'];
+            //         drawOneRecord.ip_dest = recordings[0]['ip_dest'];
+            //         drawOneRecord.port_dest = recordings[0]['port_dest'];
+            //         drawOneRecord.protocol = recordings[0]['protocol'];
+            //         drawOneRecord.signatures = recordings[0]['signatures'];
+            //         drawOneRecord.conn_quantity = recordings[0]['conn_quantity'];
+            //         drawOneRecord.status = recordings[0]['status'];
+                    
+            //     }
+                
+            // });
             
             break;
             case 'Suricata':
