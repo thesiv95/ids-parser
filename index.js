@@ -72,8 +72,7 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
             msg_old_browser: loadedLanguage.msg_old_browser,
             msg_too_small: loadedLanguage.msg_too_small,
             title: loadedLanguage.header_eula,
-            eula_i_accept: loadedLanguage.eula_i_accept,
-            eula_continue: loadedLanguage.eula_continue,
+            btn_to_main_page: loadedLanguage.btn_to_main_page,
             styles: loadedSetup.styles
         });
             
@@ -81,12 +80,7 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
 
     app.get('/', function(req, res){ // Главная
 
-        // Если условия лиц. согл. не приняты - переброс на страницу eula
-        if (!loadedSetup.eula){
-            
-            db.collection('setup').findOneAndUpdate({_id: '5cc80f018cf56a1ae8651401'}, {$set: {eula: true}});
-            res.redirect('/eula');
-        } else {
+        // Решил убрать загрузку лицухи через базу, пусть пока будет отдельной ссылкой
             res.render('index', {
                 // Элементы на странице
                 html_lang: loadedSetup.lang,
@@ -98,10 +92,11 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
                 header_parsing: loadedLanguage.header_parsing,
                 header_settings: loadedLanguage.header_settings,
                 header_help: loadedLanguage.header_help,
+                footer_eula_info: loadedLanguage.footer_eula_info,
                 // Какой стиль выбран?
                 styles: loadedSetup.styles
             });
-        }
+        
         
     });
 
@@ -208,25 +203,6 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
         })
     });
 
-
-// // Применение изменений в настройках
-//app.post("/applysettings", function(req,res){
-    
-//     var setting = {};
-//     setting.lang = req.body.lang;
-//     setting.style = req.body.style;
-//     console.log('Settings applied');
-//     console.log(setting);
-
-//     db.collection("setup").findOneAndUpdate({_id: '5cc80f018cf56a1ae8651401'}, {$set: {lang: setting.lang, styles: setting.style}}, function(err, result) {
-//         if (err) console.log(err);
-//         db.close();
-//     });
-
-
-//});
-
-
     db.close();
 
   });
@@ -256,9 +232,7 @@ app.post("/applysettings", function(req,res){
         });
         
     });
-
-
-    
+ 
 
 
 });
@@ -273,7 +247,7 @@ app.get('/pdf', function(req, res){
     // Если значения undefined (не распознались), то пишем, что названия неизвестны
     if (isNaN(draw.conn_quantity)) draw.conn_quantity = 1;
     if (draw.ids_name === undefined) draw.ids_name = '?';
-    
+
 
     // Строка в журнале
     var textString = draw.ip_src + ':' + draw.port_src + '->' + draw.ip_dest + ':' + draw.port_dest + ' [' + draw.protocol + '] at ' + draw.date_reg + ' ' + draw.time_reg + ' - ' + draw.conn_quantity + ' ' + draw.signatures + ' - ' + draw.status;
@@ -319,7 +293,7 @@ app.get('/pdf', function(req, res){
 
 
 
-/*
+
 // Кнопка Начать Обработку
 app.get('/extr123', function(req, res){
         
@@ -328,6 +302,7 @@ app.get('/extr123', function(req, res){
     
 
 });
+
 
 // Загрузка файла на сервер
 upload.configure({
@@ -359,7 +334,7 @@ app.use('/upload', function(req, res, next){ // ссылка для загруз
     })(req, res, next);
 });
 
-*/
+
 
 
 /***** Запуск сервера ******/

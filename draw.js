@@ -10,111 +10,15 @@
 const detector = require('./detector');
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-// const mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
-// var dbc = mongoose.connection;
-// var Schema = mongoose.Schema;
 var drawOneRecord = new Object(); // объект для экспорта в шаблон страницы parsing
-
-// dbc.on('error', console.error.bind(console, 'Connection error: '));
-// dbc.once('open', function(callback) {
-
-//     // Магия
-
-//     var idsRecordSchema = {
-//         ids_name: String,
-//         date_reg: String,
-//         time_reg: String,
-//         ip_src: String,
-//         port_src: Number,
-//         ip_dest: String,
-//         port_dest: Number,
-//         protocol: String,
-//         signatures: String,
-//         conn_quantity: Number,
-//         status: String
-//     }; // один шаблон для всех
-
 
 MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
     console.log('Detected: ' + detector.detected);
     switch (detector.detected){
         case 'Bro':
-
-            // var broSchema = new Schema(idsRecordSchema);
-            // var BroModel = mongoose.model('Bro', broSchema, 'brorecords');
-            db.collection('brorecords').find({ids_name: 'Bro'}, function(err, recordings){
-                if (err) console.log('error - ' + err);
-                
-                    if (recordings[0]){
-                        drawOneRecord.ids_name = recordings[0]['ids_name'];
-                        drawOneRecord.date_reg = recordings[0]['date_reg'];
-                        drawOneRecord.time_reg = recordings[0]['time_reg'];
-                        drawOneRecord.ip_src = recordings[0]['ip_src'];
-                        drawOneRecord.port_src = recordings[0]['port_src'];
-                        drawOneRecord.ip_dest = recordings[0]['ip_dest'];
-                        drawOneRecord.port_dest = recordings[0]['port_dest'];
-                        drawOneRecord.protocol = recordings[0]['protocol'];
-                        drawOneRecord.signatures = recordings[0]['signatures'];
-                        drawOneRecord.conn_quantity = recordings[0]['conn_quantity'];
-                        drawOneRecord.status = recordings[0]['status'];
-                        console.log(drawOneRecord);
-                    
-                }
-            });
-            break;
-        case 'Dallas Lock':
-            // var dallasLockSchema = new Schema(idsRecordSchema);
-            // var DallasLockModel = mongoose.model('Dallas Lock', dallasLockSchema, 'dallaslockrecords');
-            db.collection('dallaslockrecords').find({ids_name: 'Dallas Lock'}, function(err, recordings){
-                
-            
-                if (err) console.log('error - ' + err);
-                
-                    if (recordings[0]){
-                        drawOneRecord.ids_name = recordings[0]['ids_name'];
-                        drawOneRecord.date_reg = recordings[0]['date_reg'];
-                        drawOneRecord.time_reg = recordings[0]['time_reg'];
-                        drawOneRecord.ip_src = recordings[0]['ip_src'];
-                        drawOneRecord.port_src = recordings[0]['port_src'];
-                        drawOneRecord.ip_dest = recordings[0]['ip_dest'];
-                        drawOneRecord.port_dest = recordings[0]['port_dest'];
-                        drawOneRecord.protocol = recordings[0]['protocol'];
-                        drawOneRecord.signatures = recordings[0]['signatures'];
-                        drawOneRecord.conn_quantity = recordings[0]['conn_quantity'];
-                        drawOneRecord.status = recordings[0]['status'];
-                        
-                    }
-               
-            });
-            break;
-        case 'SecretNet':
-            // var secretNetSchema = new Schema(idsRecordSchema);
-            // var secretNetModel = mongoose.model('SecretNet', secretNetSchema, 'secretnetrecords');
-            db.collection('secretnetrecords').find({ids_name: 'Secret Net'}, function(err, recordings) {
-                if (err) console.log('error - ' + err);
-                                
-                    if (recordings[0]){
-                        drawOneRecord.ids_name = recordings[0]['ids_name'];
-                        drawOneRecord.date_reg = recordings[0]['date_reg'];
-                        drawOneRecord.time_reg = recordings[0]['time_reg'];
-                        drawOneRecord.ip_src = recordings[0]['ip_src'];
-                        drawOneRecord.port_src = recordings[0]['port_src'];
-                        drawOneRecord.ip_dest = recordings[0]['ip_dest'];
-                        drawOneRecord.port_dest = recordings[0]['port_dest'];
-                        drawOneRecord.protocol = recordings[0]['protocol'];
-                        drawOneRecord.signatures = recordings[0]['signatures'];
-                        drawOneRecord.conn_quantity = recordings[0]['conn_quantity'];
-                        drawOneRecord.status = recordings[0]['status'];
-                        
-                    }
-                
-            }); 
-            break;
-        case 'Snort':
-            db.collection('snortrecords').find({ids_name: 'Snort'}).toArray(function(err, recordings){
-                //console.log(recordings[0].port_dest);// в демо-версии выведем только 1 запись :)
+            db.collection('brorecords').find({ids_name: 'Bro'}).toArray(function(err, recordings){
+                // в демо-версии выведем только 1 запись :)
                 if (err) {
                     console.log('error - ' + err)
                 } else {
@@ -135,49 +39,102 @@ MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
                 };
 
             });
-            
-            // db.collection('snortrecords').findOne({ids_name: 'Snort'}, function(err, recordings) {
-            //     console.log(recordings[0]);
-            //     if (err) console.log('error - ' + err);
-                                
-            //     if (recordings[0]){
-            //         drawOneRecord.ids_name = recordings[0]['ids_name'];
-            //         drawOneRecord.date_reg = recordings[0]['date_reg'];
-            //         drawOneRecord.time_reg = recordings[0]['time_reg'];
-            //         drawOneRecord.ip_src = recordings[0]['ip_src'];
-            //         drawOneRecord.port_src = recordings[0]['port_src'];
-            //         drawOneRecord.ip_dest = recordings[0]['ip_dest'];
-            //         drawOneRecord.port_dest = recordings[0]['port_dest'];
-            //         drawOneRecord.protocol = recordings[0]['protocol'];
-            //         drawOneRecord.signatures = recordings[0]['signatures'];
-            //         drawOneRecord.conn_quantity = recordings[0]['conn_quantity'];
-            //         drawOneRecord.status = recordings[0]['status'];
-                    
-            //     }
-                
-            // });
-            
             break;
-            case 'Suricata':
-                // var suricataSchema = new Schema(idsRecordSchema);
-                // var SuricataModel = mongoose.model('Suricata', suricataSchema, 'suricatarecords');
-                db.collection('suricatarecords').find({ids_name: 'Suricata'}, function(err, recordings) {
-                    if (err) console.log('error - ' + err);
-                                
+        case 'Dallas Lock':
+            db.collection('dallaslockrecords').find({ids_name: 'Dallas Lock'}).toArray(function(err, recordings){
+                // в демо-версии выведем только 1 запись :)
+                if (err) {
+                    console.log('error - ' + err)
+                } else {
                     if (recordings[0]){
-                        drawOneRecord.ids_name = recordings[0]['ids_name'];
-                        drawOneRecord.date_reg = recordings[0]['date_reg'];
-                        drawOneRecord.time_reg = recordings[0]['time_reg'];
-                        drawOneRecord.ip_src = recordings[0]['ip_src'];
-                        drawOneRecord.port_src = recordings[0]['port_src'];
-                        drawOneRecord.ip_dest = recordings[0]['ip_dest'];
-                        drawOneRecord.port_dest = recordings[0]['port_dest'];
-                        drawOneRecord.protocol = recordings[0]['protocol'];
-                        drawOneRecord.signatures = recordings[0]['signatures'];
-                        drawOneRecord.conn_quantity = recordings[0]['conn_quantity'];
-                        drawOneRecord.status = recordings[0]['status'];
+                        drawOneRecord.ids_name = recordings[0].ids_name;
+                        drawOneRecord.date_reg = recordings[0].date_reg;
+                        drawOneRecord.time_reg = recordings[0].time_reg;
+                        drawOneRecord.ip_src = recordings[0].ip_src;
+                        drawOneRecord.port_src = recordings[0].port_src;
+                        drawOneRecord.ip_dest = recordings[0].ip_dest;
+                        drawOneRecord.port_dest = recordings[0].port_dest;
+                        drawOneRecord.protocol = recordings[0].protocol;
+                        drawOneRecord.signatures = recordings[0].signatures;
+                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
+                        drawOneRecord.status = recordings[0].status;
                         
                     }
+                };
+
+            });
+            break;
+        case 'SecretNet':
+            db.collection('secretnetrecords').find({ids_name: 'SecretNet'}).toArray(function(err, recordings){
+                // в демо-версии выведем только 1 запись :)
+                if (err) {
+                    console.log('error - ' + err)
+                } else {
+                    if (recordings[0]){
+                        drawOneRecord.ids_name = recordings[0].ids_name;
+                        drawOneRecord.date_reg = recordings[0].date_reg;
+                        drawOneRecord.time_reg = recordings[0].time_reg;
+                        drawOneRecord.ip_src = recordings[0].ip_src;
+                        drawOneRecord.port_src = recordings[0].port_src;
+                        drawOneRecord.ip_dest = recordings[0].ip_dest;
+                        drawOneRecord.port_dest = recordings[0].port_dest;
+                        drawOneRecord.protocol = recordings[0].protocol;
+                        drawOneRecord.signatures = recordings[0].signatures;
+                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
+                        drawOneRecord.status = recordings[0].status;
+                        
+                    }
+                };
+
+            });
+            break;
+        case 'Snort':
+            db.collection('snortrecords').find({ids_name: 'Snort'}).toArray(function(err, recordings){
+                // в демо-версии выведем только 1 запись :)
+                if (err) {
+                    console.log('error - ' + err)
+                } else {
+                    if (recordings[0]){
+                        drawOneRecord.ids_name = recordings[0].ids_name;
+                        drawOneRecord.date_reg = recordings[0].date_reg;
+                        drawOneRecord.time_reg = recordings[0].time_reg;
+                        drawOneRecord.ip_src = recordings[0].ip_src;
+                        drawOneRecord.port_src = recordings[0].port_src;
+                        drawOneRecord.ip_dest = recordings[0].ip_dest;
+                        drawOneRecord.port_dest = recordings[0].port_dest;
+                        drawOneRecord.protocol = recordings[0].protocol;
+                        drawOneRecord.signatures = recordings[0].signatures;
+                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
+                        drawOneRecord.status = recordings[0].status;
+                        
+                    }
+                };
+
+            });
+                        
+            break;
+            case 'Suricata':
+                db.collection('suricatarecords').find({ids_name: 'Suricata'}).toArray(function(err, recordings){
+                    // в демо-версии выведем только 1 запись :)
+                    if (err) {
+                        console.log('error - ' + err)
+                    } else {
+                        if (recordings[0]){
+                            drawOneRecord.ids_name = recordings[0].ids_name;
+                            drawOneRecord.date_reg = recordings[0].date_reg;
+                            drawOneRecord.time_reg = recordings[0].time_reg;
+                            drawOneRecord.ip_src = recordings[0].ip_src;
+                            drawOneRecord.port_src = recordings[0].port_src;
+                            drawOneRecord.ip_dest = recordings[0].ip_dest;
+                            drawOneRecord.port_dest = recordings[0].port_dest;
+                            drawOneRecord.protocol = recordings[0].protocol;
+                            drawOneRecord.signatures = recordings[0].signatures;
+                            drawOneRecord.conn_quantity = recordings[0].conn_quantity;
+                            drawOneRecord.status = recordings[0].status;
+                            
+                        }
+                    };
+
                 });
                 break;
         default:
@@ -189,9 +146,6 @@ MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
     db.close();
 
 });
-
-
-
 
 
 module.exports = drawOneRecord;

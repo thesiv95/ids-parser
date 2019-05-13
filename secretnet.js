@@ -6,8 +6,6 @@ const fs = require('fs');
 const regExp = require('./regexp');
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-// const mongoose = require('mongoose');
-// var Schema = mongoose.Schema;
 var parseString = require('xml2js').parseString; // библиотека для работы с xml
 var detector = require('./detector');
 
@@ -142,15 +140,15 @@ module.exports = {
 		// Connection
 		MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
 			db.collection('secretnetrecords').insert({
-				ids_name: 'Secret Net',
-				date_reg: singleRecordObject.dates,
-				time_reg: singleRecordObject.times,
-				ip_src: singleRecordObject.ipsSrc,
+				ids_name: 'SecretNet',
+				date_reg: singleRecordObject.dates[0],
+				time_reg: singleRecordObject.times[0],
+				ip_src: singleRecordObject.ipsSrc[0],
 				port_src: parseInt(singleRecordObject.portsSrc),
-				ip_dest: singleRecordObject.ipsDest,
+				ip_dest: singleRecordObject.ipsDest[0],
 				port_dest: parseInt(singleRecordObject.portsDest),
-				protocol: singleRecordObject.protocols,
-				signatures: singleRecordObject.signatures,
+				protocol: singleRecordObject.protocols[0],
+				signatures: singleRecordObject.signatures[0],
 				conn_quantity: singleRecordObject.quantity,
 				status: singleRecordObject.status
 			});
@@ -158,48 +156,6 @@ module.exports = {
 			db.close();
    	 	});
 		
-		// mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
-		
-		
-		// // "Шаблон" записи в БД
-		// const secretNetSchema = new Schema({ 
-		// 	date_reg: String,
-		// 	time_reg: String,
-		// 	ip_src: String,
-		// 	port_src: Number,
-		// 	ip_dest: String,
-		// 	port_dest: Number,
-		// 	protocol: String,
-		// 	conn_quantity: Number,
-		// 	status: String
-		//  });
-		
-		// var secretNetRecord = mongoose.model('secretNetRecord', secretNetSchema);
-		
-		// // Отформатированная запись в БД, которая будет добавлена
-		
-		// var record = new secretNetRecord({
-		// 	date_reg: singleRecordObject.dates,
-		// 	time_reg: singleRecordObject.times,
-		// 	ip_src: singleRecordObject.ipsSrc,
-		// 	port_src: parseInt(singleRecordObject.portsSrc),
-		// 	ip_dest: singleRecordObject.ipsDest,
-		// 	port_dest: parseInt(singleRecordObject.portsDest),
-		// 	protocol: singleRecordObject.protocols,
-		// 	conn_quantity: singleRecordObject.quantity,
-		// 	status: singleRecordObject.status
-		// });
-		
-		// console.log(record);
-		
-		// record.save(function(err){
-		// 	if (err !== null) {
-		// 		console.log('Ошибка записи');
-		// 		console.log(err);
-		// 	}
-		// 	mongoose.disconnect();
-			
-		// });
 		
 		delete l;
 	}

@@ -80,6 +80,10 @@ module.exports = {
 			},
 			defineSignature: function(){
 				var sign = l['Журнал']['Запись'][0].ID_сигнатуры.toString();
+				// Переведем транслитом, чтобы можно было корректно экспортнуть в отчет. К сожалению, библиотека для генерации pdf читает только латинские символы...
+				if (sign === '(детектор атак)') {
+					sign = '(detektor atak)';
+				}
 				var signs = [];
 				signs.push(sign);
 				singleRecordObject.signatures = signs;
@@ -125,71 +129,24 @@ module.exports = {
 		dallasLock.defineQuantity();
 		dallasLock.defineStatus();
 
-		// Connection
+	// Connection
 	MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
         db.collection('dallaslockrecords').insert({
             ids_name: 'Dallas Lock',
-            date_reg: singleRecordObject.dates,
-            time_reg: singleRecordObject.times,
-            ip_src: singleRecordObject.ipsSrc,
+            date_reg: singleRecordObject.dates[0],
+            time_reg: singleRecordObject.times[0],
+            ip_src: singleRecordObject.ipsSrc[0],
             port_src: parseInt(singleRecordObject.portsSrc),
-            ip_dest: singleRecordObject.ipsDest,
+            ip_dest: singleRecordObject.ipsDest[0],
             port_dest: parseInt(singleRecordObject.portsDest),
-            protocol: singleRecordObject.protocols,
-            signatures: singleRecordObject.signatures,
+            protocol: singleRecordObject.protocols[0],
+            signatures: singleRecordObject.signatures[0],
             conn_quantity: singleRecordObject.quantity,
             status: singleRecordObject.status
         });
 
         db.close();
     });
-
-		// mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
-
-		
-		// // "Шаблон" записи в БД
-		// const dallasLockSchema = new Schema({
-		// 		ids_name: String, 
-		// 		date_reg: String,
-		// 		time_reg: String,
-		// 		ip_src: String,
-		// 		port_src: Number,
-		// 		ip_dest: String,
-		// 		port_dest: Number,
-		// 		protocol: String,
-		// 		signatures: String,
-		// 		conn_quantity: Number,
-		// 		status: String
-		// });
-
-		// var dallasLockRecord = mongoose.model('dallasLockRecord', dallasLockSchema);
-
-		// // Отформатированная запись в БД, которая будет добавлена
-
-		// var record = new dallasLockRecord({
-		// 		ids_name: 'Dallas Lock',
-		// 		date_reg: singleRecordObject.dates,
-		// 		time_reg: singleRecordObject.times,
-		// 		ip_src: singleRecordObject.ipsSrc,
-		// 		port_src: parseInt(singleRecordObject.portsSrc),
-		// 		ip_dest: singleRecordObject.ipsDest,
-		// 		port_dest: parseInt(singleRecordObject.portsDest),
-		// 		protocol: singleRecordObject.protocols,
-		// 		signatures: singleRecordObject.signatures,
-		// 		conn_quantity: singleRecordObject.quantity,
-		// 		status: singleRecordObject.status
-		// });
-
-		// // console.log(record);
-
-		// record.save(function(err){
-		// 		if (err !== null) {
-		// 		console.log('Ошибка записи');
-		// 		console.log(err);
-		// 	}
-		// 	mongoose.disconnect();
-			
-		// });
 
 		delete l;
 	}

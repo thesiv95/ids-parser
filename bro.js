@@ -1,7 +1,8 @@
 const fs = require('fs');
 const regExp = require('./regexp');
-const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
+
 var detector = require('./detector');
 
 module.exports = {
@@ -154,56 +155,30 @@ module.exports = {
 		Bro.timeExtract();
 		Bro.dateExtract();
 		Bro.ipSrcExtract();
-		Bro.portSrcExtract(); // допилить
+		Bro.portSrcExtract();
 		Bro.ipDestExtract();
-		Bro.portDestExtract();// допилить
+		Bro.portDestExtract();
 		Bro.protocolExtract();
-		Bro.defineQuantity(); // допилить
-		Bro.defineSignature(); // допилить
+		Bro.defineQuantity();
+		Bro.defineSignature();
 		Bro.defineStatus();
-		mongoose.connect('mongodb://localhost:27017/info', {useNewUrlParser: true});
 		
-		// "Шаблон" записи в БД
-		const BroSchema = new Schema({ 
-		date_reg: String,
-		time_reg: String,
-		ip_src: String,
-		port_src: Number,
-		ip_dest: String,
-		port_dest: Number,
-		protocol: String,
-		conn_quantity: Number,
-		status: String
+		MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
+			db.collection('brorecords').insert({
+				ids_name: 'Bro',
+				date_reg: singleRecordObject.times[0],
+				time_reg: singleRecordObject.dates[0],
+				ip_src: singleRecordObject.ipsSrc,
+				port_src: parseInt(singleRecordObject.portsSrc),
+				ip_dest: singleRecordObject.ipsDest,
+				port_dest: parseInt(singleRecordObject.portsDest),
+				protocol: singleRecordObject.protocols,
+				conn_quantity: singleRecordObject.quantity,
+				status: singleRecordObject.status
+			})
 		});
-
-		var BroRecord = mongoose.model('BroRecord', BroSchema);
-
-		// Отформатированная запись в БД, которая будет добавлена
-
-		var record = new BroRecord({
-			date_reg: singleRecordObject.times,
-			time_reg: singleRecordObject.dates,
-			ip_src: singleRecordObject.ipsSrc,
-			port_src: parseInt(singleRecordObject.portsSrc),
-			ip_dest: singleRecordObject.ipsDest,
-			port_dest: parseInt(singleRecordObject.portsDest),
-			protocol: singleRecordObject.protocols,
-			conn_quantity: singleRecordObject.quantity,
-			status: singleRecordObject.status
-		});
-
-		// console.log(record);
-
-		record.save(function(err){
-		if (err !== null) {
-		console.log('Ошибка записи');
-		console.log(err);
-		}
-		mongoose.disconnect();
-
-		});
-
-
+		
+		
 		delete l;
 	}
 };
