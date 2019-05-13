@@ -80,7 +80,7 @@ http://parser2k19.xyz
             <li><a href="https://momentjs.com" target="_blank">Moment.js 2.24.0</a> &copy; 2019 JS Foundation and other contributors - MIT License</li>
             <li><a href="https://d3js.org" target="_blank">d3.js 5.9.1</a> &copy; 2019 Mike Bostock - BSD license</li>
             <li><a href="http://d3pie.org" target="_blank">d3pie 0.2.1</a> &copy; 2014-2015 Benjamin Keen - MIT License</li>
-            <li><a href="https://mongoosejs.com" target="_blank">mongoose 5.4.19</a> &copy; 2011 LearnBoost - MIT License</li>
+            <li><a href="https://mongodb.github.io/node-mongodb-native/2.2/" target="_blank">mongodb 2.2.33</a> &copy; 2009-2012 Christian Amor Kvalheim, 2012-present MongoDB Contributors - Apache 2.0 License</li>
             <li><a href="https://www.npmjs.com/package/xml2js" target="_blank">xml2js 0.4.19</a> &copy; 2017 @Leonidas-from-XIV - MIT License</li>
             <li><a href="https://twig.symfony.com" target="_blank">Twig 2.x</a> &copy; 2010-2019 Symfony - BSD License (<a href="https://www.npmjs.com/package/twig" target="_blank">version for node.js</a>)</li>
             <li><a href="https://helmetjs.github.io" target="_blank">Helmet 3.18.0</a> &copy; 2019 Adam Baldwin - CC 3.0 License</li>

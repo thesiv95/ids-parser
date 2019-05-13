@@ -37,7 +37,7 @@ var drawOneRecord = new Object(); // объект для экспорта в ш�
 //     }; // один шаблон для всех
 
 
-MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
+MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
     switch (detector.detected){
         case 'Bro':
 
