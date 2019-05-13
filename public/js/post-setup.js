@@ -36,7 +36,7 @@ $(document).ready(function() {
           
         },
         error : function(e) {
-          alert("Error!")
+         // alert("Error!")
           console.log("ERROR: ", e);
         }
       });

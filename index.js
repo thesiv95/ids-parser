@@ -52,8 +52,7 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
       throw err;
     }
 	
-    loadedSetup.eula = result[0]['eula'];
-	loadedSetup.lang = result[0]['lang'];
+    loadedSetup.lang = result[0]['lang'];
     loadedSetup.styles = result[0]['styles'];
     console.log(loadedSetup);
     // Загрузка языковых файлов
@@ -61,8 +60,6 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
     var loadedLanguage = JSON.parse(langFile);
 
     /***** Страницы ******/
-
-    // Лицензионное соглашение - по идее, должно загружаться в первый раз
 
     app.get('/eula', function(req, res){
         res.render('eula', {
