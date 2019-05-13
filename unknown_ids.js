@@ -138,7 +138,7 @@ module.exports = {
 		
 		
 		// Connection
-		MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
+		MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
 			db.collection('uidsrecords').insert({
 				ids_name: '?',
 				date_reg: singleRecordObject.dates,

@@ -126,7 +126,7 @@ module.exports = {
 		dallasLock.defineStatus();
 
 		// Connection
-	MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
+	MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
         db.collection('dallaslockrecords').insert({
             ids_name: 'Dallas Lock',
             date_reg: singleRecordObject.dates,

@@ -232,7 +232,7 @@ module.exports = {
     Snort.defineSignature();
     Snort.defineStatus();
 
-    MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
+    MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
         db.collection('snortrecords').insert({
             ids_name: 'Snort',
             date_reg: singleRecordObject.dates,

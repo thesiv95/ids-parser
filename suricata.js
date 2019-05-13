@@ -99,7 +99,7 @@ module.exports = {
 		Suricata.defineStatus();
 		
 		// Connection
-		MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
+		MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
 			db.collection('suricatarecords').insert({
 				ids_name: 'Suricata',
 				date_reg: singleRecordObject.dates,

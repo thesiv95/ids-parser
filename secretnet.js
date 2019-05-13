@@ -140,7 +140,7 @@ module.exports = {
 		SecretNet.defineStatus();
 		
 		// Connection
-		MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
+		MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
 			db.collection('secretnetrecords').insert({
 				ids_name: 'Secret Net',
 				date_reg: singleRecordObject.dates,

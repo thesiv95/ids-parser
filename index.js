@@ -239,18 +239,22 @@ app.post("/applysettings", function(req,res){
     var setting = {};
     setting.lang = req.body.lang;
     setting.style = req.body.style;
-    console.log('Settings applied');
+    console.log('recieved ' + setting.lang + ' ' + setting.style);
+    
 
 
 
     MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
-        db.collection("setup").findOneAndUpdate({_id: '5cc80f018cf56a1ae8651401'}, {$set: {lang: setting.lang, styles: setting.style}}, (err, options) => {
+        db.collection("setup").update({a: 'a'}, {lang: setting.lang, styles: setting.style, a: 'a', eula: true}, (err, options) => {
             if (err) {
                 console.log('Setup update error: ' + err);
+            } else {
+                console.log('Settings applied');
+                db.close();
             }
 
         });
-        //db.close();
+        
     });
 
 
