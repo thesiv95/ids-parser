@@ -55,9 +55,7 @@ http://parser2k19.xyz
 1. Put `ids-parser-install.sh` file to your server, run this file as sudo. Before running, you should delete packages like `apache`, `mysql-server`, `php-*`.
 2. Put `ids-parser-autorun.sh`, make it run when the OS of your server boots up (use file `/etc/rc.local`)
 3. Unzip the files of parser, put them to your server root (usually `/var/www/html`).
-4. Unzip and import MongoDB database backup `ids-parser-db.zip`. This app has the following structure:
-
-![structure](https://i.imgur.com/cH7uIa9.png)
+4. Go to `http://your_domain.com/install` and follow all the instructions, after that go to `http://your_domain.com`. 
 
 #### Virtual machines
 - *VirtualBox*: unzip archive, then go to File - Import Appliance and select unzipped `ids-parser-virtualbox.ova` file. Login & password: `idsp`. FTP is avaliable (IP = your VM IP, login & password - `idsp`).
