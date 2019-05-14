@@ -46,16 +46,18 @@ http://parser2k19.xyz
 | Firefox for Android | 64      | Android 4.1 |
 
 ### How to start
-#### .zip archives
-1. Unzip files where you need. Open terminal there.
-2. If you have downloaded archive without *node_modules*, run `npm i` command to download libraries for this app.
-3. Run nodemon command. When message "Parser started" is shown, go to `http://localhost:3000`.
+#### .zip archives (local server)
+1. Make sure you have successfully connected to MongoDB database (usually *localhost:27017*).
+2. Unzip files where you need. Open terminal there.
+3. If you have downloaded archive without *node_modules*, run `npm i` command to download libraries for this app.
+4. Run nodemon command. When message *Parser was started, using port 3000* is shown, go to `http://localhost:3000/install` and follow all the instructions, after that go to `http://localhost:3000`.
 
-#### Shell scripts (if you have remote server, VPS, etc)
-1. Put `ids-parser-install.sh` file to your server, run this file as sudo. Before running, you should delete packages like `apache`, `mysql-server`, `php-*`.
-2. Put `ids-parser-autorun.sh`, make it run when the OS of your server boots up (use file `/etc/rc.local`)
-3. Unzip the files of parser, put them to your server root (usually `/var/www/html`).
-4. Go to `http://your_domain.com/install` and follow all the instructions, after that go to `http://your_domain.com`. 
+#### Shell scripts (if you have remote server, VPS, etc) - *Ubuntu 14+/Debian 8+ only*
+1. Make sure you have successfully connected to MongoDB database (port is usually *27017*).
+2. Put `ids-parser-install.sh` file to your server, run this file as sudo. Before running, you should delete packages like `apache`, `mysql-server`, `php-*`.
+3. Put `ids-parser-autorun.sh`, make it run when the OS of your server boots up (use file `/etc/rc.local`)
+4. Download and unzip the files of parser, put them to your server root (usually `/var/www/html`). If you have downloaded archive without *node_modules*, run `npm i` command at the server root folder to download libraries for this app.
+5. Run nodemon command at the server root folder. When message *Parser was started, using port 3000* is shown, go to `http://your_domain.com/install` and follow all the instructions, after that go to `http://your_domain.com`. 
 
 #### Virtual machines
 - *VirtualBox*: unzip archive, then go to File - Import Appliance and select unzipped `ids-parser-virtualbox.ova` file. Login & password: `idsp`. FTP is avaliable (IP = your VM IP, login & password - `idsp`).
