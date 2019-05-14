@@ -18,8 +18,6 @@ http://parser2k19.xyz
 
 [Files + node_modules (.zip)](http://parser2k19.xyz/files/ids-parser-beta_node.zip)
 
-[Database (.zip)](http://parser2k19.xyz/files/ids-parser-db.zip)
-
 [Auto install script (for Ubuntu 14+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-install.sh)
 
 [Auto run script (for Ubuntu 14+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-autorun.sh)
