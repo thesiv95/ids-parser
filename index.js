@@ -349,7 +349,7 @@ app.get('/startinstall', function(){
         db.collection('setup').insert({
             lang: 'ru',
             styles: 1,
-            param: 'param'
+            a: 'a'
         });
 
         db.close();
