@@ -54,12 +54,14 @@ http://parser2k19.xyz
 
 #### Shell scripts (if you have remote server, VPS, etc) - *Ubuntu 14+/Debian 8+ only*
 1. Make sure you have successfully connected to MongoDB database (port is usually *27017*).
-2. Put `ids-parser-install.sh` file to your server, run this file as sudo. Before running, you should delete packages such as `apache`, `mysql-server`, `php-*`.
+2. Put `ids-parser-install.sh` file to your server, run this file as sudo. This file will download and unpack libraries that are needed to run the app. Before running, you should delete packages such as `apache`, `mysql-server`, `php-*`.
 3. Put `ids-parser-autorun.sh`, make it run when the OS of your server boots up (use file `/etc/rc.local`)
 4. Download and unzip the files of parser, put them to your server root (usually `/var/www/html`). If you have downloaded archive without *node_modules*, run `npm i` command at the server root folder to download libraries for this app.
-5. Run nodemon command at the server root folder. When message *Parser was started, using port 3000* is shown, go to `http://remote.ip/install` and follow all the instructions, after that go to `http://remote.ip`. If there are any problems, try going to `http://remote.ip:3000`.
+5. Run nodemon command at the server root folder. When message *Parser was started, using port 3000* is shown, go to `http://remote.ip:3000/install` and follow all the instructions, after that go to `http://remote.ip:3000`.
+6. If you had binded a domain to your VPS, consider using [nginx proxy for node.js](https://radiostud.io/configuring-nginx-reverse-proxy-node-js-application/) (to get rid of `:3000` port in the address bar).
 
 #### Virtual machines
+In VMs everything has already been setup.
 - *VirtualBox*: unzip archive, then go to File - Import Appliance and select unzipped `ids-parser-virtualbox.ova` file. Login & password: `idsp`. FTP is avaliable (IP = your VM IP, login & password - `idsp`).
 - *VMware*: unzip archive, then run `ids-parser.vmx` file. Login & password: `idsp`. FTP is avaliable (IP = your VM IP, login & password - `idsp`).
 
@@ -70,6 +72,7 @@ http://parser2k19.xyz
 &copy; [SIV](https://www.facebook.com/thesiv95), 2019
 
 ### Libraries & frameworks used
+
 <li><a href="https://fonts.adobe.com/fonts/stolzl" target="_blank">Stolzl-Regular</a>: Copyright &copy; 2015 by Mariya Pigoulevskaya. All rights reserved.</li>
             <li><a href="https://code.jquery.com/jquery/" target="_blank">JQuery 1.9.1</a> &copy; 2013-2019 The jQuery Foundation - MIT License</li>
             <li><a href="https://blueimp.github.io/jQuery-File-Upload/" target="_blank">jQuery File Upload v9.25.1 </a> &copy; 2019 Sebastian Tschan - MIT License</li>
