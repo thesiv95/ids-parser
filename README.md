@@ -54,10 +54,10 @@ http://parser2k19.xyz
 
 #### Shell scripts (if you have remote server, VPS, etc) - *Ubuntu 14+/Debian 8+ only*
 1. Make sure you have successfully connected to MongoDB database (port is usually *27017*).
-2. Put `ids-parser-install.sh` file to your server, run this file as sudo. Before running, you should delete packages like `apache`, `mysql-server`, `php-*`.
+2. Put `ids-parser-install.sh` file to your server, run this file as sudo. Before running, you should delete packages such as `apache`, `mysql-server`, `php-*`.
 3. Put `ids-parser-autorun.sh`, make it run when the OS of your server boots up (use file `/etc/rc.local`)
 4. Download and unzip the files of parser, put them to your server root (usually `/var/www/html`). If you have downloaded archive without *node_modules*, run `npm i` command at the server root folder to download libraries for this app.
-5. Run nodemon command at the server root folder. When message *Parser was started, using port 3000* is shown, go to `http://your_domain.com/install` and follow all the instructions, after that go to `http://your_domain.com`. 
+5. Run nodemon command at the server root folder. When message *Parser was started, using port 3000* is shown, go to `http://remote.ip/install` and follow all the instructions, after that go to `http://remote.ip`. If there are any problems, try going to `http://remote.ip:3000`.
 
 #### Virtual machines
 - *VirtualBox*: unzip archive, then go to File - Import Appliance and select unzipped `ids-parser-virtualbox.ova` file. Login & password: `idsp`. FTP is avaliable (IP = your VM IP, login & password - `idsp`).
