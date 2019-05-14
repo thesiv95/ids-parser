@@ -23,7 +23,7 @@ MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
                     console.log('error - ' + err)
                 } else {
                     if (recordings[0]){
-                        drawOneRecord.ids_name = recordings[0].ids_name;
+                        drawOneRecord.ids_name = 'Zeek (' + recordings[0].ids_name + ')'; // новое и старое название
                         drawOneRecord.date_reg = recordings[0].date_reg;
                         drawOneRecord.time_reg = recordings[0].time_reg;
                         drawOneRecord.ip_src = recordings[0].ip_src;
