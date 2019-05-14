@@ -18,22 +18,26 @@ MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
     switch (detector.detected){
         case 'Bro':
             db.collection('brorecords').find({ids_name: 'Bro'}).toArray(function(err, recordings){
-                // в демо-версии выведем только 1 запись :)
+                // Определим последнюю запись в массиве, которая получилась в результате парсинга файла. Для этого нам понадобится значение длины массива (= кол-во записей в базе). В демо-версии выведем только 1 запись :)
+                // И так в каждом случае.
+                var recLength = recordings.length;
+                // console.log(recordings[recLength - 1]._id);
                 if (err) {
                     console.log('error - ' + err)
                 } else {
-                    if (recordings[0]){
-                        drawOneRecord.ids_name = 'Zeek (' + recordings[0].ids_name + ')'; // новое и старое название
-                        drawOneRecord.date_reg = recordings[0].date_reg;
-                        drawOneRecord.time_reg = recordings[0].time_reg;
-                        drawOneRecord.ip_src = recordings[0].ip_src;
-                        drawOneRecord.port_src = recordings[0].port_src;
-                        drawOneRecord.ip_dest = recordings[0].ip_dest;
-                        drawOneRecord.port_dest = recordings[0].port_dest;
-                        drawOneRecord.protocol = recordings[0].protocol;
-                        drawOneRecord.signatures = recordings[0].signatures;
-                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
-                        drawOneRecord.status = recordings[0].status;
+                    // recLength - 1, т.к. значения массива нумеруются с 0
+                    if (recordings[recLength - 1]){
+                        drawOneRecord.ids_name = 'Zeek (' + recordings[recLength - 1].ids_name + ')'; // новое и старое название
+                        drawOneRecord.date_reg = recordings[recLength - 1].date_reg;
+                        drawOneRecord.time_reg = recordings[recLength - 1].time_reg;
+                        drawOneRecord.ip_src = recordings[recLength - 1].ip_src;
+                        drawOneRecord.port_src = recordings[recLength - 1].port_src;
+                        drawOneRecord.ip_dest = recordings[recLength - 1].ip_dest;
+                        drawOneRecord.port_dest = recordings[recLength - 1].port_dest;
+                        drawOneRecord.protocol = recordings[recLength - 1].protocol;
+                        drawOneRecord.signatures = recordings[recLength - 1].signatures;
+                        drawOneRecord.conn_quantity = recordings[recLength - 1].conn_quantity;
+                        drawOneRecord.status = recordings[recLength - 1].status;
                         
                     }
                 };
@@ -42,22 +46,22 @@ MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
             break;
         case 'Dallas Lock':
             db.collection('dallaslockrecords').find({ids_name: 'Dallas Lock'}).toArray(function(err, recordings){
-                // в демо-версии выведем только 1 запись :)
+                var recLength = recordings.length;
                 if (err) {
                     console.log('error - ' + err)
                 } else {
-                    if (recordings[0]){
-                        drawOneRecord.ids_name = recordings[0].ids_name;
-                        drawOneRecord.date_reg = recordings[0].date_reg;
-                        drawOneRecord.time_reg = recordings[0].time_reg;
-                        drawOneRecord.ip_src = recordings[0].ip_src;
-                        drawOneRecord.port_src = recordings[0].port_src;
-                        drawOneRecord.ip_dest = recordings[0].ip_dest;
-                        drawOneRecord.port_dest = recordings[0].port_dest;
-                        drawOneRecord.protocol = recordings[0].protocol;
-                        drawOneRecord.signatures = recordings[0].signatures;
-                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
-                        drawOneRecord.status = recordings[0].status;
+                    if (recordings[recLength - 1]){
+                        drawOneRecord.ids_name = recordings[recLength - 1].ids_name;
+                        drawOneRecord.date_reg = recordings[recLength - 1].date_reg;
+                        drawOneRecord.time_reg = recordings[recLength - 1].time_reg;
+                        drawOneRecord.ip_src = recordings[recLength - 1].ip_src;
+                        drawOneRecord.port_src = recordings[recLength - 1].port_src;
+                        drawOneRecord.ip_dest = recordings[recLength - 1].ip_dest;
+                        drawOneRecord.port_dest = recordings[recLength - 1].port_dest;
+                        drawOneRecord.protocol = recordings[recLength - 1].protocol;
+                        drawOneRecord.signatures = recordings[recLength - 1].signatures;
+                        drawOneRecord.conn_quantity = recordings[recLength - 1].conn_quantity;
+                        drawOneRecord.status = recordings[recLength - 1].status;
                         
                     }
                 };
@@ -66,22 +70,22 @@ MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
             break;
         case 'SecretNet':
             db.collection('secretnetrecords').find({ids_name: 'SecretNet'}).toArray(function(err, recordings){
-                // в демо-версии выведем только 1 запись :)
+                var recLength = recordings.length;
                 if (err) {
                     console.log('error - ' + err)
                 } else {
-                    if (recordings[0]){
-                        drawOneRecord.ids_name = recordings[0].ids_name;
-                        drawOneRecord.date_reg = recordings[0].date_reg;
-                        drawOneRecord.time_reg = recordings[0].time_reg;
-                        drawOneRecord.ip_src = recordings[0].ip_src;
-                        drawOneRecord.port_src = recordings[0].port_src;
-                        drawOneRecord.ip_dest = recordings[0].ip_dest;
-                        drawOneRecord.port_dest = recordings[0].port_dest;
-                        drawOneRecord.protocol = recordings[0].protocol;
-                        drawOneRecord.signatures = recordings[0].signatures;
-                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
-                        drawOneRecord.status = recordings[0].status;
+                    if (recordings[recLength - 1]){
+                        drawOneRecord.ids_name = recordings[recLength - 1].ids_name;
+                        drawOneRecord.date_reg = recordings[recLength - 1].date_reg;
+                        drawOneRecord.time_reg = recordings[recLength - 1].time_reg;
+                        drawOneRecord.ip_src = recordings[recLength - 1].ip_src;
+                        drawOneRecord.port_src = recordings[recLength - 1].port_src;
+                        drawOneRecord.ip_dest = recordings[recLength - 1].ip_dest;
+                        drawOneRecord.port_dest = recordings[recLength - 1].port_dest;
+                        drawOneRecord.protocol = recordings[recLength - 1].protocol;
+                        drawOneRecord.signatures = recordings[recLength - 1].signatures;
+                        drawOneRecord.conn_quantity = recordings[recLength - 1].conn_quantity;
+                        drawOneRecord.status = recordings[recLength - 1].status;
                         
                     }
                 };
@@ -90,22 +94,22 @@ MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
             break;
         case 'Snort':
             db.collection('snortrecords').find({ids_name: 'Snort'}).toArray(function(err, recordings){
-                // в демо-версии выведем только 1 запись :)
+                var recLength = recordings.length;
                 if (err) {
                     console.log('error - ' + err)
                 } else {
-                    if (recordings[0]){
-                        drawOneRecord.ids_name = recordings[0].ids_name;
-                        drawOneRecord.date_reg = recordings[0].date_reg;
-                        drawOneRecord.time_reg = recordings[0].time_reg;
-                        drawOneRecord.ip_src = recordings[0].ip_src;
-                        drawOneRecord.port_src = recordings[0].port_src;
-                        drawOneRecord.ip_dest = recordings[0].ip_dest;
-                        drawOneRecord.port_dest = recordings[0].port_dest;
-                        drawOneRecord.protocol = recordings[0].protocol;
-                        drawOneRecord.signatures = recordings[0].signatures;
-                        drawOneRecord.conn_quantity = recordings[0].conn_quantity;
-                        drawOneRecord.status = recordings[0].status;
+                    if (recordings[recLength - 1]){
+                        drawOneRecord.ids_name = recordings[recLength - 1].ids_name;
+                        drawOneRecord.date_reg = recordings[recLength - 1].date_reg;
+                        drawOneRecord.time_reg = recordings[recLength - 1].time_reg;
+                        drawOneRecord.ip_src = recordings[recLength - 1].ip_src;
+                        drawOneRecord.port_src = recordings[recLength - 1].port_src;
+                        drawOneRecord.ip_dest = recordings[recLength - 1].ip_dest;
+                        drawOneRecord.port_dest = recordings[recLength - 1].port_dest;
+                        drawOneRecord.protocol = recordings[recLength - 1].protocol;
+                        drawOneRecord.signatures = recordings[recLength - 1].signatures;
+                        drawOneRecord.conn_quantity = recordings[recLength - 1].conn_quantity;
+                        drawOneRecord.status = recordings[recLength - 1].status;
                         
                     }
                 };
@@ -115,22 +119,22 @@ MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
             break;
             case 'Suricata':
                 db.collection('suricatarecords').find({ids_name: 'Suricata'}).toArray(function(err, recordings){
-                    // в демо-версии выведем только 1 запись :)
+                    var recLength = recordings.length;
                     if (err) {
                         console.log('error - ' + err)
                     } else {
-                        if (recordings[0]){
-                            drawOneRecord.ids_name = recordings[0].ids_name;
-                            drawOneRecord.date_reg = recordings[0].date_reg;
-                            drawOneRecord.time_reg = recordings[0].time_reg;
-                            drawOneRecord.ip_src = recordings[0].ip_src;
-                            drawOneRecord.port_src = recordings[0].port_src;
-                            drawOneRecord.ip_dest = recordings[0].ip_dest;
-                            drawOneRecord.port_dest = recordings[0].port_dest;
-                            drawOneRecord.protocol = recordings[0].protocol;
-                            drawOneRecord.signatures = recordings[0].signatures;
-                            drawOneRecord.conn_quantity = recordings[0].conn_quantity;
-                            drawOneRecord.status = recordings[0].status;
+                        if (recordings[recLength - 1]){
+                            drawOneRecord.ids_name = recordings[recLength - 1].ids_name;
+                            drawOneRecord.date_reg = recordings[recLength - 1].date_reg;
+                            drawOneRecord.time_reg = recordings[recLength - 1].time_reg;
+                            drawOneRecord.ip_src = recordings[recLength - 1].ip_src;
+                            drawOneRecord.port_src = recordings[recLength - 1].port_src;
+                            drawOneRecord.ip_dest = recordings[recLength - 1].ip_dest;
+                            drawOneRecord.port_dest = recordings[recLength - 1].port_dest;
+                            drawOneRecord.protocol = recordings[recLength - 1].protocol;
+                            drawOneRecord.signatures = recordings[recLength - 1].signatures;
+                            drawOneRecord.conn_quantity = recordings[recLength - 1].conn_quantity;
+                            drawOneRecord.status = recordings[recLength - 1].status;
                             
                         }
                     };
