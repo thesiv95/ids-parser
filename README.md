@@ -21,11 +21,7 @@ http://parser2k19.xyz
 [Auto install script (for Ubuntu 14+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-install.sh)
 
 [Auto run script (for Ubuntu 14+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-autorun.sh)
-
-[VirtualBox Image (.zip)](http://parser2k19.xyz/files/ids-parser-virtualbox.zip)
-
-[VMware Image (.zip)](http://parser2k19.xyz/files/ids-parser-vmware.zip)
-            
+           
 [Screenshot](http://parser2k19.xyz/files/scr.png)  
 
 [Demo Log Files](http://parser2k19.xyz/files/demo-logs.zip)
@@ -52,18 +48,13 @@ http://parser2k19.xyz
 3. If you have downloaded archive without *node_modules*, run `npm i` command to download libraries for this app.
 4. Run nodemon command. When message *Parser was started, using port 3000* is shown, go to `http://localhost:3000/install` and follow all the instructions, after that go to `http://localhost:3000`.
 
-#### Shell scripts (if you have remote server, VPS, etc) - *Ubuntu 14+/Debian 8+ only*
+#### Shell scripts (if you have remote server, VPS, etc) - *Ubuntu 16+/Debian 8+ only*
 1. Make sure you have successfully connected to MongoDB database (port is usually *27017*).
 2. Put `ids-parser-install.sh` file to your server, run this file as sudo. This file will download and unpack libraries that are needed to run the app. Before running, you should delete packages such as `apache`, `mysql-server`, `php-*`.
 3. Put `ids-parser-autorun.sh`, make it run when the OS of your server boots up (use file `/etc/rc.local`)
 4. Download and unzip the files of parser, put them to your server root (usually `/var/www/html`). If you have downloaded archive without *node_modules*, run `npm i` command at the server root folder to download libraries for this app.
 5. Run nodemon command at the server root folder. When message *Parser was started, using port 3000* is shown, go to `http://remote.ip:3000/install` and follow all the instructions, after that go to `http://remote.ip:3000`.
 6. If you had binded a domain to your VPS, consider using [nginx proxy for node.js](https://radiostud.io/configuring-nginx-reverse-proxy-node-js-application/) (to get rid of `:3000` port in the address bar).
-
-#### Virtual machines
-In VMs everything has already been setup.
-- *VirtualBox*: unzip archive, then go to File - Import Appliance and select unzipped `ids-parser-virtualbox.ova` file. Login & password: `idsp`. FTP is avaliable (IP = your VM IP, login & password - `idsp`).
-- *VMware*: unzip archive, then run `ids-parser.vmx` file. Login & password: `idsp`. FTP is avaliable (IP = your VM IP, login & password - `idsp`).
 
 ### License
 [GNU GPL v1.0](https://www.gnu.org/licenses/old-licenses/gpl-1.0.en.html)
@@ -73,17 +64,19 @@ In VMs everything has already been setup.
 
 ### Libraries & frameworks used
 
-<li><a href="https://fonts.adobe.com/fonts/stolzl" target="_blank">Stolzl-Regular</a>: Copyright &copy; 2015 by Mariya Pigoulevskaya. All rights reserved.</li>
-            <li><a href="https://code.jquery.com/jquery/" target="_blank">JQuery 1.9.1</a> &copy; 2013-2019 The jQuery Foundation - MIT License</li>
-            <li><a href="https://blueimp.github.io/jQuery-File-Upload/" target="_blank">jQuery File Upload v9.25.1 </a> &copy; 2019 Sebastian Tschan - MIT License</li>
-            <li><a href="https://leaverou.github.io/prefixfree/" target="_blank">StyleFix 1.0.3 & PrefixFree 1.0.7</a> &copy; 2017 Lea Verou - MIT License</li>
-            <li><a href="https://modernizr.com" target="_blank">Modernizr 3.6.0</a> &copy; 2019 Faruk Ateş, Paul Irish, Alex Sexton, Ryan Seddon, Patrick Kettner, Stu Cox, Richard Herrera - MIT License</li>
-            <li><a href="https://momentjs.com" target="_blank">Moment.js 2.24.0</a> &copy; 2019 JS Foundation and other contributors - MIT License</li>
-            <li><a href="https://d3js.org" target="_blank">d3.js 5.9.1</a> &copy; 2019 Mike Bostock - BSD license</li>
-            <li><a href="http://d3pie.org" target="_blank">d3pie 0.2.1</a> &copy; 2014-2015 Benjamin Keen - MIT License</li>
-            <li><a href="https://mongodb.github.io/node-mongodb-native/2.2/" target="_blank">mongodb 2.2.33</a> &copy; 2009-2012 Christian Amor Kvalheim, 2012-present MongoDB Contributors - Apache 2.0 License</li>
-            <li><a href="https://www.npmjs.com/package/xml2js" target="_blank">xml2js 0.4.19</a> &copy; 2017 @Leonidas-from-XIV - MIT License</li>
-            <li><a href="https://twig.symfony.com" target="_blank">Twig 2.x</a> &copy; 2010-2019 Symfony - BSD License (<a href="https://www.npmjs.com/package/twig" target="_blank">version for node.js</a>)</li>
-            <li><a href="https://helmetjs.github.io" target="_blank">Helmet 3.18.0</a> &copy; 2019 Adam Baldwin - CC 3.0 License</li>
-            <li><a href="https://www.npmjs.com/package/x-xss-protection" target="_blank">x-xss-protection 1.1.0</a> &copy; 2019 Evan Hahn - MIT License</li>
-            <li><a href="https://www.npmjs.com/package/dont-sniff-mimetype" target="_blank">dont-sniff-mimetype 1.0.0</a> &copy; 2019 Evan Hahn - MIT License</li>
+- [Stolzl-Regular](https://fonts.adobe.com/fonts/stolzl) Copyright &copy; 2015 by Mariya Pigoulevskaya. All rights reserved.
+
+- [Font Awesome](https://fontawesome.com) (free license) &copy; 2017 Fonticons, Inc. - Icons — CC BY 4.0 License, Fonts — SIL OFL 1.1 License, Code — MIT License
+- [jQuery 1.9.1](https://code.jquery.com/jquery/) &copy; 2013-2019 The jQuery Foundation - MIT License
+- [jQuery File Upload v9.25.1](https://blueimp.github.io/jQuery-File-Upload/) &copy; 2019 Sebastian Tschan - MIT License
+- [StyleFix 1.0.3 & PrefixFree 1.0.7](https://leaverou.github.io/prefixfree/) &copy; 2017 Lea Verou - MIT License
+- [Modernizr 3.6.0](https://modernizr.com) &copy; 2019 Faruk Ateş, Paul Irish, Alex Sexton, Ryan Seddon, Patrick Kettner, Stu Cox, Richard Herrera - MIT License
+- [Moment.js 2.24.0](https://momentjs.com) &copy; 2019 JS Foundation and other contributors - MIT License
+- [d3.js 5.9.1](https://d3js.org) &copy; 2019 Mike Bostock - BSD license
+- [d3pie 0.2.1](http://d3pie.org) &copy; 2014-2015 Benjamin Keen - MIT License
+- [mongodb 2.2.33](https://mongodb.github.io/node-mongodb-native/2.2/) &copy; 2009-2012 Christian Amor Kvalheim, 2012-present MongoDB Contributors - Apache 2.0 License
+- [xml2js 0.4.19](https://www.npmjs.com/package/xml2js) &copy; 2017 @Leonidas-from-XIV - MIT License
+- [Twig 2.x](https://twig.symfony.com) &copy; 2010-2019 Symfony - BSD License (<a href="https://www.npmjs.com/package/twig" target="_blank">version for node.js
+- [Helmet 3.18.0](https://helmetjs.github.io) &copy; 2019 Adam Baldwin - CC 3.0 License
+- [x-xss-protection 1.1.0](https://www.npmjs.com/package/x-xss-protection) &copy; 2019 Evan Hahn - MIT License
+- [dont-sniff-mimetype 1.0.0](https://www.npmjs.com/package/dont-sniff-mimetype) &copy; 2019 Evan Hahn - MIT License

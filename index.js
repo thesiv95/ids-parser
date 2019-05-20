@@ -348,4 +348,5 @@ app.use('/upload', function(req, res, next){ // ссылка для загруз
 app.listen(port, function () {
     console.log('Parser was started, using port ' + port);
     console.log('Home directory: ' + __dirname);
+    console.log('Please go to /install page if it is the first start of the app!');
   });
