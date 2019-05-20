@@ -1,7 +1,14 @@
 node_modules
+db-backup
 demo-db
 base
 base1
 db.txt
 .snyk
 *.djvu
+404.txt
+output_-_*.pdf
+public/uploads/*.log
+public/uploads/*.xml
+public/uploads/*.snlog
+public/uploads/*.txt
