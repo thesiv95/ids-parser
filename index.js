@@ -57,7 +57,7 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
 	
     loadedSetup.lang = result[0]['lang'];
     loadedSetup.styles = result[0]['styles'];
-    console.log(loadedSetup);
+    // console.log(loadedSetup);
     // Загрузка языковых файлов
     var langFile = fs.readFileSync('lang/lang_' + loadedSetup.lang + '.json');
     var loadedLanguage = JSON.parse(langFile);
@@ -215,7 +215,7 @@ app.post("/applysettings", function(req,res){
     var setting = {};
     setting.lang = req.body.lang;
     setting.style = req.body.style;
-    console.log('recieved ' + setting.lang + ' ' + setting.style);
+    // console.log('recieved ' + setting.lang + ' ' + setting.style);
     
 
 
@@ -225,7 +225,7 @@ app.post("/applysettings", function(req,res){
             if (err) {
                 console.log('Setup update error: ' + err);
             } else {
-                console.log('Settings applied');
+                // console.log('Settings applied');
                 db.close();
             }
 

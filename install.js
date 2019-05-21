@@ -6,7 +6,7 @@ module.exports = {
         
     // Установка демо-баз приложения (база должна быть пустой!);
     // При отсутствии баз данных с такими именами они будут созданы автоматически
-        console.log('Installation');
+       // console.log('Installation');
 
         MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
 

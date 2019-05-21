@@ -11,7 +11,7 @@ var pathToFile = ''; // путь к нужному файлу
 // Функция поиска файла в папке по расширению
 function fromDir(startPath,filter){
     if (!fs.existsSync(startPath)){
-        console.log("no dir ",startPath);
+        console.log("Directory not found: ",startPath);
         return;
     }
 
@@ -63,17 +63,17 @@ module.exports = {
 
 // fs.close();
 
-// После всех манипуляций файл нужно удалить
+// После всех манипуляций файл нужно удалить - пока что уберем эту функцию
 // Отдельная функция, а то удаление запускается до того, как сработали все остальные скрипты, и из-за этого возникает ошибка
 // deleteFile(pathToFile);
 
-function deleteFile(pathToFile){
-    fs.unlink(pathToFile, function(err){
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('Delete file - ok');
-        }
-    });
-}
+// function deleteFile(pathToFile){
+//     fs.unlink(pathToFile, function(err){
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log('Delete file - ok');
+//         }
+//     });
+// }
 

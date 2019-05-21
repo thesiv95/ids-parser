@@ -6,8 +6,7 @@ const fs = require('fs');
 const regExp = require('./regexp');
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-// const mongoose = require('mongoose');
-// var Schema = mongoose.Schema;
+
 var detector = require('./detector');
 
 
