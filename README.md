@@ -18,15 +18,15 @@ http://parser2k19.xyz
 
 [Files + node_modules (.zip)](http://parser2k19.xyz/files/ids-parser-beta_node.zip)
 
-[Auto install script (for Ubuntu 14+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-install.sh)
+[Auto install script (for Ubuntu 16+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-install.sh)
 
-[Auto run script (for Ubuntu 14+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-autorun.sh)
+[Auto run script (for Ubuntu 16+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-autorun.sh)
            
 [Screenshot](http://parser2k19.xyz/files/scr.png)  
 
 [Demo Log Files - also included in this repository](http://parser2k19.xyz/files/demo-logs.zip)
 
-### Minimal browser requirements 
+### Minimal browser requirements
 
 | Name        | Version           | Platform  |
 | ------------- |-------------| ---------------|
