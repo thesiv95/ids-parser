@@ -1,1 +1,0 @@
-{"_id":{"$oid":"5cc866198cf56a1ae865140a"},"ids_name":"Snort","date_reg":"2019-02-04","time_reg":"20:14:36","ip_src":"192.168.1.69","port_src":{"$numberInt":"2540"},"ip_dest":"209.197.3.15","port_dest":{"$numberInt":"443"},"protocol":"TCP","signatures":"[snort]","conn_quantity":{"$numberInt":"16"},"status":"good"}

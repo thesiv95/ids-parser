@@ -1,1 +1,0 @@
-{"_id":{"$oid":"5cc8631e8cf56a1ae8651406"},"ids_name":"Bro","date_reg":"2019-02-05","time_reg":"21-14-17","ip_src":"192.168.1.69","port_src":{"$numberInt":"25143"},"ip_dest":"87.250.247.183","port_dest":{"$numberInt":"443"},"protocol":"tcp","signatures":"C6rhft2Ak6NqOsJ6qf","conn_quantity":{"$numberInt":"20"},"status":"good"}
