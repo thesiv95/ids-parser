@@ -12,6 +12,15 @@ var Pdfgen = {
         doc.pipe(res);  // HTTP-заголовки сервера Express
        
         /* Добавление содержимого */
+        // doc.fontSize(14);
+        // doc.text(data.title, { // заголовок
+        //     align: 'center',
+        //     underline: true
+        // });
+        // doc.text('\n'); // пустая строка между элементами
+
+        
+
         doc.fontSize(14);
         doc.text(data.title, { // заголовок
             align: 'center',
@@ -20,14 +29,42 @@ var Pdfgen = {
         doc.text('\n'); // пустая строка между элементами
         doc.text('IDS detected: ' + data.ids_name);
         doc.text('\n');
+        // Диаграмма
+        // ПРИМЕЧАНИЕ. Тут показан ПРИМЕР того, где должна быть диаграмма. Она 
+        // (пока что) не отрисовывается согласно реальным значением трафика, т.к. пока 
+        // непонятно, как сие реализовать...
+        doc.circle(125, 185, 50)   // задали параметры круга
+            .lineWidth(0)          // нет границы (или минимальное значение границы)
+            .fillOpacity(1)        // непрозрачный
+            .fillAndStroke("#da4e0a", "transparent") // цвет заливки, цвет границы
+            .stroke()              // нарисовали круг
+            // Обратно переключимся на черный цвет для текста
+            .fill("black");
+        // Да, пришлось вот так вот извратиться, потому что блин это векторная графика
+        // И все остальные элементы налазят на эту графику. FFFFFUUUUU!!!!
+        doc.text('\n');
+        doc.text('\n');
+        doc.text('\n');
+        doc.text('\n');
+        doc.text('\n');
+        doc.text('\n');
+        doc.text('\n');
+        doc.text('\n');
         // Список записей
+        doc.fill("#da4e0a");
         doc.list(data.text); // массив выведется как маркированный список
         doc.text('\n');
+        doc.fill("black");
         // Информация о типах трафика
         doc.text('Traffic information:\n');
+        // Цвета соответствуют значениям классов CSS, который задает цвет надписей в браузере
+        doc.fill("#51c123");
         doc.text('Legal: ' + data.traffic.good.quantity + ' (' + data.traffic.good.percent + '%)\n');
+        doc.fill("#da4e0a");
         doc.text('Illegal: ' + data.traffic.bad.quantity + ' (' + data.traffic.bad.percent + '%)\n');
+        doc.fill("#489fca");
         doc.text('Unknown: ' + data.traffic.unknown.quantity + ' (' + data.traffic.unknown.percent + '%)\n');
+        doc.fill("black");
         doc.text('Total entries: ' + data.total);
         doc.text('\n');
         // когда создан
