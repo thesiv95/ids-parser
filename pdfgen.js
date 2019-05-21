@@ -52,7 +52,7 @@ var Pdfgen = {
         doc.text('\n');
         doc.text('\n');
         // Список записей
-        doc.fill("#da4e0a");
+        doc.fill(data.pieColor);
         doc.list(data.text); // массив выведется как маркированный список
         doc.text('\n');
         doc.fill("black");
