@@ -76,7 +76,8 @@ http://parser2k19.xyz
 - [d3pie 0.2.1](http://d3pie.org) &copy; 2014-2015 Benjamin Keen - MIT License
 - [mongodb 2.2.33](https://mongodb.github.io/node-mongodb-native/2.2/) &copy; 2009-2012 Christian Amor Kvalheim, 2012-present MongoDB Contributors - Apache 2.0 License
 - [xml2js 0.4.19](https://www.npmjs.com/package/xml2js) &copy; 2017 @Leonidas-from-XIV - MIT License
-- [Twig 2.x](https://twig.symfony.com) &copy; 2010-2019 Symfony - BSD License (<a href="https://www.npmjs.com/package/twig" target="_blank">version for node.js
+- [Twig 2.x](https://twig.symfony.com) &copy; 2010-2019 Symfony - BSD License
+- [Twig 2.x - version for node.js](https://www.npmjs.com/package/twig)
 - [Helmet 3.18.0](https://helmetjs.github.io) &copy; 2019 Adam Baldwin - CC 3.0 License
 - [x-xss-protection 1.1.0](https://www.npmjs.com/package/x-xss-protection) &copy; 2019 Evan Hahn - MIT License
 - [dont-sniff-mimetype 1.0.0](https://www.npmjs.com/package/dont-sniff-mimetype) &copy; 2019 Evan Hahn - MIT License
