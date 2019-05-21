@@ -266,11 +266,23 @@ app.get('/pdf', function(req, res){
             unknownTraffic++;
         }
     }
+
+    // Передадим цвет диаграммы (пока один)
+    // Цвет соответствует цветам css-классов (тип трафика)
+    var pieColor;
+
+    if (goodTraffic > 0) pieColor = "#51c123";
+    if (badTraffic > 0) pieColor = "#da4e0a";
+    if (unknownTraffic > 0) pieColor = "#489fca";
+
+    // console.log('pieColor ' + pieColor);
+
     // Передаваемая информация
     var data = {
         title: 'IDS Parser Report',
         ids_name: draw.ids_name,
         text: textStringArray,
+        pieColor: pieColor,
         traffic: {
             good: {
                 quantity: goodTraffic,
