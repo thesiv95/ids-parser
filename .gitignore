@@ -3,6 +3,7 @@ db-backup
 demo-db
 base
 base1
+base*
 db.txt
 .snyk
 *.djvu
