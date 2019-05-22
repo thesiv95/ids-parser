@@ -11,15 +11,7 @@ var Pdfgen = {
         doc.pipe(fs.createWriteStream(myFilename + '.pdf'));
         doc.pipe(res);  // HTTP-заголовки сервера Express
        
-        /* Добавление содержимого */
-        // doc.fontSize(14);
-        // doc.text(data.title, { // заголовок
-        //     align: 'center',
-        //     underline: true
-        // });
-        // doc.text('\n'); // пустая строка между элементами
-
-        
+        /* Добавление содержимого */      
 
         doc.fontSize(14);
         doc.text(data.title, { // заголовок
@@ -29,11 +21,18 @@ var Pdfgen = {
         doc.text('\n'); // пустая строка между элементами
         doc.text('IDS detected: ' + data.ids_name);
         doc.text('\n');
+
+        /*
+        Есть идея подцепить графическую библиотеку, для отрисовки этого несчастного кружка, но как ее связать с пдф библиотекой, хз
+
+
+        */
+
         // Диаграмма
         // ПРИМЕЧАНИЕ. Тут показан ПРИМЕР того, где должна быть диаграмма. Она 
         // (пока что) не отрисовывается согласно реальным значением трафика 
         // (только какой-то один цвет), т.к. пока 
-        // непонятно, как сие реализовать...
+        // непонятно, как сие реализовать...(см. выше)
         doc.circle(125, 185, 50)   // задали параметры круга
             .lineWidth(0)          // нет границы (или минимальное значение границы)
             .fillOpacity(1)        // непрозрачный
@@ -52,13 +51,27 @@ var Pdfgen = {
         doc.text('\n');
         doc.text('\n');
         // Список записей
-        doc.fill(data.pieColor);
-        doc.list(data.text); // массив выведется как маркированный список
+        // doc.fill(data.pieColor);
+        // Цвета соответствуют значениям классов CSS, который задает цвет надписей в браузере
+        for (var i = 0; i < data.text.length; i++){
+            if (data.text[i].indexOf('good') !== -1) {
+                doc.fill("#51c123");
+                doc.text(" • " + data.text[i]);
+            } else if (data.text[i].indexOf('bad') !== -1) {
+                doc.fill("#da4e0a");
+                doc.text(" • " + data.text[i]);
+            } else { // unknown
+                doc.fill("#489fca");
+                doc.text(" • " + data.text[i]);
+            }
+        }
+
+
+        // doc.list(data.text); // массив выведется как маркированный список (классная функция, но она не справляется с конкретным значением массива)
         doc.text('\n');
         doc.fill("black");
         // Информация о типах трафика
         doc.text('Traffic information:\n');
-        // Цвета соответствуют значениям классов CSS, который задает цвет надписей в браузере
         doc.fill("#51c123");
         doc.text('Legal: ' + data.traffic.good.quantity + ' (' + data.traffic.good.percent + '%)\n');
         doc.fill("#da4e0a");
@@ -78,6 +91,7 @@ var Pdfgen = {
 
         /* Завершение создания документа */
         doc.end(); 
+        //res.end(); // закрытие подключения
     }
 }
 

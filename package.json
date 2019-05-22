@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ilia Soloveychik (@thesiv95)",
-  "license": "GNU-GPL-1.0-or-later",
+  "license": "GPL-1.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thesiv95/ids-parser.git"
+  },
   "devDependencies": {
     "dont-sniff-mimetype": "^1.0.0",
     "express": "^4.16.4",
