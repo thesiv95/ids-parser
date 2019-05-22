@@ -41,8 +41,8 @@ var Pdfgen = {
 
         var svgOptions = null;
 
-        var svg = '<svg width="400mm" height="400mm"><g><ellipse style="fill:' + data.pieColor +';fill-rule:evenodd;stroke-width:0.26458332" cx="44.034225" cy="41.299107" rx="31.561012" ry="30.805059" /><path style="fill:none;stroke-width:1.42857146" d="M 148.29221,270.71992 C 123.93151,266.84753 102.0386,255.84479 83.510715,238.1626 67.687861,223.06199 57.718066,206.47873 51.611171,185.1025 47.089331,169.27452 47.086626,142.94482 51.605195,126.93902 70.768961,59.05658 143.10431,23.458769 210.57927,48.704387 c 33.10445,12.385962 61.21264,43.584342 70.87058,78.662033 4.02402,14.61523 3.6117,45.90849 -0.79054,60 -12.30172,39.3775 -42.17896,68.6268 -81.78209,80.06324 -10.47297,3.02434 -40.12479,4.95302 -50.58501,3.29026 z" /></g></svg>';
-        
+        var svg = '<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 393.13 393.38"><path d="M265,255H68.56C68.56,146.51,156.51,58.56,265,58.56h0Z" transform="translate(-68.31 -58.31)" style="fill:#489fca;stroke:#000;stroke-miterlimit:10;stroke-width:0.5px"/><path d="M265,255V451.44C156.51,451.44,68.56,363.49,68.56,255H265Z" transform="translate(-68.31 -58.31)" style="fill:#51c123;stroke:#000;stroke-miterlimit:10;stroke-width:0.5px"/><path d="M265,255V58.56c108.49,0,196.44,87.95,196.44,196.44S373.49,451.44,265,451.44h0Z" transform="translate(-68.31 -58.31)" style="fill:#da4e0a"/></svg>';
+       
         doc.addSVG(svg, svgObject.x, svgObject.y, svgOptions);
 
         // Диаграмма 2
@@ -74,7 +74,7 @@ var Pdfgen = {
             if (data.text[i].indexOf('good') !== -1) {
                 doc.fill("#51c123");
                 doc.text(" • " + data.text[i]);
-            } else if (data.text[i].indexOf('bad') !== -1) {
+           } else if (data.text[i].indexOf('bad') !== -1) {
                 doc.fill("#da4e0a");
                 doc.text(" • " + data.text[i]);
             } else { // unknown
