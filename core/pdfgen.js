@@ -65,11 +65,12 @@ var Pdfgen = {
         };
 
 
-        if (svgTraffic.bad === 1 && svgTraffic.good === 0 && svgTraffic.unknown === 0){
+        if (svgTraffic.bad >= 1 && svgTraffic.good === 0 && svgTraffic.unknown === 0){
             svg = '<svg width="400" height="400" viewBox="0 0 210 297"><ellipse style="opacity:1;fill:#da4e0a;fill-opacity:1;fill-rule:evenodd;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" cx="30" cy="50" rx="50" ry="50" /></svg>';
-        } else if (svgTraffic.bad === 0 && svgTraffic.good === 1 && svgTraffic.unknown === 0){
+        } else if (svgTraffic.bad === 0 && svgTraffic.good >= 1 && svgTraffic.unknown === 0){
             svg = '<svg width="400" height="400" viewBox="0 0 210 297"><ellipse style="opacity:1;fill:#51c123;fill-opacity:1;fill-rule:evenodd;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" cx="30" cy="50" rx="50" ry="50" /></svg>';
-        } else if (svgTraffic.bad === 0 && svgTraffic.good === 0 && svgTraffic.unknown === 1) {
+        } 
+        else if (svgTraffic.bad === 0 && svgTraffic.good === 0 && svgTraffic.unknown >= 1) {
             svg = '<svg width="400" height="400" viewBox="0 0 210 297"><ellipse style="opacity:1;fill:#489fca;fill-opacity:1;fill-rule:evenodd;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" cx="30" cy="50" rx="50" ry="50" /></svg>';
         } else {
             svg = '<svg width="150" height="150" viewBox="0 0 393.13 393.38"><path d="M265,255H68.56C68.56,146.51,156.51,58.56,'+ svgParams.pathBlue +',58.56h0Z" transform="translate(-68.31 -58.31)" style="fill:#489fca;stroke-width:0"/><path d="M' + svgParams.pathGreen + ',258V451.44C156.51,451.44,68.56,363.49,68.56,255H265Z" transform="translate(-68.31 -58.31)" style="fill:#51c123;stroke-width:0"/><path d="M265,255V58.56c108.49,0,196.44,87.95,196.44,196.44S373.49,451.44,' + svgParams.pathRed + ',451.44h0Z" transform="translate(-68.31 -58.31)" style="fill:#da4e0a;stroke-width:0"/></svg>';
