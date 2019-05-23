@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const regExp = require('./regexp'); // ПРИЗНАКИ по которым определяется файл!!!
+const regExp = require('./helpers/regexp'); // ПРИЗНАКИ по которым определяется файл!!!
 // Предполагается, что файл будет на сервере единственным (он был загружен ранее через форму на странице Обработка)
 var pathToFile = ''; // путь к нужному файлу
 
@@ -30,13 +30,13 @@ function fromDir(startPath,filter){
 };
 
 // Переменная __dirname включает в себя папку core, нужно убрать
-var oneDirBack = __dirname.slice(0, __dirname.indexOf('/core'));
+var rootDirectory = __dirname.slice(0, -5);
 
-fromDir(oneDirBack + '/public/uploads/','.log');
-fromDir(oneDirBack + '/public/uploads/','.txt');
-fromDir(oneDirBack + '/public/uploads/','.xml');
-fromDir(oneDirBack + '/public/uploads/','.snlog');
-// console.log(pathToFile);
+fromDir(rootDirectory + '/public/uploads/','.log');
+fromDir(rootDirectory + '/public/uploads/','.txt');
+fromDir(rootDirectory + '/public/uploads/','.xml');
+fromDir(rootDirectory + '/public/uploads/','.snlog');
+
 var ids = fs.readFileSync(pathToFile, 'utf-8'); // Открываем файл с сервера для его проверки
 
 var detected = ''; // результат определения
@@ -54,10 +54,6 @@ if (ids.match(regExp.detectionBro)) {
 } else {
     detected = '?';
 }
-
-// console.log('Detected = ' + detected);
-
-
 
 module.exports = {
 	detected: detected,

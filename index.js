@@ -15,8 +15,6 @@ var upload = require('jquery-file-upload-middleware');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-
-
 // Самописные библиотеки и модули
 const Draw = require('./core/draw');
 const Pdfgen = require('./core/pdfgen');

@@ -1,11 +1,11 @@
 // А здесь вызовем детектор, а также все функции - расщепители лог файлов!
 var detector = require('./detector');
-var Bro = require('./bro');
-var DallasLock = require('./dallaslock');
-var SecretNet = require('./secretnet');
-var Snort = require('./snort');
-var Suricata = require('./suricata');
-var uIDS = require('./unknown_ids');
+var Bro = require('./helpers/bro');
+var DallasLock = require('./helpers/dallaslock');
+var SecretNet = require('./helpers/secretnet');
+var Snort = require('./helpers/snort');
+var Suricata = require('./helpers/suricata');
+var uIDS = require('./helpers/unknown_ids');
 
 module.exports = {
     start: function(){
