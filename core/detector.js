@@ -29,10 +29,13 @@ function fromDir(startPath,filter){
     };
 };
 
-fromDir(__dirname + '/public/uploads/','.log');
-fromDir(__dirname + '/public/uploads/','.txt');
-fromDir(__dirname + '/public/uploads/','.xml');
-fromDir(__dirname + '/public/uploads/','.snlog');
+// Переменная __dirname включает в себя папку core, нужно убрать
+var oneDirBack = __dirname.slice(0, __dirname.indexOf('/core'));
+
+fromDir(oneDirBack + '/public/uploads/','.log');
+fromDir(oneDirBack + '/public/uploads/','.txt');
+fromDir(oneDirBack + '/public/uploads/','.xml');
+fromDir(oneDirBack + '/public/uploads/','.snlog');
 // console.log(pathToFile);
 var ids = fs.readFileSync(pathToFile, 'utf-8'); // Открываем файл с сервера для его проверки
 

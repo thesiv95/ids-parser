@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 
 
 // Самописные библиотеки и модули
-const Draw = require('./draw');
-const Pdfgen = require('./pdfgen');
+const Draw = require('./core/draw');
+const Pdfgen = require('./core/pdfgen');
 const Install = require('./install');
 
 // порт для сервера express 
@@ -317,7 +317,7 @@ app.get('/startinstall', function(){
 // Кнопка Начать Обработку
 app.get('/extr123', function(req, res){
         
-    var extractor = require('./extractor'); // именно сюда, иначе скрипт запускается сразу
+    var extractor = require('./core/extractor'); // именно сюда, иначе скрипт запускается сразу
     extractor.start();
     
 

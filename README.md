@@ -24,7 +24,7 @@ http://parser2k19.xyz
            
 [Screenshot](http://parser2k19.xyz/files/scr.png)  
 
-[Demo Log Files - also included in this repository](http://parser2k19.xyz/files/demo-logs.zip)
+[Demo Log Files - also included in this repository, `demo` folder](http://parser2k19.xyz/files/demo-logs.zip)
 
 ### Minimal browser requirements
 
