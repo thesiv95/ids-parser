@@ -81,3 +81,5 @@ http://parser2k19.xyz
 - [Helmet 3.18.0](https://helmetjs.github.io) &copy; 2019 Adam Baldwin - CC 3.0 License
 - [x-xss-protection 1.1.0](https://www.npmjs.com/package/x-xss-protection) &copy; 2019 Evan Hahn - MIT License
 - [dont-sniff-mimetype 1.0.0](https://www.npmjs.com/package/dont-sniff-mimetype) &copy; 2019 Evan Hahn - MIT License
+- [PDFKit](http://pdfkit.org/) &copy; @devongonett 2019 - MIT license
+- [svg-to-pdfkit](https://github.com/alafr/SVG-to-PDFKit) &copy; @alafr 2019 - MIT license
