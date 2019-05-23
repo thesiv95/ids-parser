@@ -1,0 +1,2 @@
+Main modules of the application are located here.
+Folder "helpers" contains all the IDS extractors, including IDS regular expressions library (these are "help" files).
