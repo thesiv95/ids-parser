@@ -35,13 +35,13 @@ var Pdfgen = {
         // Попытка воспользоваться графической SVG библиотекой
 
         var svgObject = {
-            x: 125,
-            y: 185
+            x: 65,
+            y: 125
         }
 
         var svgOptions = null;
 
-        var svg = '<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 393.13 393.38"><path d="M265,255H68.56C68.56,146.51,156.51,58.56,265,58.56h0Z" transform="translate(-68.31 -58.31)" style="fill:#489fca;stroke:#000;stroke-miterlimit:10;stroke-width:0.5px"/><path d="M265,255V451.44C156.51,451.44,68.56,363.49,68.56,255H265Z" transform="translate(-68.31 -58.31)" style="fill:#51c123;stroke:#000;stroke-miterlimit:10;stroke-width:0.5px"/><path d="M265,255V58.56c108.49,0,196.44,87.95,196.44,196.44S373.49,451.44,265,451.44h0Z" transform="translate(-68.31 -58.31)" style="fill:#da4e0a"/></svg>';
+        var svg = '<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 393.13 393.38"><path d="M265,255H68.56C68.56,146.51,156.51,58.56,265,58.56h0Z" transform="translate(-68.31 -58.31)" style="fill:#489fca;stroke:#000;stroke-miterlimit:10;stroke-width:0.5px"/><path d="M265,255V451.44C156.51,451.44,68.56,363.49,68.56,255H265Z" transform="translate(-68.31 -58.31)" style="fill:#51c123;stroke:#000;stroke-miterlimit:10;stroke-width:0.5px"/><path d="M265,255V58.56c108.49,0,196.44,87.95,196.44,196.44S373.49,451.44,265,451.44h0Z" transform="translate(-68.31 -58.31)" style="fill:#da4e0a"/></svg>';
        
         doc.addSVG(svg, svgObject.x, svgObject.y, svgOptions);
 
@@ -66,7 +66,7 @@ var Pdfgen = {
         doc.text('\n');
         doc.text('\n');
         doc.text('\n');
-        doc.text('\n');
+        
         // Список записей
         // doc.fill(data.pieColor);
         // Цвета соответствуют значениям классов CSS, который задает цвет надписей в браузере
