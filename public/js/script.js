@@ -10,7 +10,8 @@ var successMsg = doc.getElementsByClassName('msg__save-success')[0],
     filepicker = doc.getElementById('filepicker'),
     output = doc.getElementsByClassName('output')[0],
     outputStart = doc.getElementById('outputStart'),
-    outputExport = doc.getElementById('outputExport');
+    outputExport = doc.getElementById('outputExport'),
+    outputClear = doc.getElementById('outputClear');
 
 // Change page without "a href"
 function go_to(url){
@@ -21,26 +22,14 @@ function goPosition(position){
     his.go(position);
 }
 
-// EULA UI
-var agreedOKBtn = doc.getElementById('agreedOKBtn'),
-    agreedChkbox = doc.getElementById('agreed');
-
-function eulaBtnToggle(){
-    if (!agreedChkbox.checked) {
-        agreedChkbox.checked = true;
-        agreedOKBtn.disabled = false;
-    } else {
-        agreedChkbox.checked = false;
-        agreedOKBtn.disabled = true;
-    }
-}
-
 // Parsing UI
 function toggleStartButton(){
     if (filepicker.files != 0){
         outputStart.disabled = false;
+        outputClear.disabled = false;
     } else {
         outputStart.disabled = true;
+        outputClear.disabled = true;
     }
 }
 
@@ -56,6 +45,9 @@ function showOutput(){
     }
 }
 
+function pageClear(){
+    loc.reload(); // page reload
+}
 
 // Settings UI
 function displaySuccessMsg(){

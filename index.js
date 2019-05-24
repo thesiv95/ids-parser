@@ -110,6 +110,7 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
             btn_to_main_page: loadedLanguage.btn_to_main_page,
             btn_start_parsing: loadedLanguage.btn_start_parsing,
             btn_export_parsing: loadedLanguage.btn_export_parsing,
+            btn_clear: loadedLanguage.btn_clear,
             parsing_ids_detected: loadedLanguage.parsing_ids_detected,
             parsing_report_download: loadedLanguage.parsing_report_download,
             parsing_timestamp: loadedLanguage.parsing_timestamp,
@@ -119,6 +120,7 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
             parsing_unknown: loadedLanguage.parsing_unknown,
             parsing_conn_total: loadedLanguage.parsing_conn_total,
             parsing_date: loadedLanguage.parsing_date,
+            parsing_clear: loadedLanguage.parsing_clear,
             draw: Draw, // объект с нужной информацией из модуля Draw.js
             // Какой стиль выбран?
             styles: loadedSetup.styles

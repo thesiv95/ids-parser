@@ -7,6 +7,7 @@
             <input class="btn btn-std" type="button" onclick="go_to('/');" value="{{ btn_to_main_page }}">
             <input class="btn btn-std" type="button" id="outputStart" value="{{ btn_start_parsing }}" disabled onclick="start();">
             <input class="btn btn-std" type="button" id="outputExport" value="{{ btn_export_parsing }}" onclick="go_to('/pdf');" title="{{ parsing_report_download }}" disabled>
+			<input class="btn btn-std" type="button" id="outputClear" value="{{ btn_clear }}" onclick="pageClear();" title="{{ parsing_clear }}" disabled>
         </div>
         <div class="output" style="display: none;">
             <div class="output-title">{{ parsing_ids_detected }}: {{ draw.ids_name }}</p></div>
