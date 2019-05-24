@@ -1,6 +1,6 @@
 {
   "name": "ids-parser",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Build graphic pies from well-known Invasion Destruction Systems Logs",
   "main": "index.js",
   "scripts": {
