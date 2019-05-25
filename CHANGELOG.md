@@ -1,3 +1,6 @@
+## v 0.1.3
+Minified CSS files for distros
+
 ## v 0.1.2
  - Added "Clear the page" button to the "Parsing" page
  - Added this changelog file :) just now :)
