@@ -27,5 +27,6 @@
     "moment": "^2.24.0",
     "pdfkit": "^0.9.0",
     "twig": "^1.13.2"
-  }
+  },
+  "keywords": ["ids", "invasion destruction system", "snort", "secret net", "dallas lock", "bro", "zeek", "suricata", "parser"]
 }
