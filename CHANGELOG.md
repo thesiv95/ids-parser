@@ -1,3 +1,7 @@
+## v 0.1.4
+- Fixed page clear button
+- Deleted unused file
+
 ## v 0.1.3
 Minified CSS files for distros
 
