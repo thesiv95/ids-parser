@@ -46,7 +46,7 @@ function showOutput(){
 }
 
 function pageClear(){
-    loc.reload(); // page reload
+    window.location.reload();
 }
 
 // Settings UI
