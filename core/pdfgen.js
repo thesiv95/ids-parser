@@ -1,3 +1,5 @@
+// PDFRender Module
+
 const PDFDocument = require('pdfkit'); // библиотека для генерации PDF
 const moment = require('moment'); // библиотека для форматирования даты и времени
 const doc = new PDFDocument; // кэш библиотеки для генерации PDF
