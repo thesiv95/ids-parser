@@ -106,6 +106,7 @@ MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
             msg_noscript: loadedLanguage.msg_noscript,
             msg_old_browser: loadedLanguage.msg_old_browser,
             msg_too_small: loadedLanguage.msg_too_small,
+            msg_parsing_warn: loadedLanguage.msg_parsing_warn,
             title: loadedLanguage.header_parsing,
             btn_to_main_page: loadedLanguage.btn_to_main_page,
             btn_start_parsing: loadedLanguage.btn_start_parsing,

@@ -1,3 +1,6 @@
+## v 0.1.5
+Added parsing warning message D:
+
 ## v 0.1.4
 - Fixed page clear button
 - Deleted unused file

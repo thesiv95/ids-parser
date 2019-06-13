@@ -45,5 +45,6 @@
 	"msg_old_browser":"This browser does not support all the features that program uses. This program might still work, but errors could happen. It is highly recommended to use browser that is stated in the manual to avoid problems. The manual is located at the &quot;Help&quot; page.",
 	"msg_too_small":"The window width size is too small to show data parsing result. If you are using a mobile device, change your display's orientation to album.",
 	"msg_changed":"Changes were saved successfully! Please restart the application.",
+	"msg_parsing_warn": "This is a demo version. Before each processing of the log file, it is recommended to restart the application.",
 	"footer_eula_info":"By using the app, you agree to the <a href='/eula' class='link-std' target='_blank'> terms of use</a>"
 }
