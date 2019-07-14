@@ -4,7 +4,7 @@
 This is **beta version** (just for demonstration), not for real work! Author is **not** responsible if something goes wrong ;)
 
 ### Official website
-http://parser2k19.xyz
+http://parser2k19.xyz (might not be avaliable now)
 
 ### Functions
  - Parses log files of well-known Intrusion Detection Systems (IDS), such as Snort, Dallas Lock, Zeek (ex. Bro), etc.

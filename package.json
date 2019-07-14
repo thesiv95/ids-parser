@@ -20,7 +20,8 @@
     "mongodb": "^2.2.33",
     "svg-to-pdfkit": "^0.1.6",
     "x-xss-protection": "^1.1.0",
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.19",
+    "lodash": ">=4.17.13"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
