@@ -1,30 +1,20 @@
 # IDS Parser
 
 ### WARNING!
+
 This is **beta version** (just for demonstration), not for real work! Author is **not** responsible if something goes wrong ;)
 
-### Official website
-http://parser2k19.xyz (might not be avaliable now)
+### Screenshot
+
+![Screenshot of the app (russian language)](https://i.imgur.com/0GTDabN.png "in russian")
 
 ### Functions
- - Parses log files of well-known Intrusion Detection Systems (IDS), such as Snort, Dallas Lock, Zeek (ex. Bro), etc.
+
+- Parses log files of well-known Intrusion Detection Systems (IDS), such as Snort, Dallas Lock, Zeek (ex. Bro), etc.
 - Shows diagram of legal, illegal & unknown traffic
 - Shows traffic description in human-readable format
 - Can export all parsed information to PDF
-
-### Download materials
-
-[Files (.zip)](http://parser2k19.xyz/files/ids-parser-beta.zip)
-
-[Files + node_modules (.zip)](http://parser2k19.xyz/files/ids-parser-beta_node.zip)
-
-[Auto install script (for Ubuntu 16+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-install.sh)
-
-[Auto run script (for Ubuntu 16+/Debian 8+)](http://parser2k19.xyz/files/ids-parser-autorun.sh)
-           
-[Screenshot](http://parser2k19.xyz/files/scr.png)  
-
-[Demo Log Files - also included in this repository, `demo` folder](http://parser2k19.xyz/files/demo-logs.zip)
+- NOTE: demo log files also included in this repository (`demo` folder)
 
 ### Minimal browser requirements
 
@@ -42,24 +32,18 @@ http://parser2k19.xyz (might not be avaliable now)
 | Firefox for Android | 64      | Android 4.1 |
 
 ### How to start
-#### .zip archives (local server)
-1. Make sure you have successfully connected to MongoDB database (usually *localhost:27017*).
-2. Unzip files where you need. Open terminal there.
-3. If you have downloaded archive without *node_modules*, run `npm i` command to download libraries for this app.
-4. Run nodemon command. When message *Parser was started, using port 3000* is shown, go to `http://localhost:3000/install` and follow all the instructions, after that go to `http://localhost:3000`.
 
-#### Shell scripts (if you have remote server, VPS, etc) - *Ubuntu 16+/Debian 8+ only*
-1. Make sure you have successfully connected to MongoDB database (port is usually *27017*).
-2. Put `ids-parser-install.sh` file to your server, run this file as sudo. This file will download and unpack libraries that are needed to run the app. Before running, you should delete packages such as `apache`, `mysql-server`, `php-*`.
-3. Put `ids-parser-autorun.sh`, make it run when the OS of your server boots up (use file `/etc/rc.local`)
-4. Download and unzip the files of parser, put them to your server root (usually `/var/www/html`). If you have downloaded archive without *node_modules*, run `npm i` command at the server root folder to download libraries for this app.
-5. Run nodemon command at the server root folder. When message *Parser was started, using port 3000* is shown, go to `http://remote.ip:3000/install` and follow all the instructions, after that go to `http://remote.ip:3000`.
-6. If you had binded a domain to your VPS, consider using [nginx proxy for node.js](https://radiostud.io/configuring-nginx-reverse-proxy-node-js-application/) (to get rid of `:3000` port in the address bar).
+1. Make sure you have successfully connected to MongoDB database (usually *localhost:27017*).
+2. Clone this repository where you need.
+3. Run `npm i` command to download libraries for this app.
+4. Run `nodemon` or `node index.js` command. When message *Parser was started, using port 3000* is shown, go to `http://localhost:3000/install` and follow all the instructions, after that go to `http://localhost:3000`.
 
 ### License
+
 [GNU GPL v1.0](https://www.gnu.org/licenses/old-licenses/gpl-1.0.en.html)
 
 ### Copyright
+
 &copy; [SIV](https://www.facebook.com/thesiv95), 2019
 
 ### Libraries & frameworks used
