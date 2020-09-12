@@ -1,0 +1,451 @@
+/* Normal browsers */
+
+.modern-cors .msg_old-browser {
+    display: none;
+}
+
+.modern-dataview .msg_old-browser {
+    display: none;
+}
+
+.modern-eventlistener .msg_old-browser {
+    display: none;
+}
+
+.modern-history .msg_old-browser {
+    display: none;
+}
+
+.modern-json .msg_old-browser {
+    display: none;
+}
+
+.modern-queryselector .msg_old-browser {
+    display: none;
+}
+
+.modern-svg .msg_old-browser {
+    display: none;
+}
+
+.modern-target .msg_old-browser {
+    display: none;
+}
+
+.modern-strictmode .msg_old-browser {
+    display: none;
+}
+
+.modern-es5undefined .msg_old-browser {
+    display: none;
+}
+
+.modern-arrow .msg_old-browser {
+    display: none;
+}
+
+.modern-generators .msg_old-browser {
+    display: none;
+}
+
+.modern-promises .msg_old-browser {
+    display: none;
+}
+
+.modern-xhrresponsetype .msg_old-browser {
+    display: none;
+}
+
+.modern-xhr2 .msg_old-browser {
+    display: none;
+}
+
+.modern-atobbtoa .msg_old-browser {
+    display: none;
+}
+
+.modern-atob-btoa .msg_old-browser {
+    display: none;
+}
+
+.modern-canvas .msg_old-browser {
+    display: none;
+}
+
+.modern-canvastext .msg_old-browser {
+    display: none;
+}
+
+.modern-todataurljpeg .msg_old-browser {
+    display: none;
+}
+
+.modern-todataurlpng .msg_old-browser {
+    display: none;
+}
+
+.modern-multiplebgs .msg_old-browser {
+    display: none;
+}
+
+.modern-csspointerevents .msg_old-browser {
+    display: none;
+}
+
+.modern-cssremunit .msg_old-browser {
+    display: none;
+}
+
+.modern-rgba .msg_old-browser {
+    display: none;
+}
+
+.modern-scriptasync .msg_old-browser {
+    display: none;
+}
+
+.modern-scriptdefer .msg_old-browser {
+    display: none;
+}
+
+.modern-inlinesvg .msg_old-browser {
+    display: none;  
+}
+
+.modern-cssgradients .msg_old-browser {
+    display: none;
+}
+
+.modern-opacity .msg_old-browser {
+    display: none;
+}
+
+.modern-cssexunit .msg_old-browser {
+    display: none;
+}
+
+.modern-hsla .msg_old-browser {
+    display: none;
+}
+
+.modern-xhrresponsetypearraybuffer .msg_old-browser {
+    display: none;
+}
+
+.modern-xhrresponsetypedocument .msg_old-browser {
+    display: none;
+}
+
+.modern-xhrresponsetypetext .msg_old-browser {
+    display: none;
+}
+
+.modern-svgclippaths .msg_old-browser {
+    display: none;
+}
+
+.modern-svgasimg .msg_old-browser {
+    display: none;
+}
+
+.modern-checked .msg_old-browser {
+    display: none;
+}
+
+.modern-fontface .msg_old-browser {
+    display: none;
+}
+
+.modern-generatedcontent .msg_old-browser {
+    display: none;
+}
+
+.modern-cssinvalid .msg_old-browser {
+    display: none;
+}
+.modern-lastchild .msg_old-browser {
+    display: none;
+}
+
+.modern-nthchild .msg_old-browser {
+    display: none;
+}
+
+.modern-cssvalid .msg_old-browser {
+    display: none;
+}
+
+.modern-mediaqueries .msg_old-browser {
+    display: none;
+}
+
+.modern-textshadow .msg_old-browser {
+    display: none;
+}
+
+.modern-cssanimations .msg_old-browser {
+    display: none;
+}
+
+.modern-backgroundsize .msg_old-browser {
+    display: none;
+}
+
+.modern-bgsizecover .msg_old-browser {
+    display: none;
+}
+
+.modern-borderradius .msg_old-browser {
+    display: none;
+}
+
+.modern-boxshadow .msg_old-browser {
+    display: none;
+}
+
+.modern-boxsizing .msg_old-browser {
+    display: none;
+}
+
+.modern-ellipsis .msg_old-browser {
+    display: none;
+}
+
+.modern-csstransforms .msg_old-browser {
+    display: none;
+}
+
+.modern-csstransforms3d .msg_old-browser {
+    display: none;
+}
+
+.modern-csstransitions .msg_old-browser {
+    display: none;
+}
+
+
+/* Old browsers */
+
+.modern-no-cors .msg_old-browser {
+    display: block;
+}
+
+.modern-no-dataview .msg_old-browser {
+    display: block;
+}
+
+.modern-no-eventlistener .msg_old-browser {
+    display: block;
+}
+
+.modern-no-history .msg_old-browser {
+    display: block;
+}
+
+.modern-no-json .msg_old-browser {
+    display: block;
+}
+
+.modern-no-queryselector .msg_old-browser {
+    display: block;
+}
+
+.modern-no-svg .msg_old-browser {
+    display: block;
+}
+
+.modern-no-target .msg_old-browser {
+    display: block;
+}
+
+.modern-no-strictmode .msg_old-browser {
+    display: block;
+}
+
+.modern-no-es5undefined .msg_old-browser {
+    display: block;
+}
+
+.modern-no-arrow .msg_old-browser {
+    display: block;
+}
+
+.modern-no-generators .msg_old-browser {
+    display: block;
+}
+
+.modern-no-promises .msg_old-browser {
+    display: block;
+}
+
+.modern-no-xhrresponsetype .msg_old-browser {
+    display: block;
+}
+
+.modern-no-xhr2 .msg_old-browser {
+    display: block;
+}
+
+.modern-no-atobbtoa .msg_old-browser {
+    display: block;
+}
+
+.modern-no-atob-btoa .msg_old-browser {
+    display: block;
+}
+
+.modern-no-canvas .msg_old-browser {
+    display: block;
+}
+
+.modern-no-canvastext .msg_old-browser {
+    display: block;
+}
+
+.modern-no-todataurljpeg .msg_old-browser {
+    display: block;
+}
+
+.modern-no-todataurlpng .msg_old-browser {
+    display: block;
+}
+
+.modern-no-multiplebgs .msg_old-browser {
+    display: block;
+}
+
+.modern-no-csspointerevents .msg_old-browser {
+    display: block;
+}
+
+.modern-no-cssremunit .msg_old-browser {
+    display: block;
+}
+
+.modern-no-rgba .msg_old-browser {
+    display: block;
+}
+
+.modern-no-scriptasync .msg_old-browser {
+    display: block;
+}
+
+.modern-no-scriptdefer .msg_old-browser {
+    display: block;
+}
+
+.modern-no-inlinesvg .msg_old-browser {
+    display: block;  
+}
+
+.modern-no-cssgradients .msg_old-browser {
+    display: block;
+}
+
+.modern-no-opacity .msg_old-browser {
+    display: block;
+}
+
+.modern-no-cssexunit .msg_old-browser {
+    display: block;
+}
+
+.modern-no-hsla .msg_old-browser {
+    display: block;
+}
+
+.modern-no-xhrresponsetypearraybuffer .msg_old-browser {
+    display: block;
+}
+
+.modern-no-xhrresponsetypedocument .msg_old-browser {
+    display: block;
+}
+
+.modern-no-xhrresponsetypetext .msg_old-browser {
+    display: block;
+}
+
+.modern-no-svgclippaths .msg_old-browser {
+    display: block;
+}
+
+.modern-no-svgasimg .msg_old-browser {
+    display: block;
+}
+
+.modern-no-checked .msg_old-browser {
+    display: block;
+}
+
+.modern-no-fontface .msg_old-browser {
+    display: block;
+}
+
+.modern-no-generatedcontent .msg_old-browser {
+    display: block;
+}
+
+.modern-no-cssinvalid .msg_old-browser {
+    display: block;
+}
+.modern-no-lastchild .msg_old-browser {
+    display: block;
+}
+
+.modern-no-nthchild .msg_old-browser {
+    display: block;
+}
+
+.modern-no-cssvalid .msg_old-browser {
+    display: block;
+}
+
+.modern-no-mediaqueries .msg_old-browser {
+    display: block;
+}
+
+.modern-no-textshadow .msg_old-browser {
+    display: block;
+}
+
+.modern-no-cssanimations .msg_old-browser {
+    display: block;
+}
+
+.modern-no-backgroundsize .msg_old-browser {
+    display: block;
+}
+
+.modern-no-bgsizecover .msg_old-browser {
+    display: block;
+}
+
+.modern-no-borderradius .msg_old-browser {
+    display: block;
+}
+
+.modern-no-boxshadow .msg_old-browser {
+    display: block;
+}
+
+.modern-no-boxsizing .msg_old-browser {
+    display: block;
+}
+
+.modern-no-ellipsis .msg_old-browser {
+    display: block;
+}
+
+.modern-no-csstransforms .msg_old-browser {
+    display: block;
+}
+
+.modern-no-csstransforms3d .msg_old-browser {
+    display: block;
+}
+
+.modern-no-csstransitions .msg_old-browser {
+    display: block;
+}
+

@@ -16,22 +16,22 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 // Самописные библиотеки и модули
-const Draw = require('./core/draw');
-const Pdfgen = require('./core/pdfgen');
+const Draw = require('./app/core/draw');
+const Pdfgen = require('./app/core/pdfgen');
 const Install = require('./install');
 
 // порт для сервера express 
 var port = 3000;
 
 // Настройки шаблонизатора Twig
-app.set('views', __dirname + '/views'); // папка с HTML-разметкой
+app.set('views', __dirname + '/app/views'); // папка с HTML-разметкой
 app.set('view engine', 'twig');
 app.set('twig options', { 
     strict_variables: false
 });
 
 // Папка для статических файлов (то есть стили css, скрипты js, и т.п.)
-app.use(express.static('public'));
+app.use(express.static('app/public'));
 
 // Безопасные заголовки
 app.use(helmet());
@@ -57,7 +57,7 @@ MongoClient.connect('mongodb+srv://siv:S4K21gW86DLHiK62@cluster0-7pfwr.mongodb.n
     loadedSetup.styles = result[0]['styles'];
     // console.log(loadedSetup);
     // Загрузка языковых файлов
-    var langFile = fs.readFileSync('lang/lang_' + loadedSetup.lang + '.json');
+    var langFile = fs.readFileSync('app/lang/lang_' + loadedSetup.lang + '.json');
     var loadedLanguage = JSON.parse(langFile);
 
     /***** Страницы ******/
