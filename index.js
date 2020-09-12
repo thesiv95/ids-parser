@@ -44,7 +44,7 @@ var draw = Draw;
 // Подключение к БД, для загрузки настроек
 var loadedSetup = {};
 
-MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
+MongoClient.connect('mongodb+srv://siv:S4K21gW86DLHiK62@cluster0-7pfwr.mongodb.net/configuration?retryWrites=true&w=majority', function(err, db) {
   if (err) {
     throw err;
   }
@@ -221,7 +221,7 @@ app.post("/applysettings", function(req,res){
 
 
 
-    MongoClient.connect('mongodb://localhost:27017/config', function(err, db) {
+    MongoClient.connect('mongodb+srv://siv:S4K21gW86DLHiK62@cluster0-7pfwr.mongodb.net/configuration?retryWrites=true&w=majority', function(err, db) {
         db.collection("setup").update({a: 'a'}, {lang: setting.lang, styles: setting.style, a: 'a', eula: true}, (err, options) => {
             if (err) {
                 console.log('Setup update error: ' + err);

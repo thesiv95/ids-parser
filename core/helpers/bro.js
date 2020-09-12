@@ -163,7 +163,7 @@ module.exports = {
 		Bro.defineSignature();
 		Bro.defineStatus();
 		
-		MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
+		MongoClient.connect('mongodb+srv://siv:S4K21gW86DLHiK62@cluster0-7pfwr.mongodb.net/info?retryWrites=true&w=majority', function(err, db){
 			db.collection('brorecords').insert({
 				ids_name: 'Bro',
 				date_reg: singleRecordObject.times[0],

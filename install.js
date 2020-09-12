@@ -6,9 +6,9 @@ module.exports = {
         
     // Установка демо-баз приложения (база должна быть пустой!);
     // При отсутствии баз данных с такими именами они будут созданы автоматически
-       // console.log('Installation');
+       
 
-        MongoClient.connect('mongodb://localhost:27017/config', function(err, db){
+        MongoClient.connect('mongodb+srv://siv:S4K21gW86DLHiK62@cluster0-7pfwr.mongodb.net/configuration?retryWrites=true&w=majority', function(err, db){
 
             if (err) throw err;
 
@@ -22,7 +22,7 @@ module.exports = {
             db.close();
         });
 
-        MongoClient.connect('mongodb://localhost:27017/info', function(err, db){
+        MongoClient.connect('mongodb+srv://siv:S4K21gW86DLHiK62@cluster0-7pfwr.mongodb.net/info?retryWrites=true&w=majority', function(err, db){
 
             if (err) throw err;
 
